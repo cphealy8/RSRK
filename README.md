@@ -58,3 +58,5 @@ RSRK requires several initial image processing steps in order to produce the inp
 
 11. To plot and visualize the results of RSRK analysis, run RSRKPlot.m. The code will automatically prompt you to select the RSRK data you wish to visualize. MovingRKPlot.m will display the results and automatically save them as .eps files to ../results/MovingRKPlots. It will save two files, one that shows the actual RSRK values and one that shows the significance level of the RSRK values. The colors in the latter correspond to the following significance values and pattern types: Blue, significant uniformity/repulsion α=0.01; Green, significant uniformity/repulsion α=0.05; Light Yellow, not significant versus random; Orange, significant clustering/attraction α=0.05; Red, significant clustering/attraction α=0.01. 
 
+## Citation
+To cite RSRK and the RSRK package please use [INSERT PAPER REFERENCE HERE]
