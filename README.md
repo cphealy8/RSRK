@@ -33,19 +33,9 @@ We recommend the following minimum hardware specifications.
 
 ## How to use RSRK
 RSRK requires several initial image processing steps in order to produce the inputs needed for RSRK analyses. The following flowchart outlines the overall process. 
-```mermaid
-graph LR
-A[Z-Stack] -- ImageJ --> B(Flattened Image)
-B -- Photoshop --> C(Mask)
-B -- imageLoad.m --> D(Grayscale Signal Image)
-B -- MySegment.m --> E(Point Process)
-C --> F{RSRK.m}
-D --> F
-E --> F
-F --> G[Plots]
-F --> H{PoolRK.m}
-H --> G
-```
+
+![RSRK Flow Chart](https://github.com/cphealy8/RSRK/blob/master/RSRKFlowChart.PNG)
+
 ### Step by Step
 1. Download and unzip the RSRK toolbox. We recommend working within default RSRK file structure to avoid reference errors. 
 
