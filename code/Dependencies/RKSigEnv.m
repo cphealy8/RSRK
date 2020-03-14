@@ -42,9 +42,25 @@ end
 %     mask = ~mask;
 % end
 
+% Handle the case where no points are within the analysis area.
+if isempty(pts)
+    zermat = zeros(1,length(r));
+    RK.Obs = zermat;
+    RK.r = r;
+    RK.CSR = zermat;
+    RK.CSRSims = [];
+    RK.SigLvls = [SigLvls'; -1*flipud(SigLvls')];
+    RK.Type = CompType;
+    RK.npts = 0;
+    RK.pixTot = sum(im(:));
+    RK.A = sum(mask(:));
+    RK.Env = zeros(2*numel(SigLvls),length(r));
+    return %terminate early
+end
+
+
 % Ensure all points are within the mask
 pts = CropPts2Mask(pts,mask);
-
 
 %% Compute Ripley's K (without edge correction) for the input point process
 [K, npts, pixTot, A] = RKSignal2Pts(im,pts,r,mask);

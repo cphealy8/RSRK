@@ -29,13 +29,16 @@ end
 % This code will assume that the window moves from left to right (X). If the
 % user specifies Bottom to Top (Y) the x and y coordinates of the points
 % should be swapped.
+if nargin ==10
+    mask2 = varargin{1};
+end
+
 if strcmp(Direction,'Y')
     pts = fliplr(pts);
     mask = mask';
     if nargin==10
-        mask2 = varargin{1}';
+        mask2 = mask2';
     end
-    
     im = im';
 elseif ~strcmp(Direction,'X')
     error('Invalid Direction')
