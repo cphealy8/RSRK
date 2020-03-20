@@ -28,7 +28,7 @@ im = imread(strcat(ImPath,ImFile));
 
 %% Settings for TestImages
 % Rescale the image and points (Downsample for computational time);
-rescale = 1; % Coutu
+rescale = 0.24; % Coutu
 pts = pts*rescale;
 mask = imresize(mask,rescale);
 im = imresize(im,rescale);
@@ -39,7 +39,7 @@ ScaleUnits = 'pixels/pixel';
 % Moving Window Settings
 FrameOverlap = 1;
 nFrames = 1;
-r = 5:5:50; % [=] pixels.     
+r = (2.5:2.5:50)*418/100; % [=] pixels.     
 r = r/Scale; % Scale [=] pixels;
 
 %% Make sure the mask is not inverted and correct if it is. 
@@ -54,7 +54,6 @@ fname = dirparts{6};
 fdir = strcat(PtPath,'RK -',fname,'.mat');
 % fout = fileupdate(fdir,ftype);
 save(fdir,'RK','x','FrameOverlap','SigLvls','nFrames','mask','pts','r','Scale','Units','ScaleUnits');
-
 
 S = load('gong'); 
 sound(S.y,S.Fs);

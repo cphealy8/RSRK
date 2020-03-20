@@ -1,8 +1,8 @@
 clc; clear; close all;
 addpath('Dependencies');
-% RKFilename = strcat('../data/MovingRK/MovingRKdata_',figname,'_',marker,'.mat');
 
-[FileName,LoadPath] = uigetfile('../data/MovingRK/*.mat','Select Moving RK Data File');
+
+[FileName,LoadPath] = uigetfile('../data/Phantoms/*.mat','Select Moving RK Data File');
 load(strcat(LoadPath,FileName))
 % scale = 0.69; % µm/pixel
 if exist('Scale','var')
@@ -57,7 +57,7 @@ colorbar
 % shading interp
 
 xlabel('Window Position (% of Total Length)','FontSize',fntsz)
-ylabel('Scale r (µm)','FontSize',fntsz)
+ylabel('Scale r (pixels)','FontSize',fntsz)
 
 ax = gca;
 ax = TightAxes(ax);
@@ -83,7 +83,7 @@ RKObs= [RKObs,zeros(size(RKObs,1),1); zeros(1,size(RKObs,2)+1)];
 
 p1 = pcolor(x,r,RKObs');
 xlabel('Window Position (% of Total Length)','FontSize',fntsz)
-ylabel('Scale r (µm)','FontSize',fntsz)
+ylabel('Scale r (pixels)','FontSize',fntsz)
 zlabel('(RK_{observed}/RK_{CSR}) - 1')
 
 
