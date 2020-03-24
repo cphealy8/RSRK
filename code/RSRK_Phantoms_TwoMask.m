@@ -21,16 +21,17 @@ mask = imresize(mask,rescale);
 mask2 = imresize(mask2,rescale);
 im = imresize(im,rescale);
 
-Scale = 1/rescale; % µm/pixel
+% Scale = 1/rescale; % µm/pixel % Base Phantoms
+Scale = 4.53/rescale; % µm/pixel % Bone Phantoms
 Units = 'Pixels';
-ScaleUnits = 'pixel/pixel';
+ScaleUnits = 'µm/pixel';
 % Moving Window Settings
 FrameOverlap = 0.5;
 nFrames = 10;
-[height,length] = size(im);
-windowwidth = length/(nFrames-nFrames*FrameOverlap+FrameOverlap);
+[wheight,wlength] = size(im);
+windowwidth = wlength/(nFrames-nFrames*FrameOverlap+FrameOverlap);
 rmax = round(windowwidth/2,-1);
-r = round(logspace(log10(10),log10(rmax),6),-1); % [=] um.           
+r = logspace(log10(10),log10(500),10); % [=] um.          
 r = r/Scale; % Scale [=] pixels;
 
 %% Settings for TestImages

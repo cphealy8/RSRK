@@ -16,12 +16,15 @@ im = imread(strcat(ImPath,ImFile));
 %% Settings for Coutu Images
 % Rescale the image and points (Downsample for computational time);
 rescale = 0.1; % Coutu
+% rescale = 0.5; % Bone Phantoms
 pts = pts*rescale;
 mask = imresize(mask,rescale);
 mask2 = imresize(mask2,rescale);
 im = imresize(im,rescale);
 
-Scale = 0.69/rescale; % µm/pixel
+Scale = 0.69/rescale; % µm/pixel (Coutu)
+% Scale = 4.53/rescale; % µm/pixel (Bone Phantoms)
+
 Units = 'Pixels';
 ScaleUnits = 'um/pixel';
 % Moving Window Settings
