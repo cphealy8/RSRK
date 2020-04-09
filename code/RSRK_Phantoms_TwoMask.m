@@ -27,7 +27,7 @@ Units = 'Pixels';
 ScaleUnits = 'µm/pixel';
 % Moving Window Settings
 FrameOverlap = 0.5;
-nFrames = 10;
+nFrames = 20;
 [wheight,wlength] = size(im);
 windowwidth = wlength/(nFrames-nFrames*FrameOverlap+FrameOverlap);
 rmax = round(windowwidth/2,-1);

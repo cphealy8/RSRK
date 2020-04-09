@@ -47,10 +47,9 @@ end
 % Apply Mask to Signal Image
 im(~mask) = 0;
 
+[MaskHeight,MaskWidth] = size(mask);
 % Set WindowWidth
-[WindowHeight,MaskWidth] = size(mask);
-WindowWidth = MaskWidth/(nFrames-nFrames*fOverlap+fOverlap);
-WindowWidth = floor(WindowWidth); 
+[WindowWidth,WindowHeight] = WWidth(mask,nFrames,fOverlap);
 
 if MaskWidth<WindowWidth
     error('WindowWidth must be smaller than the area of the point process.')
