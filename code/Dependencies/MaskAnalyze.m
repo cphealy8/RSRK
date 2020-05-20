@@ -15,7 +15,7 @@ dX = cumsum([0 diff(xStart)]);
 
 % Crop windows and analyze.
 for n = 1:nFrames
-    mindim = floor(sqrt(MaskHeight*MaskWidth)/1000);
+    mindim = floor(sqrt(MaskHeight*MaskWidth)/1000); % remove small pixel noise
     CurMask = mask(iStart(n):iStop(n),:);
     CurMask = bwareafilt(CurMask,[mindim inf]);
     rprops = regionprops(CurMask,'EquivDiameter');

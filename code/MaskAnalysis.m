@@ -14,8 +14,16 @@ r = logspace(log10(10),log10(500),10);
 [MaskFile,MaskPath] = uigetfile('../data/images/*bmp','Select Mask File');
 mask = ~imread(strcat(MaskPath,MaskFile));
 
-[MaxPix] = MaskAnalyze(mask,nWindows,WindowOverlap);
-MaxScale = MaxPix*ImScale;
+[MaxPix] = MaskAnalyze(mask,nWindows,WindowOverlap,'median')*ImScale;
 
 % Vector of maximum interpretable r's for each window. 
-MaxInR = interp1(r,r,MaxScale,'previous');
+rint = roundtowardvec(MaxPix,r,'floor');
+
+rnum = rint;
+
+% Index of maximum interpretable r.
+for n=1:length(r)
+    rnum(rint==r(n))=n;
+end
+rnum(isnan(rnum))=0;
+rnum'

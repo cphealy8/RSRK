@@ -101,12 +101,12 @@ map = myDivergingMap(colInt,10);
 colormap(map)
 
 % For not bone
-c1.Ticks = log2([0.5 0.625 0.75 0.875 1 1.25 1.5 1.75 2]); % For not bone
-colormax = 1; % For not bone;
+% c1.Ticks = log2([0.5 0.625 0.75 0.875 1 1.25 1.5 1.75 2]); % For not bone
+% colormax = 1; % For not bone;
 
 % For bone
-% c1.Ticks = log2([1/4 1/2 3/4 1 2 3 4]); % For not bone
-% colormax = 4; % For not bone;
+c1.Ticks = log2([1/4 1/2 3/4 1 2 3 4]); % For not bone
+colormax = 4; % For not bone;
 
 caxis([-colormax colormax]);
 c1.Color = [0 0 0];
