@@ -1,0 +1,407 @@
+
+data/MovingRK/TestImages/TestImage1 - Mask 4.mat
+data/MovingRK/TestImages/TestImage2 - Mask 1.mat
+data/MovingRK/TestImages/TestImage2 - Mask 2.mat
+data/MovingRK/TestImages/TestImage2 - Mask 3.mat
+data/MovingRK/TestImages/TestImage2 - Mask4.mat
+data/Phantoms/Aligned in Bone/Mask 1_Aligned in Bone.bmp
+data/Phantoms/Aligned in Bone/Mask 2_Aligned in Bone.bmp
+data/Phantoms/Aligned in Bone/Points - Aligned in Bone.mat
+data/Phantoms/Aligned in Bone/Points_Aligned in Bone.png
+data/Phantoms/Aligned in Bone/RK -Aligned in Bone.mat
+data/Phantoms/Aligned in Bone/Signal_Aligned in Bone.png
+data/Phantoms/AssociatedAvoidingRandom.xlsx
+data/Phantoms/Bone Attracted/Mask 1 - Bone.bmp
+data/Phantoms/Bone Attracted/Mask 2 - Bone.bmp
+data/Phantoms/Bone Attracted/Signal - Bone - Blue.png
+data/Phantoms/Bone Attracted/Signal - Bone.png
+data/Phantoms/Bone Sensitivity 10 0-100/Mask 1_Bone Sensitivity 10 0-100.bmp
+data/Phantoms/Bone Sensitivity 10 0-100/Mask 2_Bone Sensitivity 10 0-100.bmp
+data/Phantoms/Bone Sensitivity 10 0-100/Points - Bone Sensitivity 10 0-100.mat
+data/Phantoms/Bone Sensitivity 10 0-100/Points_Bone Sensitivity 10 0-100.png
+data/Phantoms/Bone Sensitivity 10 0-100/RK -Bone Sensitivity 10 0-100.mat
+data/Phantoms/Bone Sensitivity 10 0-100/Signal_Bone Sensitivity 10 0-100.png
+data/Phantoms/Bone Sensitivity 10 100-0 R/Mask 1_Bone Sensitivity 10 100-0.bmp
+data/Phantoms/Bone Sensitivity 10 100-0 R/Mask 2_Bone Sensitivity 10 100-0.bmp
+data/Phantoms/Bone Sensitivity 10 100-0 R/Points - Bone Sensitivity 10 100-0.mat
+data/Phantoms/Bone Sensitivity 10 100-0 R/Points_Bone Sensitivity 10 100-0.png
+data/Phantoms/Bone Sensitivity 10 100-0 R/RK -Bone Sensitivity 10 100-0 R.mat
+data/Phantoms/Bone Sensitivity 10 100-0 R/Signal_Bone Sensitivity 10 100-0.png
+data/Phantoms/Bone Sensitivity 10 100-0/Mask 1_Bone Sensitivity 10 100-0.bmp
+data/Phantoms/Bone Sensitivity 10 100-0/Mask 2_Bone Sensitivity 10 100-0.bmp
+data/Phantoms/Bone Sensitivity 10 100-0/Points - Bone Sensitivity 10 100-0.mat
+data/Phantoms/Bone Sensitivity 10 100-0/Points_Bone Sensitivity 10 100-0.png
+data/Phantoms/Bone Sensitivity 10 100-0/RK -Bone Sensitivity 10 100-0.mat
+data/Phantoms/Bone Sensitivity 10 100-0/Signal_Bone Sensitivity 10 100-0.png
+data/Phantoms/Bone Sensitivity 10 20-80/Mask 1_Bone Sensitivity 10 20-80.bmp
+data/Phantoms/Bone Sensitivity 10 20-80/Mask 2_Bone Sensitivity 10 20-80.bmp
+data/Phantoms/Bone Sensitivity 10 20-80/Points - Bone Sensitivity 10 20-80.mat
+data/Phantoms/Bone Sensitivity 10 20-80/Points_Bone Sensitivity 10 20-80.png
+data/Phantoms/Bone Sensitivity 10 20-80/RK -Bone Sensitivity 10 20-80.mat
+data/Phantoms/Bone Sensitivity 10 20-80/Signal_Bone Sensitivity 10 20-80.png
+data/Phantoms/Bone Sensitivity 10 40-60/Mask 1_Bone Sensitivity 10 40-60.bmp
+data/Phantoms/Bone Sensitivity 10 40-60/Mask 2_Bone Sensitivity 10 40-60.bmp
+data/Phantoms/Bone Sensitivity 10 40-60/Points - Bone Sensitivity 10 40-60.mat
+data/Phantoms/Bone Sensitivity 10 40-60/Points_Bone Sensitivity 10 40-60.png
+data/Phantoms/Bone Sensitivity 10 40-60/RK -Bone Sensitivity 10 40-60.mat
+data/Phantoms/Bone Sensitivity 10 40-60/Signal_Bone Sensitivity 10 40-60.png
+data/Phantoms/Bone Sensitivity 10 60-40/Mask 1_Bone Sensitivity 10 60-40.bmp
+data/Phantoms/Bone Sensitivity 10 60-40/Mask 2_Bone Sensitivity 10 60-40.bmp
+data/Phantoms/Bone Sensitivity 10 60-40/Points - Bone Sensitivity 10 60-40.mat
+data/Phantoms/Bone Sensitivity 10 60-40/Points_Bone Sensitivity 10 60-40.png
+data/Phantoms/Bone Sensitivity 10 60-40/RK -Bone Sensitivity 10 60-40.mat
+data/Phantoms/Bone Sensitivity 10 60-40/Signal_Bone Sensitivity 10 60-40.png
+data/Phantoms/Bone Sensitivity 10 80-20/Mask 1_Bone Sensitivity 10 80-20.bmp
+data/Phantoms/Bone Sensitivity 10 80-20/Mask 2_Bone Sensitivity 10 80-20.bmp
+data/Phantoms/Bone Sensitivity 10 80-20/Points - Bone Sensitivity 10 80-20.mat
+data/Phantoms/Bone Sensitivity 10 80-20/Points_Bone Sensitivity 10 80-20.png
+data/Phantoms/Bone Sensitivity 10 80-20/RK -Bone Sensitivity 10 80-20.mat
+data/Phantoms/Bone Sensitivity 10 80-20/Signal_Bone Sensitivity 10 80-20.png
+data/Phantoms/Bone Sensitivity 5 0-100/Mask 1_Bone Sensitivity 5 0-100.bmp
+data/Phantoms/Bone Sensitivity 5 0-100/Mask 2_Bone Sensitivity 5 0-100.bmp
+data/Phantoms/Bone Sensitivity 5 0-100/Points - Bone Sensitivity 5 0-100.mat
+data/Phantoms/Bone Sensitivity 5 0-100/Points_Bone Sensitivity 5 0-100.png
+data/Phantoms/Bone Sensitivity 5 0-100/RK -Bone Sensitivity 5 0-100.mat
+data/Phantoms/Bone Sensitivity 5 0-100/Signal_Bone Sensitivity 5 0-100.png
+data/Phantoms/Bone Sensitivity 5 100-0/Mask 1_Bone Sensitivity 5 100-0.bmp
+data/Phantoms/Bone Sensitivity 5 100-0/Mask 2_Bone Sensitivity 5 100-0.bmp
+data/Phantoms/Bone Sensitivity 5 100-0/Points - Bone Sensitivity 5 100-0.mat
+data/Phantoms/Bone Sensitivity 5 100-0/Points_Bone Sensitivity 5 100-0.png
+data/Phantoms/Bone Sensitivity 5 100-0/RK -Bone Sensitivity 5 100-0.mat
+data/Phantoms/Bone Sensitivity 5 100-0/Signal_Bone Sensitivity 5 100-0.png
+data/Phantoms/Bone Sensitivity 5 20-80/Mask 1_Bone Sensitivity 5 20-80.bmp
+data/Phantoms/Bone Sensitivity 5 20-80/Mask 2_Bone Sensitivity 5 20-80.bmp
+data/Phantoms/Bone Sensitivity 5 20-80/Points - 5 20-80.mat
+data/Phantoms/Bone Sensitivity 5 20-80/Points_Bone Sensitivity 5 20-80.png
+data/Phantoms/Bone Sensitivity 5 20-80/RK -Bone Sensitivity 5 20-80.mat
+data/Phantoms/Bone Sensitivity 5 20-80/Signal_Bone Sensitivity 5 20-80.png
+data/Phantoms/Bone Sensitivity 5 40-60/Mask 1_Bone Sensitivity 5 40-60.bmp
+data/Phantoms/Bone Sensitivity 5 40-60/Mask 2_Bone Sensitivity 5 40-60.bmp
+data/Phantoms/Bone Sensitivity 5 40-60/Points - Bone Sensitivity 5 40-60.mat
+data/Phantoms/Bone Sensitivity 5 40-60/Points_Bone Sensitivity 5 40-60.png
+data/Phantoms/Bone Sensitivity 5 40-60/RK -Bone Sensitivity 5 40-60.mat
+data/Phantoms/Bone Sensitivity 5 40-60/Signal_Bone Sensitivity 5 40-60.png
+data/Phantoms/Bone Sensitivity 5 60-40/Mask 1_Bone Sensitivity 5 60-40.bmp
+data/Phantoms/Bone Sensitivity 5 60-40/Mask 2_Bone Sensitivity 5 60-40.bmp
+data/Phantoms/Bone Sensitivity 5 60-40/Points - Bone Sensitivity 5 60-40.mat
+data/Phantoms/Bone Sensitivity 5 60-40/Points_Bone Sensitivity 5 60-40.png
+data/Phantoms/Bone Sensitivity 5 60-40/RK -Bone Sensitivity 5 60-40.mat
+data/Phantoms/Bone Sensitivity 5 60-40/Signal_Bone Sensitivity 5 60-40.png
+data/Phantoms/Bone Sensitivity 5 80-20/Mask 1_Bone Sensitivity 5 80-20.bmp
+data/Phantoms/Bone Sensitivity 5 80-20/Mask 2_Bone Sensitivity 5 80-20.bmp
+data/Phantoms/Bone Sensitivity 5 80-20/Points - Bone Sensitivity 5 80-20.mat
+data/Phantoms/Bone Sensitivity 5 80-20/Points_Bone Sensitivity 5 80-20.png
+data/Phantoms/Bone Sensitivity 5 80-20/RK -Bone Sensitivity 5 80-20.mat
+data/Phantoms/Bone Sensitivity 5 80-20/Signal_Bone Sensitivity 5 80-20.png
+data/Phantoms/Clustered 1/Mask1_Null Mask.bmp
+data/Phantoms/Clustered 1/Points_Clustered 1.mat
+data/Phantoms/Clustered 1/Points_Clustered 1.png
+data/Phantoms/Clustered 1/RK - Clustered 1.mat
+data/Phantoms/Clustered 1/RK - Clustered 1_Graph.eps
+data/Phantoms/Clustered 1/RK - Clustered 1_Table.xlsx
+data/Phantoms/Clustered 1/RK -Clustered 1.mat
+data/Phantoms/Clustered 1/RK -Clustered 1_Graph.eps
+data/Phantoms/Clustered 1/RK -Clustered 1_Table.xlsx
+data/Phantoms/Clustered 1/Signal_Clustered 1.png
+data/Phantoms/Clustered 2/Mask1_Null Mask.bmp
+data/Phantoms/Clustered 2/Points_Clustered 2.mat
+data/Phantoms/Clustered 2/Points_Clustered 2.png
+data/Phantoms/Clustered 2/RK - Clustered 2.mat
+data/Phantoms/Clustered 2/RK - Clustered 2_Graph.eps
+data/Phantoms/Clustered 2/RK - Clustered 2_Table.xlsx
+data/Phantoms/Clustered 2/RK -Clustered 2.mat
+data/Phantoms/Clustered 2/RK -Clustered 2_Graph.eps
+data/Phantoms/Clustered 2/RK -Clustered 2_Table.xlsx
+data/Phantoms/Clustered 2/Signal_Clustered 2.png
+data/Phantoms/Clustered 3/Mask1_Null Mask.bmp
+data/Phantoms/Clustered 3/Points_Clustered 3.mat
+data/Phantoms/Clustered 3/Points_Clustered 3.png
+data/Phantoms/Clustered 3/RK - Clustered 3.mat
+data/Phantoms/Clustered 3/RK - Clustered 3_Graph.eps
+data/Phantoms/Clustered 3/RK - Clustered 3_Table.xlsx
+data/Phantoms/Clustered 3/RK -Clustered 3.mat
+data/Phantoms/Clustered 3/RK -Clustered 3_Graph.eps
+data/Phantoms/Clustered 3/RK -Clustered 3_Table.xlsx
+data/Phantoms/Clustered 3/Signal_Clustered 3.png
+data/Phantoms/Clustered 4/Mask1_Null Mask.bmp
+data/Phantoms/Clustered 4/Points - Clustered 4.mat
+data/Phantoms/Clustered 4/Points_Clustered 4.png
+data/Phantoms/Clustered 4/RK - Clustered 4.mat
+data/Phantoms/Clustered 4/RK - Clustered 4_Graph.eps
+data/Phantoms/Clustered 4/RK - Clustered 4_Table.xlsx
+data/Phantoms/Clustered 4/RK -Clustered 4.mat
+data/Phantoms/Clustered 4/RK -Clustered 4_Graph.eps
+data/Phantoms/Clustered 4/RK -Clustered 4_Table.xlsx
+data/Phantoms/Clustered 4/Signal_Clustered 4.png
+data/Phantoms/Clustered in Bone/Mask 1_Clustered in Bone.bmp
+data/Phantoms/Clustered in Bone/Mask 2_Clustered in Bone.bmp
+data/Phantoms/Clustered in Bone/Points - Clustered in Bone.mat
+data/Phantoms/Clustered in Bone/Points_Clustered in Bone.png
+data/Phantoms/Clustered in Bone/RK -Clustered in Bone.mat
+data/Phantoms/Clustered in Bone/Signal_Clustered in Bone.png
+data/Phantoms/Clustered Uniform with Mask/Mask1_Clustered uniform with Mask.bmp
+data/Phantoms/Clustered Uniform with Mask/Points - Clustered Uniform with Mask.mat
+data/Phantoms/Clustered Uniform with Mask/Points_Clustered uniform with Mask.png
+data/Phantoms/Clustered Uniform with Mask/RK - Clustered Uniform with Mask.mat
+data/Phantoms/Clustered Uniform with Mask/RK - Clustered Uniform with Mask_Graph.eps
+data/Phantoms/Clustered Uniform with Mask/RK - Clustered Uniform with Mask_Table.xlsx
+data/Phantoms/Clustered Uniform with Mask/Signal_Clustered uniform with Mask.png
+data/Phantoms/Clustered with Mask R/Mask1_Clustered with Mask R.bmp
+data/Phantoms/Clustered with Mask R/Points - Clustered with Mask R.mat
+data/Phantoms/Clustered with Mask R/Points_Clustered with Mask R.png
+data/Phantoms/Clustered with Mask R/RK -Clustered with Mask R.mat
+data/Phantoms/Clustered with Mask R/RK -Clustered with Mask R_Graph.eps
+data/Phantoms/Clustered with Mask R/RK -Clustered with Mask R_Table.xlsx
+data/Phantoms/Clustered with Mask R/Signal_Clustered with Mask R.png
+data/Phantoms/Clustered with Mask/Mask1_Clustered with Mask.bmp
+data/Phantoms/Clustered with Mask/Points - Clustered with Mask.mat
+data/Phantoms/Clustered with Mask/Points_Clustered with Mask.png
+data/Phantoms/Clustered with Mask/RK -Clustered with Mask.mat
+data/Phantoms/Clustered with Mask/RK -Clustered with Mask_Graph.eps
+data/Phantoms/Clustered with Mask/RK -Clustered with Mask_Table.xlsx
+data/Phantoms/Clustered with Mask/Signal_Clustered with Mask.png
+data/Phantoms/ClusterSize.xlsx
+data/Phantoms/Display Images/Full_Aligned in Bone.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 0-100.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 100-0.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 20-80.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 40-60.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 60-40.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 10 80-20.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 0-100.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 100-0.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 20-80.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 40-60.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 60-40.png
+data/Phantoms/Display Images/Full_Bone Sensitivity 5 80-20.png
+data/Phantoms/Display Images/Full_Clustered 1.png
+data/Phantoms/Display Images/Full_Clustered 2.png
+data/Phantoms/Display Images/Full_Clustered 3.png
+data/Phantoms/Display Images/Full_Clustered 4.png
+data/Phantoms/Display Images/Full_Clustered in Bone.png
+data/Phantoms/Display Images/Full_Clustered uniform with Mask.png
+data/Phantoms/Display Images/Full_Clustered with Mask R.png
+data/Phantoms/Display Images/Full_Clustered with Mask.png
+data/Phantoms/Display Images/Full_Edge Attraction R.png
+data/Phantoms/Display Images/Full_Edge Attraction.png
+data/Phantoms/Display Images/Full_Edge Avoidance R.png
+data/Phantoms/Display Images/Full_Edge Avoidance.png
+data/Phantoms/Display Images/Full_Edge Random R.png
+data/Phantoms/Display Images/Full_Edge Random.png
+data/Phantoms/Display Images/Full_Null Mask.png
+data/Phantoms/Display Images/Full_Random Associated.png
+data/Phantoms/Display Images/Full_Random Avoiding.png
+data/Phantoms/Display Images/Full_Random Random.png
+data/Phantoms/Display Images/Full_Random with Mask R.png
+data/Phantoms/Display Images/Full_Random with Mask.png
+data/Phantoms/Display Images/Full_S-Clustered L-Clustered.png
+data/Phantoms/Display Images/Full_S-Clustered L-Random.png
+data/Phantoms/Display Images/Full_S-Clustered L-Uniform.png
+data/Phantoms/Display Images/Full_Sensistivity 80-20.png
+data/Phantoms/Display Images/Full_Sensitivity 0-100.png
+data/Phantoms/Display Images/Full_Sensitivity 100-0.png
+data/Phantoms/Display Images/Full_Sensitivity 20-80.png
+data/Phantoms/Display Images/Full_Sensitivity 40-60.png
+data/Phantoms/Display Images/Full_Sensitivity 60-40.png
+data/Phantoms/Display Images/Full_Unaligned in Bone.png
+data/Phantoms/Display Images/Full_Uniform 1.png
+data/Phantoms/Display Images/Full_Uniform 2.png
+data/Phantoms/Display Images/Full_Uniform 3.png
+data/Phantoms/Display Images/Full_Uniform 4.png
+data/Phantoms/Display Images/Full_Uniform 5.png
+data/Phantoms/Edge Attraction R/Mask 2_Edge Attraction R.bmp
+data/Phantoms/Edge Attraction R/Mask1_Edge Attraction R.bmp
+data/Phantoms/Edge Attraction R/Points - Edge Attraction R.mat
+data/Phantoms/Edge Attraction R/Points_Edge Attraction R.png
+data/Phantoms/Edge Attraction R/RK -Edge Attraction R - Mask 1.mat
+data/Phantoms/Edge Attraction R/RK -Edge Attraction R - Mask 2.mat
+data/Phantoms/Edge Attraction R/Signal_Edge Attraction R.png
+data/Phantoms/Edge Attraction/Mask 2_Edge Attraction.bmp
+data/Phantoms/Edge Attraction/Mask1_Edge Attraction.bmp
+data/Phantoms/Edge Attraction/Points - Edge Attraction.mat
+data/Phantoms/Edge Attraction/Points_Edge Attraction.png
+data/Phantoms/Edge Attraction/RK -Edge Attraction - Mask 1.mat
+data/Phantoms/Edge Attraction/RK -Edge Attraction - Mask 2.mat
+data/Phantoms/Edge Attraction/Signal_Edge Attraction.png
+data/Phantoms/Edge Avoidance R/Mask 2_Edge Avoidance R.bmp
+data/Phantoms/Edge Avoidance R/Mask1_Edge Avoidance R.bmp
+data/Phantoms/Edge Avoidance R/Points - Edge Avoidance R.mat
+data/Phantoms/Edge Avoidance R/Points_Edge Avoidance R.png
+data/Phantoms/Edge Avoidance R/RK -Edge Avoidance R - Mask 1.mat
+data/Phantoms/Edge Avoidance R/RK -Edge Avoidance R - Mask 2.mat
+data/Phantoms/Edge Avoidance R/Signal_Edge Avoidance R.png
+data/Phantoms/Edge Avoidance/Mask 2_Edge Avoidance.bmp
+data/Phantoms/Edge Avoidance/Mask1_Edge Avoidance.bmp
+data/Phantoms/Edge Avoidance/Points - Edge Avoidance.mat
+data/Phantoms/Edge Avoidance/Points_Edge Avoidance.png
+data/Phantoms/Edge Avoidance/RK -Edge Avoidance - Mask 1.mat
+data/Phantoms/Edge Avoidance/RK -Edge Avoidance.mat
+data/Phantoms/Edge Avoidance/Signal_Edge Avoidance.png
+data/Phantoms/Edge Random R/Mask 2_Edge Random R.bmp
+data/Phantoms/Edge Random R/Mask1_Edge Random R.bmp
+data/Phantoms/Edge Random R/Points - Edge Random R.mat
+data/Phantoms/Edge Random R/Points_Edge Random R.png
+data/Phantoms/Edge Random R/RK -Edge Random R - Mask 1.mat
+data/Phantoms/Edge Random R/RK -Edge Random R - Mask 2.mat
+data/Phantoms/Edge Random R/Signal_Edge Random R.png
+data/Phantoms/Edge Random/Mask 2_Edge Random.bmp
+data/Phantoms/Edge Random/Mask1_Edge Random.bmp
+data/Phantoms/Edge Random/Points - Edge Random.mat
+data/Phantoms/Edge Random/Points_Edge Random.png
+data/Phantoms/Edge Random/RK -Edge Random - Mask 1.mat
+data/Phantoms/Edge Random/RK -Edge Random - Mask 2.mat
+data/Phantoms/Edge Random/Signal_Edge Random.png
+data/Phantoms/Full_Clustered Low Diffusion.png
+data/Phantoms/Full_Random Low Diffusion.png
+data/Phantoms/Full_Uniform Low Diffusion.png
+data/Phantoms/MaskedTest.xlsx
+data/Phantoms/PatternScaling.xlsx
+data/Phantoms/Random Associated/Mask1_Null Mask.bmp
+data/Phantoms/Random Associated/Points - Random Associated.mat
+data/Phantoms/Random Associated/Points_Random Associated.png
+data/Phantoms/Random Associated/RK -Random Associated.mat
+data/Phantoms/Random Associated/RK -Random Associated_Graph.eps
+data/Phantoms/Random Associated/RK -Random Associated_Table.xlsx
+data/Phantoms/Random Associated/Signal_Random Associated.png
+data/Phantoms/Random Avoiding/Mask1_Null Mask.bmp
+data/Phantoms/Random Avoiding/Points - Random Avoiding.mat
+data/Phantoms/Random Avoiding/Points_Random Avoiding.png
+data/Phantoms/Random Avoiding/RK -Random Avoiding.mat
+data/Phantoms/Random Avoiding/RK -Random Avoiding_Graph.eps
+data/Phantoms/Random Avoiding/RK -Random Avoiding_Table.xlsx
+data/Phantoms/Random Avoiding/Signal_Random Avoiding.png
+data/Phantoms/Random Random/Mask1_Null Mask.bmp
+data/Phantoms/Random Random/Points - Random Random.mat
+data/Phantoms/Random Random/Points_Random Random.png
+data/Phantoms/Random Random/RK -Random Random.mat
+data/Phantoms/Random Random/RK -Random Random_Graph.eps
+data/Phantoms/Random Random/RK -Random Random_Table.xlsx
+data/Phantoms/Random Random/Signal_Random Random.png
+data/Phantoms/Random with Mask R/Mask1_Random with Mask R.bmp
+data/Phantoms/Random with Mask R/Points - Random with Mask R.mat
+data/Phantoms/Random with Mask R/Points_Random with Mask R.png
+data/Phantoms/Random with Mask R/RK -Random with Mask R.mat
+data/Phantoms/Random with Mask R/RK -Random with Mask R_Graph.eps
+data/Phantoms/Random with Mask R/RK -Random with Mask R_Table.xlsx
+data/Phantoms/Random with Mask R/Signal_Random with Mask R.png
+data/Phantoms/Random with Mask/Mask1_Random with Mask.bmp
+data/Phantoms/Random with Mask/Points - Random with Mask.mat
+data/Phantoms/Random with Mask/Points_Random with Mask.png
+data/Phantoms/Random with Mask/RK -Random with Mask.mat
+data/Phantoms/Random with Mask/RK -Random with Mask_Graph.eps
+data/Phantoms/Random with Mask/RK -Random with Mask_Table.xlsx
+data/Phantoms/Random with Mask/Signal_Random with Mask.png
+data/Phantoms/RSRK_Phantoms.ai
+data/Phantoms/S-Clustered L-Clustered/Mask1_Null Mask.bmp
+data/Phantoms/S-Clustered L-Clustered/Points - S-Clustered L-Clustered.mat
+data/Phantoms/S-Clustered L-Clustered/Points_S-Clustered L-Clustered.png
+data/Phantoms/S-Clustered L-Clustered/RK -S-Clustered L-Clustered.mat
+data/Phantoms/S-Clustered L-Clustered/RK -S-Clustered L-Clustered_Graph.eps
+data/Phantoms/S-Clustered L-Clustered/RK -S-Clustered L-Clustered_Table.xlsx
+data/Phantoms/S-Clustered L-Clustered/Signal_S-Clustered L-Clustered.png
+data/Phantoms/S-Clustered L-Random/Mask1_Null Mask.bmp
+data/Phantoms/S-Clustered L-Random/Points - S-Clustered L-Random.mat
+data/Phantoms/S-Clustered L-Random/Points_S-Clustered L-Random.png
+data/Phantoms/S-Clustered L-Random/RK -S-Clustered L-Random.mat
+data/Phantoms/S-Clustered L-Random/RK -S-Clustered L-Random_Graph.eps
+data/Phantoms/S-Clustered L-Random/RK -S-Clustered L-Random_Table.xlsx
+data/Phantoms/S-Clustered L-Random/Signal_S-Clustered L-Random.png
+data/Phantoms/S-Clustered L-Uniform/Mask1_Null Mask.bmp
+data/Phantoms/S-Clustered L-Uniform/Points - S-Clustered L-Uniform.mat
+data/Phantoms/S-Clustered L-Uniform/Points_S-Clustered L-Uniform.png
+data/Phantoms/S-Clustered L-Uniform/RK -S-Clustered L-Uniform.mat
+data/Phantoms/S-Clustered L-Uniform/RK -S-Clustered L-Uniform_Graph.eps
+data/Phantoms/S-Clustered L-Uniform/RK -S-Clustered L-Uniform_Table.xlsx
+data/Phantoms/S-Clustered L-Uniform/Signal_S-Clustered L-Uniform.png
+data/Phantoms/SelfExpression&HigherPatterns.xlsx
+data/Phantoms/Sensitivity 0-100/Mask 1_Sensitivity 0-100.bmp
+data/Phantoms/Sensitivity 0-100/Mask 2_Sensitivity 0-100.bmp
+data/Phantoms/Sensitivity 0-100/Points - Sensitivity 0-100.mat
+data/Phantoms/Sensitivity 0-100/Points_Sensitivity 0-100.png
+data/Phantoms/Sensitivity 0-100/RK -Sensitivity 0-100.mat
+data/Phantoms/Sensitivity 0-100/RK -Sensitivity 0-100_Graph.eps
+data/Phantoms/Sensitivity 0-100/RK -Sensitivity 0-100_Table.xlsx
+data/Phantoms/Sensitivity 0-100/Signal_Sensitivity 0-100.png
+data/Phantoms/Sensitivity 100-0/Mask 1_Sensitivity 100-0.bmp
+data/Phantoms/Sensitivity 100-0/Mask 2_Sensitivity 100-0.bmp
+data/Phantoms/Sensitivity 100-0/Points - Sensitivity 100-0.mat
+data/Phantoms/Sensitivity 100-0/Points_Sensitivity 100-0.png
+data/Phantoms/Sensitivity 100-0/RK -Sensitivity 100-0.mat
+data/Phantoms/Sensitivity 100-0/RK -Sensitivity 100-0_Graph.eps
+data/Phantoms/Sensitivity 100-0/RK -Sensitivity 100-0_Table.xlsx
+data/Phantoms/Sensitivity 100-0/Signal_Sensitivity 100-0.png
+data/Phantoms/Sensitivity 20-80/Mask 1_Sensitivity 20-80.bmp
+data/Phantoms/Sensitivity 20-80/Mask 2_Sensitivity 20-80.bmp
+data/Phantoms/Sensitivity 20-80/Points - Sensitivity 20-80.mat
+data/Phantoms/Sensitivity 20-80/Points_Sensitivity 20-80.png
+data/Phantoms/Sensitivity 20-80/RK -Sensitivity 20-80.mat
+data/Phantoms/Sensitivity 20-80/RK -Sensitivity 20-80_Graph.eps
+data/Phantoms/Sensitivity 20-80/RK -Sensitivity 20-80_Table.xlsx
+data/Phantoms/Sensitivity 20-80/Signal_Sensitivity 20-80.png
+data/Phantoms/Sensitivity 40-60/Mask 1_Sensitivity 40-60.bmp
+data/Phantoms/Sensitivity 40-60/Mask 2_Sensitivity 40-60.bmp
+data/Phantoms/Sensitivity 40-60/Points - Sensitivity 40-60.mat
+data/Phantoms/Sensitivity 40-60/Points_Sensitivity 40-60.png
+data/Phantoms/Sensitivity 40-60/RK -Sensitivity 40-60.mat
+data/Phantoms/Sensitivity 40-60/RK -Sensitivity 40-60_Graph.eps
+data/Phantoms/Sensitivity 40-60/RK -Sensitivity 40-60_Table.xlsx
+data/Phantoms/Sensitivity 40-60/Signal_Sensitivity 40-60.png
+data/Phantoms/Sensitivity 60-40/Mask 1_Sensitivity 60-40.bmp
+data/Phantoms/Sensitivity 60-40/Mask 2_Sensitivity 60-40.bmp
+data/Phantoms/Sensitivity 60-40/Points - Sensitivity 60-40.mat
+data/Phantoms/Sensitivity 60-40/Points_Sensitivity 60-40.png
+data/Phantoms/Sensitivity 60-40/RK -Sensitivity 60-40.mat
+data/Phantoms/Sensitivity 60-40/RK -Sensitivity 60-40_Graph.eps
+data/Phantoms/Sensitivity 60-40/RK -Sensitivity 60-40_Table.xlsx
+data/Phantoms/Sensitivity 60-40/Signal_Sensitivity 60-40.png
+data/Phantoms/Sensitivity 80-20/Mask 1_Sensistivity 80-20.bmp
+data/Phantoms/Sensitivity 80-20/Mask 2_Sensistivity 80-20.bmp
+data/Phantoms/Sensitivity 80-20/Points - Sensitivity 80-20.mat
+data/Phantoms/Sensitivity 80-20/Points_Sensistivity 80-20.png
+data/Phantoms/Sensitivity 80-20/RK -Sensitivity 80-20.mat
+data/Phantoms/Sensitivity 80-20/RK -Sensitivity 80-20_Graph.eps
+data/Phantoms/Sensitivity 80-20/RK -Sensitivity 80-20_Table.xlsx
+data/Phantoms/Sensitivity 80-20/Signal_Sensistivity 80-20.png
+data/Phantoms/SensitivityCombined.xlsx
+data/Phantoms/Unaligned in Bone/Mask 1_Unaligned in Bone.bmp
+data/Phantoms/Unaligned in Bone/Mask 2_Unaligned in Bone.bmp
+data/Phantoms/Unaligned in Bone/Points - Unaligned in Bone.mat
+data/Phantoms/Unaligned in Bone/Points_Unaligned in Bone.png
+data/Phantoms/Unaligned in Bone/RK -Unaligned in Bone.mat
+data/Phantoms/Unaligned in Bone/Signal_Unaligned in Bone.png
+data/Phantoms/Uniform 1/Mask1_Null Mask.bmp
+data/Phantoms/Uniform 1/Points - Uniform 1.mat
+data/Phantoms/Uniform 1/Points_Uniform 1.png
+data/Phantoms/Uniform 1/RK -Uniform 1.mat
+data/Phantoms/Uniform 1/RK -Uniform 1_Graph.eps
+data/Phantoms/Uniform 1/RK -Uniform 1_Table.xlsx
+data/Phantoms/Uniform 1/Signal_Uniform 1.png
+data/Phantoms/Uniform 2/Mask1_Null Mask.bmp
+data/Phantoms/Uniform 2/Points - Uniform 2.mat
+data/Phantoms/Uniform 2/Points_Uniform 2.png
+data/Phantoms/Uniform 2/RK -Uniform 2.mat
+data/Phantoms/Uniform 2/RK -Uniform 2_Graph.eps
+data/Phantoms/Uniform 2/RK -Uniform 2_Table.xlsx
+data/Phantoms/Uniform 2/Signal_Uniform 2.png
+data/Phantoms/Uniform 3/Mask1_Null Mask.bmp
+data/Phantoms/Uniform 3/Points - Uniform 3.mat
+data/Phantoms/Uniform 3/Points_Uniform 3.png
+data/Phantoms/Uniform 3/RK -Uniform 3.mat
+data/Phantoms/Uniform 3/RK -Uniform 3_Graph.eps
+data/Phantoms/Uniform 3/RK -Uniform 3_Table.xlsx
+data/Phantoms/Uniform 3/Signal_Uniform 3.png
+data/Phantoms/Uniform 4/Mask1_Null Mask.bmp
+data/Phantoms/Uniform 4/Points - Uniform 4.mat
+data/Phantoms/Uniform 4/Points_Uniform 4.png
+data/Phantoms/Uniform 4/RK -Uniform 4.mat
+data/Phantoms/Uniform 4/RK -Uniform 4_Graph.eps
+data/Phantoms/Uniform 4/RK -Uniform 4_Table.xlsx
+data/Phantoms/Uniform 4/Signal_Uniform 4.png
+data/Phantoms/Uniform 5/Mask1_Null Mask.bmp
+data/Phantoms/Uniform 5/Points - Uniform 5.mat
+data/Phantoms/Uniform 5/Points_Uniform 5.png
+data/Phantoms/Uniform 5/RK -Uniform 5.mat
+data/Phantoms/Uniform 5/RK -Uniform 5_Graph.eps
+data/Phantoms/Uniform 5/RK -Uniform 5_Table.xlsx
+data/Phantoms/Uniform 5/Signal_Uniform 5.png
+data/Phantoms/UniformCombined.xlsx
