@@ -42,6 +42,17 @@ function [K,t,L,KP,LP,W,cnt] = Kest(pts,win,varargin)
 %   See also PAIRDIST, EDGEISO.
 
 %% Check/correct incorrect inputs
+p = inputParser;
+
+addRequired(p,'pts',@isnumeric);
+addRequired(p,'win',@isnumeric);
+addParameter(p,'EdgeCorrection','on',@ischar);
+addParameter(p,'t',[],@isnumeric);
+
+parse(p,pts,win,varargin{:})
+
+EdgeCorrection = p.Results.EdgeCorrection;
+t = p.Results.t;
 
 % Check pts
 [ptsrows,ptscols] = size(pts);
@@ -77,13 +88,10 @@ A = winL*winW; % Area of the study rectangle.
 [Npts,~] = size(pts); % Number of points
 
 %% Compute recommended search radii (t)
-if nargin==2
-tmax = min([winL winW])./2;  % Recommended maximum search radius
-tN = 100;                    % Number of steps in t
-t = linspace(0,tmax,tN);     % Search radii
-elseif nargin>=3
-    t= varargin{1}; % user defined t.
-    tN = length(t);
+if isempty(t)
+    tmax = min([winL winW])./2;  % Recommended maximum search radius
+    tN = 100;                    % Number of steps in t
+    t = linspace(0,tmax,tN);     % Search radii
 end
 t = reshape(t,[1 1 tN]);     % Convert into 3D vector.
 %% Compute pairwise euclidean distances
@@ -93,11 +101,11 @@ d = pairdist(pts,pts);
 Ind = bsxfun(@le,d,t);
 
 %% Compute weight
-
-W=edgeIso(pts,d,win);
-
-if nargin>3 && strcmp(varargin{2},'None')
-    W = ones(size(W));
+switch EdgeCorrection
+    case 'on'
+        W=edgeIso(pts,d,win);
+    case 'off'
+        W=ones(Npts);
 end
 
 %% Multiply Id by weight
