@@ -2,24 +2,16 @@ clc; clear; close all;
 % Generate aggregated point pattern using poisson cluster processes.
 NumParents = 20;
 win = [0 1 0 1];
-opnOffspring = [1 2 3 4];
-pOffspring = [0.4 0.3 0.2 0.1];
 
-drOptions = linspace(0.01,0.05,20);
-drProbs = normpdf(1:length(drOptions),0,5);
+ChildNumProbs = 'uniform';
+ChildNumOpns = [3 10];
 
-thetaOptions = linspace(0,2*pi,33);
-thetaOptions(end) = [];
-thetaProbs = ones(1,length(thetaOptions));
+rOpns = [0 0.05];
+rProbs = [0.1 0.2 0.3 0.4];
 
+% Input processing 
 
-
-% Input processing
-
-drProbs = drProbs./sum(drProbs);
-thetaProbs = thetaProbs./sum(thetaProbs); 
-
-PoissonClusts(win,NumParents,opnOffspring,drOptions)
+[Pts,ParentPts,ChildPts] = PoissonClusts(win,NumParents,ChildNumOpns,rOpns);
 
 % preview
 hold on
