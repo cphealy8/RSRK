@@ -1,6 +1,8 @@
 function [pts] = ThinByIntensity(IntensityMap,Win,pts)
 %Thin a point process using an intensity map
-%   D
+%   [pts] = ThinByIntensity(IntensityMap,Win,pts) thins the point process
+%   pts defined in the window Win = [xmin xmax ymin ymax] by the
+%   IntensityMap. IntensityMap is a matrix that defines the probability 
 IntensityMap = IntensityMap';
 WinWidth = Win(2)-Win(1);
 WinHeight = Win(4)-Win(3);
@@ -27,4 +29,6 @@ ptIntensity = IntensityMap(ptpixID);
 OmitThese = ptIntensity<rand(length(ptpixID),1);
 
 pts(OmitThese,:) = []; % Delete the points in Omit These.
+
+pts = pts./[xscale yscale];
 end

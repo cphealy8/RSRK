@@ -1,7 +1,56 @@
 function [Pts,ParentPts,ChildPts] = PoissonClusts(Win,ParentNum,ChildNumOpns,ROpns,varargin)
 %POISSONCLUSTS Generate aggregated point processes. 
-%   Detailed explanation goes here
-
+%   Pts = PoissonClusts(Win,ParentNum,ChildNumOpns,ROpns) generates a point
+%   process under poisson clustering in the window defined by win = [xmin
+%   xmax ymin ymax]; ParentNum defines the number of parent points (or
+%   clusters) distributed according to a poisson process. ChildNumOpns is a
+%   vector that defines the number options for number of children for each
+%   parent. ROpns defines the options for the distance each child can be
+%   from it's parent. 
+%
+%   By default poisson clusts randomly select the number of children,
+%   distance from parent, and angle with respect to parent from a uniform
+%   distribution. However, additional inputs can be provided to use
+%   different distributions.
+%
+%   PoissonClusts(Win,ParentNum,[mu SD],ROpns,'ChildNumProbs','Normal')
+%   generates poisson clusters with a number of children points selected
+%   from a normal distribution with mean mu and standard deviation SD
+%   defined in ChildNumOpns =[mu SD];
+%
+%   PoissonClusts(Win,ParentNum,[min max],ROpns,'ChildNumProbs','Uniform')
+%   generates poisson clusters with a number of children points selected
+%   from a uniform distribution defined between the argumens min and max.
+%   
+%   PoissonClusts(Win,ParentNum,[n1 n2 ... nn],ROpns,'ChildNumProbs',[p1 p2
+%   ... pn] generates poisson clusters with a number of children (specified
+%   by the vector [n1 n2 ... nn] at user defined probabilities [p1 p2 ...
+%   pn]. 
+%
+%   PoissonClust(Win,ParentNum,ChildNumOpns,[rmin rmax],'RProbs','uniform')
+%   generates poisson clusters with children spaced away from their parents
+%   according to a uniform distribution defined between rmin and rmax.
+%
+%   PoissonClust(Win,ParentNum,ChildNumOpns,[mu],'RProbs','exponential'
+%   generates poisson clusters with children spaced away from their parents
+%   according to a exponential distribution with mean mu. 
+%
+%   PoissonClust(Win,ParentNum,ChildNumOpns,ROpns,'AngProbs','uniform','AngOpns',[angmin
+%   angmax] generates poisson clusters with children angled from their
+%   parents according to a uniform distribution defined between angmin and
+%   angmax. Units are in radians.
+%
+%   As with ChildNumProbs user defined probability distributions can also 
+%   be used to define child to parent angles by passing a vector of angs in
+%   AngOpns and a probability for each distance for 'AngProbs'.
+%
+%   PoissonClust(Win,ParentNum,ChildNumOpns,ROpns,'IntensityMap',IMap)
+%   generates an inhomogenous poisson cluster process where the intensity
+%   of point process is defined by the input matrix IMAP. Imap should be a
+%   vector that defines the intensity of the point process at a given
+%   location spanning the window defined by win. 
+% 
+%   SEE ALSO POISSONBYINTENSITY and THINBYINTENSITY.
 %% Input parsing
 p = inputParser;
 
@@ -34,7 +83,11 @@ WinHeight = Win(4)-Win(3);
 
 %% Generate parent points
 if ~isempty(IntensityMap)
-    ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum);
+    [xpix,ypix] = size(IntensityMap);
+    xscale = xpix/WinWidth;
+    yscale = ypix/WinHeight;
+    
+    ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum)./[xscale yscale];
 else
     ParentPts = [WinWidth WinHeight].*rand(ParentNum,2)+...
         repmat([Win(1) Win(3)],[ParentNum 1]); 
@@ -43,17 +96,20 @@ end
 %% Produce random number of offspring for each parent.
 if ischar(ChildNumProbs)
     if strcmp(ChildNumProbs,'uniform')
-        ChildNumMin = round(ChildNumOpns(1));
-        ChildNumMax = round(ChildNumOpns(2));
-        
-        % ensure correct range
-        if ChildNumMin<0 || ChildNumMax <0 || ChildNumMin>ChildNumMax
-            error('Specify ChildNumProbs as [min max]');
+        if numel(ChildNumOpns)==1
+            NumChildren = ones(ParentNum,1)*ChildNumOpns;
+        else
+            ChildNumMin = round(ChildNumOpns(1));
+            ChildNumMax = round(ChildNumOpns(2));
+
+            % ensure correct range
+            if ChildNumMin<0 || ChildNumMax <0 || ChildNumMin>ChildNumMax
+                error('Specify ChildNumProbs as [min max]');
+            end
+
+            % Generate Numbers
+            NumChildren = randi([ChildNumMin ChildNumMax],[ParentNum 1]);
         end
-        
-        % Generate Numbers
-        NumChildren = randi([ChildNumMin ChildNumMax],[ParentNum 1]);
-        
     elseif strcmp(ChildNumProbs,'normal')
         ChildNumMean = abs(ChildNumOpns(1));
         ChildNumSD = abs(ChildNumOpns(2));
@@ -70,7 +126,6 @@ end
 
 
 %% Specify distances between parents and offspring and compute locations
-ChildPts = [];
 ChildCenters = repelem(ParentPts,NumChildren,1);
 totChildren = sum(NumChildren);
 
@@ -128,6 +183,9 @@ ChildPts = [ChildDist.*cos(ChildAng) ChildDist.*sin(ChildAng)]+ChildCenters;
 ChildPts = CropPts2Win(ChildPts,Win);
 
 %% Apply Intensity map to ChildPts
+if ~isempty(IntensityMap)
+    ChildPts = ThinByIntensity(IntensityMap,Win,ChildPts);
+end
 
 Pts = [ChildPts; ParentPts];
 
