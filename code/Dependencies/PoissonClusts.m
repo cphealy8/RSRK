@@ -81,16 +81,23 @@ IntensityMap = Res.IntensityMap;
 WinWidth = Win(2)-Win(1);
 WinHeight = Win(4)-Win(3);
 
-%% Generate parent points
-if ~isempty(IntensityMap)
-    [xpix,ypix] = size(IntensityMap);
-    xscale = xpix/WinWidth;
-    yscale = ypix/WinHeight;
-    
-    ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum)./[xscale yscale];
+%% Generate parent 
+if numel(ParentNum)==1
+    if ~isempty(IntensityMap)
+        [xpix,ypix] = size(IntensityMap);
+        xscale = xpix/WinWidth;
+        yscale = ypix/WinHeight;
+
+        ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum)./[xscale yscale];
+    else
+        ParentPts = [WinWidth WinHeight].*rand(ParentNum,2)+...
+            repmat([Win(1) Win(3)],[ParentNum 1]); 
+    end
+elseif ismember(2,size(rand(2,100)))
+    ParentPts = ParentNum;
+    ParentNum = length(ParentPts);
 else
-    ParentPts = [WinWidth WinHeight].*rand(ParentNum,2)+...
-        repmat([Win(1) Win(3)],[ParentNum 1]); 
+    error('Invalid input type for ParentNum')
 end
 
 %% Produce random number of offspring for each parent.
