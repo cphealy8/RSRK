@@ -83,16 +83,16 @@ WinHeight = Win(4)-Win(3);
 
 %% Generate parent 
 if numel(ParentNum)==1
-    if ~isempty(IntensityMap)
-        [xpix,ypix] = size(IntensityMap);
-        xscale = xpix/WinWidth;
-        yscale = ypix/WinHeight;
-
-        ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum)./[xscale yscale];
-    else
+%     if ~isempty(IntensityMap)
+%         [xpix,ypix] = size(IntensityMap);
+%         xscale = xpix/WinWidth;
+%         yscale = ypix/WinHeight;
+% 
+%         ParentPts = PoissonByIntensity(IntensityMap,1,ParentNum)./[xscale yscale];
+%     else
         ParentPts = [WinWidth WinHeight].*rand(ParentNum,2)+...
             repmat([Win(1) Win(3)],[ParentNum 1]); 
-    end
+%     end
 elseif ismember(2,size(rand(2,100)))
     ParentPts = ParentNum;
     ParentNum = length(ParentPts);
@@ -191,6 +191,7 @@ ChildPts = CropPts2Win(ChildPts,Win);
 
 %% Apply Intensity map to ChildPts
 if ~isempty(IntensityMap)
+    ParentPts = ThinByIntensity(IntensityMap,Win,ChildPts);
     ChildPts = ThinByIntensity(IntensityMap,Win,ChildPts);
 end
 
