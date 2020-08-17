@@ -92,7 +92,10 @@ if isempty(t)
     tmax = min([winL winW])./2;  % Recommended maximum search radius
     tN = 100;                    % Number of steps in t
     t = linspace(0,tmax,tN);     % Search radii
+else
+    tN = length(t);
 end
+
 t = reshape(t,[1 1 tN]);     % Convert into 3D vector.
 %% Compute pairwise euclidean distances
 d = pairdist(pts,pts);
