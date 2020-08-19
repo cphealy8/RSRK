@@ -7,7 +7,7 @@ nreps = 199;
 win = [0 5 0 1];
 kFrames = [1:(win(2)*2-1)];
 fOverlap = 0.5;
-r = linspace(0,0.5,11);
+r = logspace(log10(0.01),log10(0.5),11);
 r(1) = [];
 
 %%
@@ -22,7 +22,7 @@ for n=1:nreps
     
     %% Run Simulations 
     for k=1:length(kFrames)
-        [~,L{n,k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
+        [~,L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
     end
     waitbar(n/nreps)
 end
@@ -30,4 +30,5 @@ close(f)
 
 %% Save the simulated data
 fdir = '..\data\Verification Tests';
-fullfile(fdir,strcat(PPName,'.mat'))
+filename = fullfile(fdir,strcat(PPName,'.mat'));
+save(filename,'L','npts','win','r','PPName','FPosition');
