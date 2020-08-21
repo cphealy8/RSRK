@@ -9,7 +9,7 @@ rLen = length(r);
 
 % Compute Frame Dimensions
 FWidth = WinWidth/(nFrames-nFrames*fOverlap+fOverlap);
-FWidth = floor(FWidth); 
+% FWidth = floor(FWidth); 
 
 FStarts = linspace(win(1),WinWidth-FWidth,nFrames);
 FEnds = linspace(FWidth,win(2),nFrames);
