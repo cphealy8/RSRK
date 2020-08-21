@@ -1,4 +1,4 @@
-PPName = 'NonStationary - Parallel - Nonhomogenous - perpendicular'; % metadata
+PPName = 'NonStationary - Parallel - Nonhomogenous - Perpendicular'; % metadata
 
 IntensityMap_TriWave_parallel
 

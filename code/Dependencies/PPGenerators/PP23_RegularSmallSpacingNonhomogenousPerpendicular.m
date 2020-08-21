@@ -1,4 +1,4 @@
-PPName = 'Regular - Small Spacing - Nonhomogenous - perpendicular'; % metadata
+PPName = 'Regular - Small Spacing - Nonhomogenous - Perpendicular'; % metadata
 
 InhDist = 0.025;
 PkgDens = 0.0982;

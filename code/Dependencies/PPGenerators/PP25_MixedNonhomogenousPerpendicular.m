@@ -1,4 +1,4 @@
-PPName = 'Mixed - Nonhomogenous - perpendicular'; % metadata
+PPName = 'Mixed - Nonhomogenous - Perpendicular'; % metadata
 
 NumClusts = npts/10;
 PkgDens = 0.5;

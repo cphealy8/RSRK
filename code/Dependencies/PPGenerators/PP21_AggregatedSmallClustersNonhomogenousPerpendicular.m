@@ -1,4 +1,4 @@
-PPName = 'Aggregated - Small Clusters - Nonhomogenous - perpendicular'; % metadata
+PPName = 'Aggregated - Small Clusters - Nonhomogenous - Perpendicular'; % metadata
 
 ParentNum = round(npts/10);
 ptsperclust = round(npts/ParentNum);

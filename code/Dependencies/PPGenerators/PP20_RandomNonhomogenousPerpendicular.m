@@ -1,4 +1,4 @@
-PPName = 'Random Nonhomogenous perpendicular'; % metadata
+PPName = 'Random Nonhomogenous Perpendicular'; % metadata
 
 pts = PoissonPP(win,npts);
 
