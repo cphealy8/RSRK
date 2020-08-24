@@ -41,3 +41,8 @@ zlim([-maxlim maxlim]);
 colormap(map)
 c2 = colorbar;
 caxis([-maxlim maxlim]);
+
+%%
+clc; clear; close all;
+load('..\..\data\Verification Tests\Mixed - Homogenous.mat')
+[fH,pH] = RRK_Verification_Plot(r,FPosition,L);
