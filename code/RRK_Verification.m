@@ -19,8 +19,7 @@ for n=1:nreps
     % Define a point process, and be sure that it the variable pts which is
     % a 2 column vector of coordinates. Place the script defining the point
     % process in the PPGenerators subdirectory. 
-    PP26_NonStationaryParallelNonhomogenousPerpendicular
-    
+    PP26_NonStationaryParallelNonhomogenousPerpendicular    
     %% Run Simulations 
     for k=1:length(kFrames)
         [~,L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
