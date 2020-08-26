@@ -5,10 +5,10 @@ function [LMean] = RRK_Mean(L)
 if iscell(L)
     for k=1:length(L)
     curL = L{k};
-    LMean{k} = mean(curL,3);
+    LMean{k} = mean(curL,3,'omitnan');
     end
 else
-    LMean = mean(curL,3);
+    LMean = mean(curL,3,'omitnan');
 end
 
 end

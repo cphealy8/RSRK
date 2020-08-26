@@ -5,10 +5,10 @@ function [LMedian] = RRK_Median(L)
 if iscell(L)
     for k=1:length(L)
     curL = L{k};
-    LMedian{k} = median(curL,3);
+    LMedian{k} = median(curL,3,'omitnan');
     end
 else
-    LMedian = median(curL,3);
+    LMedian = median(curL,3,'omitnan');
 end
 
 end
