@@ -5,10 +5,10 @@ function [LSD] = RRK_SD(L)
 if iscell(L)
     for k=1:length(L)
     curL = L{k};
-    LSD{k} = std(curL,0,3);
+    LSD{k} = std(curL,0,3,'omitnan');
     end
 else
-    LSD = std(curL,0,3);
+    LSD = std(curL,0,3,'omitnan');
 end
 
 end
