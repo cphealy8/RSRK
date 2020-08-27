@@ -1,4 +1,4 @@
-function [fH,pH] = RRK_Verification_Plot(r,FPosition,L,varargin)
+function [fH,pH] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,varargin)
 %RRK_VERIFICATION_PLOT Plot RRK Verification Results
 %   Detailed explanation goes here
 %%
@@ -17,8 +17,8 @@ fH = figure('Position',[50 50 350 50*length(L)]);
 [ha,pos] = tight_subplot(length(L)+1, 1, 0, 0.1, 0.15);
 
 axes(ha(1))
-
-
+plot(pts(:,1),pts(:,2),'.r','MarkerSize',5);
+title(PPName)
 for k=1:length(L)
 Lmean = mean(L{k},3,'omitnan');
 x = FPosition{k};
