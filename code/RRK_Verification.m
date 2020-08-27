@@ -18,11 +18,12 @@ for n=1:nreps
     %% Place the filename for the point process you want to verify here.
     % Define a point process, and be sure that it the variable pts which is
     % a 2 column vector of coordinates. Place the script defining the point
-    % process in the PPGenerators subdirectory. 
-    PP26_NonStationaryParallelNonhomogenousPerpendicular    
+    % process in the PPGenerators subdirectory.
+    PP18_MixedNonhomogenousParallel
+    
     %% Run Simulations 
     for k=1:length(kFrames)
-        [~,L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
+        [K{k}(:,:,n),L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
     end
     waitbar(n/nreps)
 end
@@ -31,7 +32,7 @@ close(f)
 %% Save the simulated data
 fdir = '..\data\Verification Tests';
 filename = fullfile(fdir,strcat(PPName,'.mat'));
-save(filename,'L','npts','win','r','PPName','FPosition');
+save(filename,'K','L','npts','win','r','PPName','FPosition','pts');
 
 S(1) = load('gong');
 sound(S(1).y,S(1).Fs)
