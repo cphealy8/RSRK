@@ -1,4 +1,4 @@
-function [fH,pH] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,varargin)
+function [fH,pH] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims)
 %RRK_VERIFICATION_PLOT Plot RRK Verification Results
 %   Detailed explanation goes here
 %%
@@ -40,6 +40,16 @@ Lplot = [Lmean,zeros(size(Lmean,1),1); zeros(1,size(Lmean,2)+1)];
 
 % Lplot = Lmean;
 axes(ha(k+1));
+
+
+if strcmp(cLims,'pval')
+    PVals = 1-Lplot;
+    Lplot(PVals>=0.999) = 4;
+    Lplot(PVals<0.999) = 3;
+    Lplot(PVals<0.99) = 2;
+    Lplot(PVals<0.95) = 1;
+end
+
 % pH = imagesc(x,r,Lmean);
 pH = pcolor(xplot,rplot,Lplot);
 % shading faceted
@@ -72,11 +82,17 @@ set(gca,'YTickLabel',YTickLabels);
 
 
 %%%
-clims = [-0.0313 0.1210];
-caxis(clims);
-crange = clims(2)-clims(1);
-colInts = [0 clims(2)/crange 1];
-colNames = {'#ca0020','#f7f7f7','#0571b0'};
+if strcmp(cLims,'pval')
+    caxis([0 1])
+    colInts = [0 1 2 3 4]/4;
+    colNames = fliplr({'#e0f3f8','#f7f7f7','#fee090','#f46d43','#a50026'});
+else
+    caxis(cLims);
+    crange = cLims(2)-cLims(1);
+    colInts = [0 cLims(2)/crange 1];
+    colNames = {'#ca0020','#f7f7f7','#0571b0'};
+end
+
 %%% Use these when using the RRK_ComparisonStat
 % caxis([-1 1])
 % colInts = [0 0.0250 0.5 0.975 1];

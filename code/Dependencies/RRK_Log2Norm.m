@@ -14,6 +14,7 @@ end
 
 function [G] = Log2Norm(KNum,KDenom)
     G = log2(KNum./KDenom);
+    G(G==-inf)=NaN;
 end
 
 
