@@ -35,26 +35,35 @@ rplot = [0 r];
 
 % f2 = figure('Units','points','Position',[300 300 400 150]);
 
+dr = log10(r(2))-log10(r(1));
 
 Lplot = [Lmean,zeros(size(Lmean,1),1); zeros(1,size(Lmean,2)+1)];
+
+% if strcat(cLims,'pval')
+%     PVAL = [L,zeros(size(L,1),1); zeros(1,size(L,2)+1)];
+% end
+
 
 % Lplot = Lmean;
 axes(ha(k+1));
 
 
-if strcmp(cLims,'pval')
-    PVals = 1-Lplot;
-    Lplot(PVals>=0.999) = 4;
-    Lplot(PVals<0.999) = 3;
-    Lplot(PVals<0.99) = 2;
-    Lplot(PVals<0.95) = 1;
-end
+% if strcmp(cLims,'pval')
+%     PVals = 1-Lplot;
+%     Lplot(PVals>=0.999) = 4;
+%     Lplot(PVals<0.999) = 3;
+%     Lplot(PVals<0.99) = 2;
+%     Lplot(PVals<0.95) = 1;
+% end
 
 % pH = imagesc(x,r,Lmean);
 pH = pcolor(xplot,rplot,Lplot);
+
 % shading faceted
 set(gca,'YScale','log')
-YTicks = round(r(1:2:end),2);
+YTicks = round(rplot(1:2:end),2);
+% ylim([10^(log10(r(1))-dr) r(end)])
+ylim([r(1) 10^(log10(r(end))+dr)])
 set(gca,'YTick',YTicks)
 YTickLabels = cellstr(num2str(round(log10(YTicks(:)),1), '10^%0.1f'));
 set(gca,'YTickLabel',YTickLabels);
@@ -84,8 +93,8 @@ set(gca,'YTickLabel',YTickLabels);
 %%%
 if strcmp(cLims,'pval')
     caxis([0 1])
-    colInts = [0 1 2 3 4]/4;
-    colNames = fliplr({'#e0f3f8','#f7f7f7','#fee090','#f46d43','#a50026'});
+    colInts = [0 0.05 0.0500001 1];
+    colNames = {'#ca0020','#ca0020','#ffffff','#ffffff'};
 else
     caxis(cLims);
     crange = cLims(2)-cLims(1);
