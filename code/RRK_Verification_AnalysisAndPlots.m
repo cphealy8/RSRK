@@ -8,12 +8,11 @@ minL = [];
 maxL = [];
 cLims = [-0.0313 0.1210];
 for n = 3:length(fnames)
-
 % Test Stat
 load('..\data\Verification Tests\PP01_RandomHomogenous.mat')
 KTest1 = K;
 
-load('..\data\Verification Tests\PP20_RandomNonhomogenousPerpendicular.mat')
+load('..\data\Verification Tests\PP34_RandomNonhomogenousPerpendicularS.mat')
 KTest2= K;
 
 % Target Stat
@@ -27,10 +26,13 @@ means = cell2mat(RRK_Mean(L));
 minL(n-2) = min(means(:));
 maxL(n-2) = max(means(:));
 
-% P = RRK_TTest2(KTarget,KTest);
-% stat = RRK_ComparisonStat(KTarget,KTest);
-T = RRK_TTest2(KTarget,KTest1);
-T2 = RRK_TTest2(KTarget,KTest2);
+
+% T = RRK_TTest2(KTarget,KTest1);
+% T2 = RRK_TTest2(KTarget,KTest2);
+
+nSD = 3;
+T = RRK_SDRange(KTarget,KTest1,nSD);
+T2 = RRK_SDRange(KTarget,KTest2,nSD);
 
 [fH] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T);
 % colorbar('southoutside')

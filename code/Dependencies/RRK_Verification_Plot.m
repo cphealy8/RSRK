@@ -1,4 +1,4 @@
-function [fH,axL,axM] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T)
+function [fH,axL,axM] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T,varargin)
 %RRK_VERIFICATION_PLOT Plot RRK Verification Results
 %   Detailed explanation goes here
 %%
@@ -28,6 +28,7 @@ Lmean = mean(L{k},3,'omitnan');
 x = FPosition{k};
 curT = T{k};
 
+
 axes(ha(k+1));
 
 r=round(r,2);
@@ -49,13 +50,26 @@ yctrs = yctrs(2:2:end);
 sx = xx(:);
 sy = yy(:);
 
+
 % apply significance test results
-Sig = curT<0.01;
+Sig = curT<1e-6;
 sx(Sig) = [];
 sy(Sig) = [];
+
+
 hold on
 plot(sx,sy,'xk');
 
+if ~isempty(varargin)
+    T2 = varargin{1};
+    curT2 = T2{k};
+    sx2 = xx(:);
+    sy2 = yy(:);
+    Sig2 = curT2<1e-6;
+    sx2(Sig2) = [];
+    sy2(Sig2) = [];
+    plot(sx2,sy2,'ok');
+end
 % pH=heatmap(x,r,Lmean);
 
 % Ax = gca;
