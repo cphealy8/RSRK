@@ -10,5 +10,4 @@ ptsA = InhibitionPP(win,PkgDens,InhDist);
 % B Points
 nptsB = npts-nptsA;
 ptsBperclust = round(nptsB/nptsA);
-clustRad = 0.04;
-[~,~,ptsB] = PoissonClusts(win,ptsA,ptsBperclust,[0 0.08]);
+[~,~,ptsB] = PoissonClusts(win,ptsA,ptsBperclust,[0 0.04]);
