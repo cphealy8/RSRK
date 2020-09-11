@@ -8,7 +8,7 @@ p = inputParser;
 addRequired(p,'pts',@isnumeric);
 addRequired(p,'win',@isnumeric);
 addRequired(p,'imRes',@isnumeric);
-addRequired(p,'sigKern',@isnumeric);
+addRequired(p,'sigKern');
 addOptional(p,'scalepts','true',@ischar);
 
 parse(p,pts,win,imRes,sigKern,varargin{:});
@@ -30,14 +30,16 @@ pts = pts*imRes;
 
 
 %% convert points to pixels
-pixID = pts2pix(pts,[imWidth imHeight]);
-ptCounts = countEntries(pixID);
+% pixID = pts2pix(pts,[imWidth imHeight]);
+% ptCounts = countEntries(pixID);
+% 
+% im = zeros(imHeight,imWidth);
+% im(unique(pixID)) = ptCounts;
 
-im = zeros(imHeight,imWidth);
-im(unique(pixID)) = ptCounts;
+imap = pts2Imap(pts,[imWidth imHeight]);
 
 %% convolve with signal kernel 
-SigIm = conv2(im,sigKern,'same');
+SigIm = conv2(imap,sigKern,'same');
 %normalize
 SigIm = SigIm./max(SigIm(:));
 end
