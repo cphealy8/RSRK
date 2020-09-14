@@ -1,4 +1,4 @@
-function [fH,axL,axM] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T,varargin)
+function [fH,axL,axM,MaxMean,MinMean] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T,varargin)
 %RRK_VERIFICATION_PLOT Plot RRK Verification Results
 %   Detailed explanation goes here
 %%
@@ -18,11 +18,18 @@ fH = figure('Position',[50 50 500 100*length(L)]);
 
 axes(ha(1))
 plot(pts(:,1),pts(:,2),'.r','MarkerSize',5);
+if ~isempty(varargin)
+    hold on
+    ptsB = varargin{1};
+    plot(ptsB(:,1),ptsB(:,2),'db','MarkerSize',3)
+end
+hold off
+
 axp = gca;
 axp.XTick = [];
 axp.YTick = [];
 
-title(PPName)
+% title(PPName)
 for k=1:length(L)
 Lmean = mean(L{k},3,'omitnan');
 x = FPosition{k};
@@ -60,16 +67,16 @@ sy(Sig) = [];
 hold on
 plot(sx,sy,'xk');
 
-if ~isempty(varargin)
-    T2 = varargin{1};
-    curT2 = T2{k};
-    sx2 = xx(:);
-    sy2 = yy(:);
-    Sig2 = curT2<1e-6;
-    sx2(Sig2) = [];
-    sy2(Sig2) = [];
-    plot(sx2,sy2,'ok');
-end
+% if ~isempty(varargin)
+%     T2 = varargin{1};
+%     curT2 = T2{k};
+%     sx2 = xx(:);
+%     sy2 = yy(:);
+%     Sig2 = curT2<1e-6;
+%     sx2(Sig2) = [];
+%     sy2(Sig2) = [];
+%     plot(sx2,sy2,'ok');
+% end
 % pH=heatmap(x,r,Lmean);
 
 % Ax = gca;

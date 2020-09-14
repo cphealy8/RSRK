@@ -6,10 +6,23 @@ fnames = dir(dirname);
 SaveDir = '..\results\Verification Tests';
 minL = [];
 maxL = [];
-cLims = [-0.0313 0.1210];
-for n = 3:length(fnames)
+% cLims = [-0.0313 0.1210];
+
+% Univariate patterns run from n=1:40+3;
+% Bivariate patterns run from n=41:56 +3;
+
+for n = 43:length(fnames)
 % Test Stat
-load('..\data\Verification Tests\PP01_RandomHomogenous.mat')
+
+% Load the appropriate baseline statistic for each group of tests
+if n<=43
+    cLims = [-0.0313 0.1210];
+    load('..\data\Verification Tests\PP01_RandomHomogenous.mat')
+elseif n>43 || n<=59
+    cLims = [-0.04 0.04];
+    load('..\data\Verification Tests\PP41_RandomRandom1090Homogenous.mat')
+end
+
 KTest1 = K;
 
 load('..\data\Verification Tests\PP34_RandomNonhomogenousPerpendicularS.mat')
@@ -33,8 +46,11 @@ maxL(n-2) = max(means(:));
 nSD = 3;
 T = RRK_SDRange(KTarget,KTest1,nSD);
 T2 = RRK_SDRange(KTarget,KTest2,nSD);
-
-[fH] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T);
+if exist('ptsA','var') && exist('ptsB','var')
+    [fH,~,~,maxM(n),minM(n)] = RRK_Verification_Plot(r,FPosition,L,ptsA,PPName,cLims,T,ptsB);
+else
+    [fH,~,~,maxM(n),minM(n)] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T);
+end
 % colorbar('southoutside')
 % xlabel('Window Position');
 % ylabel('Scale (r)');
@@ -69,5 +85,5 @@ close all;
 % 
 % saveas(fH2,SaveName,'pdf')
 % print(fH2,SaveName,'-dpng')
-
+clear pts ptsA ptsB K L
 end

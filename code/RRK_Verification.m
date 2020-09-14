@@ -16,7 +16,10 @@ r(1) = [];
 dirname = 'Dependencies\PPGenerators';
 fnames = dir(dirname);
 
-for k = 1:length(fnames)
+% Univariate patterns run from k=1:40;
+% Bivariate patterns run from k=41:56;
+
+for k = (41:56)+11
 % for k = [18]
     
     fname = fnames(k).name;
@@ -47,7 +50,13 @@ for k = 1:length(fnames)
         fdir = '..\data\Verification Tests';
         [~,filename] = fileparts(fname);
         savedir = fullfile(fdir,strcat(filename,'.mat'));
-        save(savedir,'K','L','npts','win','r','PPName','FPosition','pts');
+        
+        if exist('ptsA','var')&&exist('ptsB','var') % bivariate case
+            save(savedir,'K','L','npts','win','r','PPName','FPosition','ptsA','ptsB');
+        else % univariate case
+            save(savedir,'K','L','npts','win','r','PPName','FPosition','pts');
+        end
+
     end
 end
 
