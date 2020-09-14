@@ -16,8 +16,8 @@ r(1) = [];
 dirname = 'Dependencies\PPGenerators';
 fnames = dir(dirname);
 
-% for k = 1:length(fnames)
-for k = [18]
+for k = 1:length(fnames)
+% for k = [18]
     
     fname = fnames(k).name;
     if contains(fname,'PP')
@@ -32,7 +32,11 @@ for k = [18]
                 
                 %% Run Simulations 
                 for k=1:length(kFrames)
-                    [K{k}(:,:,n),L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
+                    if exist('ptsA','var')&&exist('ptsB','var') % bivariate case
+                        [K{k}(:,:,n),L{k}(:,:,n),FPosition{k}] = RRK(ptsA,win,r,kFrames(k),fOverlap,'on',ptsB);
+                    else
+                        [K{k}(:,:,n),L{k}(:,:,n),FPosition{k}] = RRK(pts,win,r,kFrames(k),fOverlap,'on');
+                    end
                 end
                 waitbar(n/nreps)
 
