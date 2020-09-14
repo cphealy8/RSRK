@@ -1,4 +1,4 @@
-function [K,LminR,FPosition] = RRK(pts,win,r,nFrames,fOverlap,EdgeCorrection)
+function [K,LminR,FPosition] = RRK(pts,win,r,nFrames,fOverlap,EdgeCorrection,varargin)
 %RRK Rolling Ripley's K
 %   Detailed explanation goes here
 
@@ -21,9 +21,15 @@ LminR = zeros(nFrames,rLen);
 
 for n=1:nFrames
     CurFrame = [FStarts(n) FEnds(n) win(3) win(4)];
-    CurPts = CropPts2Win(pts,CurFrame);
+    if ~isempty(varargin)
+        CurPtsA = CropPts2Win(pts,CurFrame);
+        CurPtsB = CropPts2Win(varargin{1},CurFrame);
+        [K(n,:),~,L] = Kmulti(CurPtsA,CurPtsB,CurFrame,r);
+    else % Univariate
+        CurPts = CropPts2Win(pts,CurFrame);
+        [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection);
+    end
     
-    [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection);
     LminR(n,:) = L-r;
     
 end
