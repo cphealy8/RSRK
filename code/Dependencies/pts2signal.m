@@ -1,4 +1,4 @@
-function [SigIm] = pts2signal(pts,win,imRes,sigKern,varargin)
+function [SigIm,pts] = pts2signal(pts,win,imRes,sigKern,varargin)
 %PTS2SIGNAL Convert a point process into a signal image.
 %   Detailed explanation goes here
 
@@ -10,9 +10,11 @@ addRequired(p,'win',@isnumeric);
 addRequired(p,'imRes',@isnumeric);
 addRequired(p,'sigKern');
 addOptional(p,'scalepts','true',@ischar);
+addOptional(p,'Normalize','true',@ischar);
 
 parse(p,pts,win,imRes,sigKern,varargin{:});
 scalepts = p.Results.scalepts;
+Normalize = p.Results.Normalize;
 
 %% Scale points to imRes
 [pL,pW] = size(pts);
@@ -41,6 +43,8 @@ imap = pts2Imap(pts,[imWidth imHeight]);
 %% convolve with signal kernel 
 SigIm = conv2(imap,sigKern,'same');
 %normalize
-SigIm = SigIm./max(SigIm(:));
+if strcmp(Normalize,'true')
+    SigIm = SigIm./max(SigIm(:));
+end
 end
 
