@@ -1,7 +1,7 @@
 % Bivariate PP
 PP06_MixedHomogenous % load baseline PP
 
-PPName = 'Self Mixed - Homogenous'; % metadata
+PPName = 'Self - Mixed Homogenous'; % metadata
 
 % pts = PoissonPP(win,npts);
 SelfSignalGenerator

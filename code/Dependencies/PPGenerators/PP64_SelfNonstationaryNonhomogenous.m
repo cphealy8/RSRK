@@ -1,7 +1,7 @@
 % Bivariate PP
 PP19_NonStationaryParallelNonhomogenousParallel% load baseline PP
 
-PPName = 'Self Nonstationary - Nonhomogenous'; % metadata
+PPName = 'Self - Nonstationary Nonhomogenous'; % metadata
 
 SelfSignalGenerator
 

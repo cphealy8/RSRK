@@ -1,7 +1,7 @@
 % Bivariate PP
 PP13_RandomNonhomogenousParallel % load baseline PP
 
-PPName = 'Self Random - Nonhomogenous'; % metadata
+PPName = 'Self - Random Nonhomogenous'; % metadata
 
 SelfSignalGenerator
 

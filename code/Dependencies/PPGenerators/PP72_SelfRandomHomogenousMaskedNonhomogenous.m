@@ -1,7 +1,7 @@
 % Bivariate PP
 PP01_RandomHomogenous % load baseline PP
 
-PPName = 'Self random - Homogenous - Masked Nonhomogenous'; % metadata
+PPName = 'Self - Random Homogenous - Masked Nonhomogenous'; % metadata
 
 % pts = PoissonPP(win,npts);
 SelfSignalGenerator

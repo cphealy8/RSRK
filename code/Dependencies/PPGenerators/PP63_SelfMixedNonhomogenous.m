@@ -1,7 +1,7 @@
 % Bivariate PP
 PP18_MixedNonhomogenousParallel % load baseline PP
 
-PPName = 'Self Mixed - Nonhomogenous'; % metadata
+PPName = 'Self - Mixed - Nonhomogenous'; % metadata
 
 SelfSignalGenerator
 
