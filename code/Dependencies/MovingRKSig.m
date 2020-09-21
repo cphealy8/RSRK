@@ -92,7 +92,7 @@ for n = 1:nFrames
     RK{n}.Pts = CurPts;
     RK{n}.Mask = CurMask;
 end
-delete(hw)
+% delete(hw)
 
 x = xStart;
 end

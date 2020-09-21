@@ -10,6 +10,10 @@ function [RK] = RKSigEnv(im,pts,r,mask,SigLvls,CompType,varargin)
 %   K for points in a point process to a signal in an image and simulate
 %   CSR to compute signficance envelope for a=0.001. 
 %
+%   Use varargin to specify a second mask which defines where the point
+%   process is simulated for the calculation of KCSR (if it is different
+%   from the first input mask
+%
 %   SEE ALSO RKSIGNAL2PTS, RANDOMIZEPIXELS, RANDPPMASK. 
 
 %% Check inputs
@@ -71,7 +75,7 @@ pts = CropPts2Mask(pts,mask);
 maxSigLvl = min(SigLvls);
 
 nsims = 2/maxSigLvl-1;
-hw = waitbar(0,'Simulating');
+% hw = waitbar(0,'Simulating');
 
 switch CompType
     case 'Sig2Pts' % Assess how the signal compares to the points
@@ -83,9 +87,9 @@ switch CompType
             tic
             SimIm = RandomizePixels(im,mask);
             KSim(i,:) = RKSignal2Pts(SimIm,pts,r,mask);
-            TimePerSim(i) = toc; % min
-            TimeRem = mean(TimePerSim)*(nsims-i);
-            waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
+%             TimePerSim(i) = toc; % min
+%             TimeRem = mean(TimePerSim)*(nsims-i);
+%             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
         end
         
     case 'Pts2Sig' % Assess how the points compare to the signal. 
@@ -103,12 +107,12 @@ switch CompType
         end
 end
 
-delete(hw)
+% delete(hw)
 SigLvls = [SigLvls'; -1*flipud(SigLvls')];
 
 RK.Obs = K;
 RK.r = r;
-RK.CSR = mean(KSim); % Average Ripley's K under CSR
+RK.CSR = mean(KSim,1); % Average Ripley's K under CSR
 RK.CSRSims = sort(KSim);
 RK.SigLvls = SigLvls;
 RK.Type = CompType;
