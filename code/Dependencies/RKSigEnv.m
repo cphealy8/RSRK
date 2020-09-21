@@ -103,7 +103,7 @@ switch CompType
             KSim(i,:) = RKSignal2Pts(im,SimPts,r,mask);
             TimePerSim(i) = toc; % min
             TimeRem = mean(TimePerSim)*(nsims-i);
-            waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
+%             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
         end
 end
 
