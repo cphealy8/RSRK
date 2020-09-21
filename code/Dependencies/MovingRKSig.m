@@ -10,7 +10,9 @@ function [RK,x] = MovingRKSig(im,pts,r,mask,CompType,nFrames,fOverlap,SigLvls,Di
 %   or 'Y' for along the x or y axes respectively. Finally the user can
 %   specify a second mask, as a variable argument, to specify the region
 %   in which random simulation of the point process is carried out. This is
-%   useful when the point process and signal do not necessarily overlap. 
+%   useful when the point process and signal do not necessarily overlap.
+%   
+%   CompType specifies the type of calculation 'Pts2Sig' or 'Sig2Pts'. 
 %
 %   SEE ALSO RKENVELOPE, RKSIMPLE. 
 
@@ -48,6 +50,7 @@ end
 im(~mask) = 0;
 
 [MaskHeight,MaskWidth] = size(mask);
+
 % Set WindowWidth
 [WindowWidth,WindowHeight] = WWidth(mask,nFrames,fOverlap);
 
@@ -64,7 +67,7 @@ dX = cumsum([0 diff(xStart)]);
 
 
 % Window by Window select the points to analyze, then perform Ripley's K.
-hw = waitbar(0,sprintf('Computing Window (0/%d)',nFrames));
+% hw = waitbar(0,sprintf('Computing Window (0/%d)',nFrames));
 for n = 1:nFrames
     ptsXIn = (pts(:,1)>xStart(n) & pts(:,1)<xStop(n));
     CurPts = pts(ptsXIn,:);
@@ -80,7 +83,7 @@ for n = 1:nFrames
         RK{n} = RKSigEnv(CurIm,CurPts,r,CurMask,SigLvls,CompType);
     end
     
-    waitbar(n/nFrames,hw,sprintf('Computing Window (%d/%d)',n,nFrames))
+%     waitbar(n/nFrames,hw,sprintf('Computing Window (%d/%d)',n,nFrames))
     
     RK{n}.WindowWidth = WindowWidth;
     RK{n}.WindowHeight = WindowHeight;
