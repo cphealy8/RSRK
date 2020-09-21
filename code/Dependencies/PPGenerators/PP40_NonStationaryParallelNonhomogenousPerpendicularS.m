@@ -3,15 +3,15 @@ PPName = 'NonStationary - Parallel - Nonhomogenous - Perpendicular S'; % metadat
 IntensityMap_TriWave_parallel
 
 PP02_AggregatedSmallClustersHomogenous
-ptsA = ThinByIntensity(IMap,win,pts);
+ptsU = ThinByIntensity(IMap,win,pts);
 
 PP05_RegularLargeSpacingHomogenous
-ptsB = ThinByIntensity(1-IMap,win,pts);
+ptsV = ThinByIntensity(1-IMap,win,pts);
 
 clear pts
 PPName = 'NonStationary - Parallel - Nonhomogenous - Perpendicular S'; % metadata
 
-pts = [ptsA;ptsB];
+pts = [ptsU;ptsV];
 
 IntensityMap_TriWave_perpendicular_small
 pts = ThinByIntensity(IMap,win,pts);

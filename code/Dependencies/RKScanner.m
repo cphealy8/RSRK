@@ -12,9 +12,15 @@ scanmap = zeros(nCols,nRows,nr);
 
 cnt = 0;
 
+if numel(pts)==2
+        npts = 1;
+end
+
 for k=1:nr
     tempmap = zeros(nRows,nCols);
+    
     for n=1:npts
+        
     nthCirc = sqrt((xx-pts(n,1)).^2 + ...
                       (yy-pts(n,2)).^2) <= r(k);
     tempmap = tempmap+nthCirc';

@@ -46,7 +46,10 @@ A = sum(mask(:));
 
 lambda = npts*pixTot/A; % Normalization factor ("Density")
 
+
+
 %% Compute RK for Signal to Pts. 
+
 scanmap = RKScanner(im,pts,r);
 repIm = repmat(im,[1 1 nr]);
 

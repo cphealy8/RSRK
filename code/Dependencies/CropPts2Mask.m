@@ -4,8 +4,15 @@ function [pts] = CropPts2Mask(pts,mask)
 [MaskHeight, MaskWidth] = size(mask);
 % make sure all points are within the full area of the mask
 
-checkx = (pts(:,1)<0 | pts(:,1)>MaskWidth);
-checky = (pts(:,2)<0 | pts(:,2)>MaskHeight);
+try
+    checkx = (pts(:,1)<0 | pts(:,1)>MaskWidth);
+    checky = (pts(:,2)<0 | pts(:,2)>MaskHeight);
+catch
+    pts = pts';
+    checkx = (pts(:,1)<0 | pts(:,1)>MaskWidth);
+    checky = (pts(:,2)<0 | pts(:,2)>MaskHeight);   
+end
+
 ptsOut = (checkx | checky);
 if sum(ptsOut)~= 0
     warning('Points outside the mask were removed')
