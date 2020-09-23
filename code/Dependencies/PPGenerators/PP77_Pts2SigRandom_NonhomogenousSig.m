@@ -13,6 +13,6 @@ IntensityMap_TriWave_parallel
 Signal = Signal.*IMap(1:win(4).*imRez,1:win(2).*imRez);
 % SelfSignalGenerator
 % 
-% imagesc(Signal)
-% hold on
-% plot(pts(:,1),pts(:,2),'.r')
+imagesc(Signal)
+hold on
+plot(pts(:,1),pts(:,2),'.r')

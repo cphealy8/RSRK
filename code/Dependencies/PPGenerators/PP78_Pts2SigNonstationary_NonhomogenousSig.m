@@ -28,8 +28,6 @@ pts = [pts1; pts2];
 % pts = ThinByIntensity(IMap,win*imRez,pts);
 Signal = Signal.*IMap(1:win(4).*imRez,1:win(2).*imRez);
 
-% imagesc(Signal)
-% hold on
-% plot(pts(:,1),pts(:,2),'.r')
-% plot(pts1(:,1),pts1(:,2),'.r')
-% plot(pts2(:,1),pts2(:,2),'.g')
+imagesc(Signal)
+hold on
+plot(pts(:,1),pts(:,2),'.r')

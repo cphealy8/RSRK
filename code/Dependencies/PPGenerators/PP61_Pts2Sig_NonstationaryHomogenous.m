@@ -16,9 +16,9 @@ pts1(1001:end,:) = [];
 
 
 % Negatively Associated
-pts2 = PoissonPP(win,npts*3)*imRez;
-pts2 = ThinByIntensity(1-Signal,win*imRez,pts2);
-pts2 = ThinByIntensity(1-IMap,win*imRez,pts2);
+pts2 = PoissonPP(win,npts*5)*imRez;
+pts2 = ThinByIntensity(1-Signal,win*imRez,pts2,2);
+pts2 = ThinByIntensity(1-IMap,win*imRez,pts2,2);
 pts2(1001:end,:) = [];
 
 %combine
@@ -26,6 +26,6 @@ pts = [pts1; pts2];
 
 imagesc(Signal)
 hold on
-plot(pts(:,1),pts(:,2),'.r')
-% plot(pts1(:,1),pts1(:,2),'.r')
-% plot(pts2(:,1),pts2(:,2),'.g')
+% plot(pts(:,1),pts(:,2),'.r')
+plot(pts1(:,1),pts1(:,2),'.r')
+plot(pts2(:,1),pts2(:,2),'.g')
