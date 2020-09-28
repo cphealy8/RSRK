@@ -1,8 +1,24 @@
 function [fH,axL,axM,MaxMean,MinMean] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T,varargin)
 %RRK_VERIFICATION_PLOT Plot RRK Verification Results
 %   Detailed explanation goes here
-%%
+%% parse inputs
 
+p = inputParser;
+addRequired(p,'r')
+addRequired(p,'FPosition')
+addRequired(p,'L')
+addRequired(p,'pts')
+addRequired(p,'PPName')
+addRequired(p,'cLims')
+addRequired(p,'T')
+addOptional(p,'ptsB',[],@isnumeric)
+addOptional(p,'Signal',[],@isnumeric)
+
+parse(p,r,FPosition,L,pts,PPName,cLims,T,varargin{:})
+
+ptsB = p.Results.ptsB;
+Signal = p.Results.Signal;
+%%
 
 %Determine axes limits
 LSD = RRK_SD(L);
@@ -17,12 +33,13 @@ fH = figure('Position',[50 50 500 100*length(L)]);
 [ha,pos] = tight_subplot(length(L)+1, 1, 0, 0.1, 0.15);
 
 axes(ha(1))
-plot(pts(:,1),pts(:,2),'.r','MarkerSize',5);
-if ~isempty(varargin)
-    hold on
-    ptsB = varargin{1};
+if ~isempty(ptsB)
     plot(ptsB(:,1),ptsB(:,2),'db','MarkerSize',3)
+elseif ~isempty(Signal)
+    imagesc(Signal)
 end
+hold on
+plot(pts(:,1),pts(:,2),'.r','MarkerSize',5);
 hold off
 
 axp = gca;
@@ -67,44 +84,6 @@ sy(Sig) = [];
 hold on
 plot(sx,sy,'xk');
 
-% if ~isempty(varargin)
-%     T2 = varargin{1};
-%     curT2 = T2{k};
-%     sx2 = xx(:);
-%     sy2 = yy(:);
-%     Sig2 = curT2<1e-6;
-%     sx2(Sig2) = [];
-%     sy2(Sig2) = [];
-%     plot(sx2,sy2,'ok');
-% end
-% pH=heatmap(x,r,Lmean);
-
-% Ax = gca;
-% Ax.CellLabelColor = 'none';
-% Ax.XDisplayLabels = nan(size(Ax.XDisplayData));
-% Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
-%%% pcolor stuff %%%
-
-% if length(x)>1
-%     diffx = x(2)-x(1);
-%     xplot = [x(1)-diffx x];
-% else
-%     xplot = [0 x];
-% end
-% 
-% rplot = [0 r];
-% dr = log10(r(2))-log10(r(1));
-% Lplot = [Lmean,zeros(size(Lmean,1),1); zeros(1,size(Lmean,2)+1)];
-
-% pH = pcolor(xplot,rplot,Lplot);
-% set(gca,'YScale','log')
-% YTicks = round(rplot(1:2:end),2);
-% 
-% ylim([r(1) 10^(log10(r(end))+dr)])
-% set(gca,'YTick',YTicks)
-% YTickLabels = cellstr(num2str(round(log10(YTicks(:)),1), '10^%0.1f'));
-% set(gca,'YTickLabel',YTickLabels);
-
 
 
 %%
@@ -123,6 +102,9 @@ end
 map = customcolormap(colInts,colNames);
 colormap(map)
 colorbar('off')
+end
+if ~isempty(Signal)
+colormap(ha(1),'parula')
 end
 end
 
