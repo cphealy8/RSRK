@@ -13,7 +13,7 @@ maxL = [];
 % Signal patterns run from n=59:80
 
 ct=0; 
-for n= 84:length(fnames)
+for n= 96:length(fnames)
 %  for n = 77
 
 % Test Stat
@@ -21,27 +21,27 @@ fname = fnames(n).name;
 % Load the appropriate baseline statistic for each group of tests
 if n<=42
     cLims = [-0.0313 0.1210];
-    load('..\data\Verification Tests\PP01_RandomHomogenous.mat')
+    load('..\data\Verification Tests\PP001_RandomHomogenous.mat')
 elseif n>42 && n<=58
     cLims = [-0.04 0.04];
     if contains(fname,'1090')
-        load('..\data\Verification Tests\PP41_RandomRandom1090Homogenous.mat')
+        load('..\data\Verification Tests\PP041_RandomRandom1090Homogenous.mat')
     elseif contains(fname,'5050')
-        load('..\data\Verification Tests\PP42_RandomRandom5050Homogenous.mat')
+        load('..\data\Verification Tests\PP042_RandomRandom5050Homogenous.mat')
     end
 elseif n>=59
     if contains(fname,'Pts2Sig')
         cLims = [-1.5 1.5];
-        load('..\data\Verification Tests\PP60_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
+        load('..\data\Verification Tests\PP060_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
     elseif contains(fname,'Self')
         cLims = [-2.5 2.5];
-        load('..\data\Verification Tests\PP81_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
+        load('..\data\Verification Tests\PP081_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
     end
 end
 
 KTest1 = inf2nan(K);
 
-load('..\data\Verification Tests\PP34_RandomNonhomogenousPerpendicularS.mat')
+load('..\data\Verification Tests\PP034_RandomNonhomogenousPerpendicularS.mat')
 KTest2= inf2nan(K);
 
 % Target Stat

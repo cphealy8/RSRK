@@ -11,8 +11,8 @@ fOverlap = 0.5;
 r = logspace(log10(0.01),log10(0.5),11);
 r(1) = [];
 
-%%
 
+%%
 dirname = 'Dependencies\PPGenerators';
 fnames = dir(dirname);
 
@@ -20,7 +20,7 @@ fnames = dir(dirname);
 % Bivariate patterns run from k=41:56;
 % Signal patterns run from 57:80
 
-for k = (82+13):length(fnames)
+for k = [(97+15):length(fnames)]
 % for k = (57+13):72
     fname = fnames(k).name;
     
