@@ -36,7 +36,7 @@ end
 
 %% Adjust image and points
 pts = CropPts2Mask(pts,mask);
-im = im.*mask;
+% im = im.*mask;
 
 %% Compute a few useful parameters
 nr = length(r);
