@@ -47,7 +47,7 @@ elseif ~strcmp(Direction,'X')
 end
 
 % Apply Mask to Signal Image
-im(~mask) = 0;
+% im(~mask) = 0;
 
 [MaskHeight,MaskWidth] = size(mask);
 

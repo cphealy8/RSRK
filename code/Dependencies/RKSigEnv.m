@@ -86,7 +86,7 @@ switch CompType
             
             tic
             SimIm = RandomizePixels(im,mask);
-            KSim(i,:) = RKSignal2Pts(SimIm,pts,r,mask);
+            [KSim(i,:),nptsm,pixTotm,Am] = RKSignal2Pts(SimIm,pts,r,mask);
 %             TimePerSim(i) = toc; % min
 %             TimeRem = mean(TimePerSim)*(nsims-i);
 %             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
@@ -100,7 +100,7 @@ switch CompType
             
             tic
             SimPts = RandPPMask(npts,mask);
-            KSim(i,:) = RKSignal2Pts(im,SimPts,r,mask);
+            [KSim(i,:),nptsm,pixTotm,Am] = RKSignal2Pts(im,SimPts,r,mask);
             TimePerSim(i) = toc; % min
             TimeRem = mean(TimePerSim)*(nsims-i);
 %             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))

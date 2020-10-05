@@ -13,7 +13,7 @@ maxL = [];
 % Signal patterns run from n=59:80
 
 ct=0; 
-for n= 96:length(fnames)
+for n= 118:length(fnames)
 %  for n = 77
 
 % Test Stat
@@ -32,10 +32,14 @@ elseif n>42 && n<=58
 elseif n>=59
     if contains(fname,'Pts2Sig')
         cLims = [-1.5 1.5];
+        if contains(fname,'Exclusive')
+            cLims = [-2.5 2.5];
+        end
         load('..\data\Verification Tests\PP060_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
     elseif contains(fname,'Self')
         cLims = [-2.5 2.5];
         load('..\data\Verification Tests\PP081_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
+
     end
 end
 
