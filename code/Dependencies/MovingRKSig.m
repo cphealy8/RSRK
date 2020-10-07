@@ -18,6 +18,7 @@ function [RK,x] = MovingRKSig(im,pts,r,mask,CompType,nFrames,fOverlap,SigLvls,Di
 
 ptsize= size(pts);
 
+
 % Check for non 2D inputs
 if length(ptsize)~= 2 || ~ismember(2,ptsize)
     error('pts must be a 2-column matrix of cartesian coordinates')
@@ -27,6 +28,9 @@ end
 if ptsize(2)>ptsize(1)
     pts = pts'; 
 end
+
+% Normalize signal to maximum
+% im = im./max(im(:));
 
 % This code will assume that the window moves from left to right (X). If the
 % user specifies Bottom to Top (Y) the x and y coordinates of the points
