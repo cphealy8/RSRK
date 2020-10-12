@@ -16,8 +16,9 @@ rescale = 0.1; % Coutu
 pts = pts*rescale;
 mask = imresize(mask,rescale);
 im = imresize(im,rescale);
+imscale = 1; % µm/pixel
 
-Scale = 0.69/rescale; % µm/pixel
+Scale = imscale/rescale; % µm/pixel
 Units = 'Pixels';
 ScaleUnits = 'um/pixel';
 % Moving Window Settings

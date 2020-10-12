@@ -71,7 +71,7 @@ dX = cumsum([0 diff(xStart)]);
 
 
 % Window by Window select the points to analyze, then perform Ripley's K.
-% hw = waitbar(0,sprintf('Computing Window (0/%d)',nFrames));
+hw = waitbar(0,sprintf('Computing Window (0/%d)',nFrames));
 for n = 1:nFrames
     ptsXIn = (pts(:,1)>xStart(n) & pts(:,1)<xStop(n));
     CurPts = pts(ptsXIn,:);
@@ -87,7 +87,7 @@ for n = 1:nFrames
         RK{n} = RKSigEnv(CurIm,CurPts,r,CurMask,SigLvls,CompType);
     end
     
-%     waitbar(n/nFrames,hw,sprintf('Computing Window (%d/%d)',n,nFrames))
+    waitbar(n/nFrames,hw,sprintf('Computing Window (%d/%d)',n,nFrames))
     
     RK{n}.WindowWidth = WindowWidth;
     RK{n}.WindowHeight = WindowHeight;
@@ -96,7 +96,7 @@ for n = 1:nFrames
     RK{n}.Pts = CurPts;
     RK{n}.Mask = CurMask;
 end
-% delete(hw)
+delete(hw)
 
 x = xStart;
 end

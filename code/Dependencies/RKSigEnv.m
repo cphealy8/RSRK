@@ -75,7 +75,7 @@ pts = CropPts2Mask(pts,mask);
 maxSigLvl = min(SigLvls);
 
 nsims = 2/maxSigLvl-1;
-% hw = waitbar(0,'Simulating');
+hw = waitbar(0,'Simulating');
 
 switch CompType
     case 'Sig2Pts' % Assess how the signal compares to the points
@@ -87,9 +87,9 @@ switch CompType
             tic
             SimIm = RandomizePixels(im,mask);
             [KSim(i,:),nptsm,pixTotm,Am] = RKSignal2Pts(SimIm,pts,r,mask);
-%             TimePerSim(i) = toc; % min
-%             TimeRem = mean(TimePerSim)*(nsims-i);
-%             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
+            TimePerSim(i) = toc; % min
+            TimeRem = mean(TimePerSim)*(nsims-i);
+            waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
         end
         
     case 'Pts2Sig' % Assess how the points compare to the signal. 
@@ -103,11 +103,11 @@ switch CompType
             [KSim(i,:),nptsm,pixTotm,Am] = RKSignal2Pts(im,SimPts,r,mask);
             TimePerSim(i) = toc; % min
             TimeRem = mean(TimePerSim)*(nsims-i);
-%             waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
+            waitbar(i/nsims,hw,sprintf('Simulating CSR\nTime Remaining: %s',Toc2Time(TimeRem)))
         end
 end
 
-% delete(hw)
+delete(hw)
 SigLvls = [SigLvls'; -1*flipud(SigLvls')];
 
 RK.Obs = K;
