@@ -1,24 +1,37 @@
-[path, user_cancel]=imgetfile();
-RAW = imread(path);
+% Code for segmenting megakaryocytes from an image.
 
-% RAW = RAW(8000:12000,1:4000);
+[ImFile,ImPath] = uigetfile('../../data/*png','Select Image to Segment');
+[MaskFile,MaskPath] = uigetfile(fullfile(ImPath,'*bmp'),'Select Mask File');
+RAW = imread(fullfile(ImPath,ImFile));
+Mask = ~imread(fullfile(MaskPath,MaskFile));
+
+
+%% Apply mask to image
+imMasked = double(RAW).*double(Mask);
+imMasked = uint8(imMasked);
+% RAW = RAW(8000:12000,1:4000); % For testing
 %% Marrow Mask
-imContrast = localcontrast(RAW);
+imContrast = localcontrast(imMasked);
 
 %%
 imThresh =imContrast;
-imThresh(imThresh<20) = 0;
+imThresh(imThresh<20) = 0; % Remove low intensity pixels
 
-imMedian = medfilt2(imThresh,10.*[1 1]);
-imFlat = imflatfield(imMedian,20);
+imMedian = medfilt2(imThresh,10.*[1 1]); % Remove noise
+imFlat = imflatfield(imMedian,20); % Correct background illumination
 
-imAdj = imadjust(imFlat);
-imBW = imbinarize(imAdj,0.3);
-imDil = imdilate(imBW,strel('disk',2));
+imAdj = imadjust(imFlat); % Re-contrast
+imBW = imbinarize(imAdj,0.3); % Convert to BW image.
+
+% Fill holes in ring shaped cells
+imDil = imdilate(imBW,strel('disk',2)); 
 imFill = imfill(imDil,'holes');
 imEr = imerode(imFill,strel('disk',2));
+
+% Refine binary selection (
 imOpen = imopen(imEr,strel('disk',2));
 imClose = imclose(imEr,strel('disk',5));
+
 %% watershed
 imInvert = imClose;
 
@@ -46,42 +59,18 @@ smallRem = bwpropfilt(imShed,'EquivDiameter',[minDiam 200]);
 
 
 cprops = regionprops('table',smallRem,'Centroid');
-centers = cprops.Centroid;
+pts = cprops.Centroid;
 
-
-imshow(labeloverlay(imContrast,imFill));
+% Visualize for testing
+% imshow(labeloverlay(imContrast,imFill));
 imshow(imContrast)
 hold on
-plot(centers(:,1),centers(:,2),'.r','MarkerSize',5)
+plot(pts(:,1),pts(:,2),'.r','MarkerSize',5)
 
-% Binary Open
-% openim = imopen(imThresh,strel('disk',2));
-
-
-% % Binary Close
-% closeim = imclose(openim,strel('disk',20));
-% 
-% % Invert image
-% mask = ~closeim;
-
-% %% Save
-% [spath,fname]=fileparts(path);
-% fname = strcat(fname(1:end-1),'basemask.png');
-% imwrite(mask,fullfile(spath,fname));
-
-
-% %% Outer Mask
-% imThresh = RAW>=5;
-% 
-% % Binary Open
-% openim = imopen(imThresh,strel('disk',10));
-% 
-% % Binary Close
-% closeim = imclose(openim,strel('disk',200));
-% imshow(closeim)
-% 
-% % Invert image
-% mask = closeim;
+%% Save
+ppname = strcat(ImFile(1:end-5),'MKPP.mat');
+save(fullfile(ImPath,ppname),'pts');
+% imwrite(mask,fullfile(ImPath,ppname));
 
 
 
