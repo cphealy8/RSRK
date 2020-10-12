@@ -9,7 +9,6 @@ win = [0 5 0 1];
 kFrames = [1 5 10 25];
 fOverlap = 0.5;
 r = logspace(log10(0.01),log10(0.5),11);
-r(1) = [];
 
 
 %%
