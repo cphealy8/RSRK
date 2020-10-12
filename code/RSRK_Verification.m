@@ -20,7 +20,7 @@ fnames = dir(dirname);
 % Bivariate patterns run from k=41:56;
 % Signal patterns run from 57:80
 
-for k = [(116+15):(121+15)]
+for k = [(61+15) (112+15)]
 
 % for k = (57+13):72
     fname = fnames(k).name;
@@ -42,11 +42,13 @@ for k = [(116+15):(121+15)]
                 
                 %% Run Simulations 
                 for m=1:length(kFrames)
+                    
                     if exist('mask1','var')&&exist('mask2','var')
                         [RK,FPosition{m}] = MovingRKSig(Signal,pts,r*imRez,mask1,'Pts2Sig',kFrames(m),0.5,1,'X');
                     else
                         [RK,FPosition{m}] = MovingRKSig(Signal,pts,r*imRez,Mask,'Pts2Sig',kFrames(m),0.5,1,'X');
                     end
+                    
                     
                     tempStruct = cell2mat(RK);
                     FPosition{m} = FPosition{m}./imRez;
