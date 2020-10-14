@@ -1,16 +1,18 @@
    clc; clear; close all;
 addpath('Dependencies')
-
+starttime = clock;
 %% Analysis Params
-FrameWidthFrac = 1/12; % what fraction of the full window is each frame.
+% nFrames = 15;
+FrameWidth = 2000; %[=]um
+
 fOverlap = 0.5;
-rescale = 0.1; % [=] pixDRez/pix
-imscale = 1.49; % pix/µm
-SigLvls = [0.05 0.01];
+rescale = 1/7.5; % [=] pixDRez/pix
+imscale = 1.50; % pix/µm
+SigLvls = [0.05];
 
 % Analysis scales (r);
-r = [10 20 30 50 100 200 300 500]; %[=] µm
-r(1) = [];
+% r = [10 20 30 50 90 160 290 500]; %[=] µm
+r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
 
 Units = 'um';
 ScaleUnits = 'um/pixel';
@@ -25,12 +27,13 @@ mask = ~imread(fullfile(MaskPath,MaskFile));
 load(strcat(PtPath,PtFile));
 
 %% Scaling and Frames
+framewidth = FrameWidth*imscale;
+
 [SHeight,SWidth] = size(Signal);
-framewidth = round(SWidth*FrameWidthFrac);
-nFrames = compFrames(SWidth,fOverlap,framewidth); 
+[nFrames,fOverlap] = compFrames(SWidth,fOverlap,framewidth); 
 
 % Rescale the image and points (Downsample for computational time);
-pts = pts*rescale;
+  pts = pts*rescale;
 mask = imresize(mask,rescale);
 Signal = imresize(Signal,rescale);
 
@@ -57,13 +60,17 @@ FPosition = FPosition/Scale;
                     
 % Calling this K to simplify coding but it's really G(r). 
 K = log2(KObs./KCSR);
+
+endtime = clock;
+
+TimeElapsed = etime(endtime,starttime)/60;
         
 %% Save the data
 FileRoot = ImFile(1:end-4);
 FileName = strcat(FileRoot,'_MKRK.mat');
 savedir = fullfile(ImPath,FileName);
 save(savedir,'RK','Signal','KObs','KCSR','K','npts','r','FPosition',...
-    'pts','nFrames','mask','imscale','rescale');
+    'pts','nFrames','mask','imscale','rescale','TimeElapsed','FrameWidth','nFrames','fOverlap');
 
 
 S(1) = load('gong');
