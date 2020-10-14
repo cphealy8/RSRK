@@ -9,16 +9,18 @@ Mask = ~imread(fullfile(MaskPath,MaskFile));
 %% Apply mask to image
 imMasked = double(RAW).*double(Mask);
 imMasked = uint8(imMasked);
-% RAW = RAW(8000:12000,1:4000); % For testing
+% imMasked = imMasked(1:3800,8000:12000); % For testing
 %% Marrow Mask
-imContrast = localcontrast(imMasked);
+imContrast = imadjust(imMasked);
 
 %%
 imThresh =imContrast;
-imThresh(imThresh<20) = 0; % Remove low intensity pixels
+imThresh(imThresh<60) = 0; % Remove low intensity pixels
 
-imMedian = medfilt2(imThresh,10.*[1 1]); % Remove noise
-imFlat = imflatfield(imMedian,20); % Correct background illumination
+imMedian = medfilt2(imThresh,20.*[1 1]); % Remove noise
+imMeThr =imMedian;
+imMeThr(imMeThr<120)= 0;
+imFlat = imflatfield(imMeThr,20); % Correct background illumination
 
 imAdj = imadjust(imFlat); % Re-contrast
 imBW = imbinarize(imAdj,0.3); % Convert to BW image.
@@ -55,6 +57,7 @@ if minDiam<0
 end
 
 smallRem = bwpropfilt(imShed,'EquivDiameter',[minDiam 200]);
+
 
 
 
