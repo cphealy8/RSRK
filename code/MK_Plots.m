@@ -1,6 +1,7 @@
 clc; clear; close all;
-[datFile,datPath] = uigetfile('../data/*mat','Load Data File');
-load(fullfile(datPath,datFile));
+selpath = uigetdir('../data');
+% [datFile,datPath] = uigetfile('../data/*mat','Load Data File');
+% load(fullfile(datPath,datFile));
 
 %%
 sigLvl = 0.05;
