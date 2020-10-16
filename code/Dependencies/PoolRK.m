@@ -1,6 +1,8 @@
 function [RK] = PoolRK(type,varargin)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+%POOLRK Pool results from RSRK analysis
+%   This code pools results from multiple RSRK data files. Running the code
+%   will prompt you to select the files you want to pool and output the
+%   pooled RSRK data file to a directory that you choose. 
 
 % Create the combined matrix
 if nargin == 2
@@ -89,7 +91,7 @@ end
 end
 
 % Save
-uisave({'RK','x'},'CombinedRK')
+uisave({'RK','x','r'},'CombinedRK')
 end
 
 function [ObsE,SimE] = RK2E(RK,lambda)

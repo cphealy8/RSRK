@@ -23,10 +23,12 @@ while state
     n = n+1;
     
     [FileName,PathName] = uigetfile(tgtDir,'Select RK Sample File');
-    load(fullfile(PathName,FileName),'RK','x','Units');
+    load(fullfile(PathName,FileName),'RK','x','FPosition','Units');
     CombinedRK{n} = RK;
     needCheck = 0;
-    
+    if ~exist('x','var')
+        x=FPosition;
+    end
 %     windowWidth(n) = RK{1}.WindowWidth;
     xMax(n) = x(end)+RK{1}.WindowWidth;
     tempX(n,:) = x;

@@ -16,7 +16,7 @@ SigMap = p.Results.SigMap;
 cLims = p.Results.cLims;
 %%
 
-fH = figure('Position',[50 50 500 100]);
+fH = figure('Position',[50 50 40*length(x) 20*length(r)]);
 
 
 [axL,axM] = imagescGrid(x,r,K);
@@ -63,6 +63,7 @@ if isempty(cLims)
         cLims = [0 maxK];
     elseif minK<0 && maxK<0
         cLims = [minK 0];
+    end
 end
 
 caxis(cLims);

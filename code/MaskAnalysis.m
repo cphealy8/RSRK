@@ -3,7 +3,8 @@
 % The max interpretable scale is defined as the radius of the circle with
 % equivalent area to the largest region in the mask.
 addpath('Dependencies')
-ImScale = 0.69; % Image scale Units/pixel
+ImScale = 0.69; % Image scale Units/pixel [original coutu dataset]
+
 % Moving Window Settings
 WindowOverlap = 0.5;
 nWindows = 10;

@@ -25,10 +25,19 @@ for fID=1:length(foldnames)
     for datID=1:length(RKdatafiles)
         curFile = RKdatafiles{datID};
         load(fullfile(curFold,curFile));
+        
+        if ~exist('r','var')
+            r= RK{1}.r;
+        end
+        if ~exist('FPosition','var')
+            FPosition =x;
+        end
         nr = length(r);
         nframes = length(FPosition);
         G = zeros(nr,nframes);
         IsSig = zeros(nr,nframes);
+        
+        
 
         FPosition= FPosition./(max(FPosition));
 
@@ -45,7 +54,7 @@ for fID=1:length(foldnames)
         maxG(cntr) = max(G(:));
         minG(cntr) = min(G(:));
 
-        [fH,axM,axH] = RSRK_Plot(r,FPosition,K,'SigMap',IsSig,'cLims',cLims);
+        [fH,axM,axH] = RSRK_Plot(r,FPosition,G,'SigMap',IsSig,'cLims',cLims);
         SaveFile = curFile(1:end-4);
         
         ylabel(axH,'Scale r (µm)')
@@ -60,5 +69,7 @@ for fID=1:length(foldnames)
         print(fH,SaveName,'-dpng');
         
         close all
+        
+        clear r FPosition G IsSig
     end
 end
