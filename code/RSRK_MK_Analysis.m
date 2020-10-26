@@ -6,7 +6,7 @@ DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
 SaveDir = '..\results\Kokliaris Dataset\';
 
-SaveTag = 'n11f0';
+SaveTag = 'n15MaskA';
 
 
 starttime = clock;

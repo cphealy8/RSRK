@@ -72,7 +72,7 @@ for k = 1:nFrames
     % Compute the Pooled Envelopes
     pool.SigLvls = cRK.SigLvls;
     pool.r = cRK.r;
-    
+    r= pool.r;
     % Extract signficance envelopes
 for n = 1:length(pool.SigLvls)
     if pool.SigLvls(n)<0

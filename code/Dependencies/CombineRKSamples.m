@@ -28,6 +28,8 @@ while state
     needCheck = 0;
     if ~exist('x','var')
         x=FPosition;
+    elseif ~exist('Units','var')
+        Units = 'pixels';
     end
 %     windowWidth(n) = RK{1}.WindowWidth;
     xMax(n) = x(end)+RK{1}.WindowWidth;
