@@ -48,11 +48,13 @@ addRequired(p,'pts',@isnumeric);
 addRequired(p,'win',@isnumeric);
 addParameter(p,'EdgeCorrection','on',@ischar);
 addParameter(p,'t',[],@isnumeric);
+addParameter(p,'Mask',[],@isnumeric);
 
 parse(p,pts,win,varargin{:})
 
 EdgeCorrection = p.Results.EdgeCorrection;
 t = p.Results.t;
+Mask = p.Results.Mask;
 
 % Check pts
 [ptsrows,ptscols] = size(pts);
@@ -83,8 +85,19 @@ end
 
 %% Ignore points outside the window
 [pts]=ignorePts(pts,win);
+
+% apply mask if needed
+if ~isempty(Mask)
+    pts = CropPts2Mask(pts,Mask);
+end
+
 %% Useful numbers
-A = winL*winW; % Area of the study rectangle. 
+if isempty(Mask)
+    A = winL*winW; % Area of the study rectangle.
+else 
+    A = sum(Mask(:));
+end
+
 [Npts,~] = size(pts); % Number of points
 
 %% Compute recommended search radii (t)

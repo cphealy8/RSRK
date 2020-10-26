@@ -1,6 +1,20 @@
 function [K,LminR,FPosition] = RRK(pts,win,r,nFrames,fOverlap,EdgeCorrection,varargin)
 %RRK Rolling Ripley's K
 %   Detailed explanation goes here
+p = inputParser;
+addRequired(p,'pts',@isnumeric)
+addRequired(p,'win',@isnumeric)
+addRequired(p,'r',@isnumeric)
+addRequired(p,'nFrames',@isnumeric)
+addRequired(p,'fOverlap',@isnumeric)
+addRequired(p,'EdgeCorrection',@ischar)
+addOptional(p,'PtsB',[],@isnumeric);
+addOptional(p,'Mask',[],@isnumeric);
+
+parse(p,pts,win,r,nFrames,fOverlap,EdgeCorrection,varargin{:})
+
+PtsB = p.Results.PtsB;
+Mask = p.Results.Mask;
 
 % Compute Window Width
 WinHeight = win(4)-win(3);
@@ -21,13 +35,31 @@ LminR = zeros(nFrames,rLen);
 
 for n=1:nFrames
     CurFrame = [FStarts(n) FEnds(n) win(3) win(4)];
-    if ~isempty(varargin)
+    
+    % Generate current mask.
+    if ~isempty(Mask)
+        CurMask = Mask(CurFrame(1):CurFrame(2),CurFrame(3):CurFrame(4));
+    end
+    
+    if ~isempty(PtsB)
         CurPtsA = CropPts2Win(pts,CurFrame);
-        CurPtsB = CropPts2Win(varargin{1},CurFrame);
-        [K(n,:),~,L] = Kmulti(CurPtsA,CurPtsB,CurFrame,r);
+        CurPtsB = CropPts2Win(PtsB,CurFrame);
+        
+        if ~isempty(Mask)
+            [K(n,:),~,L] = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r,'Mask',CurMask);
+        else
+            [K(n,:),~,L] = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r);
+        end
+        
+        
     else % Univariate
         CurPts = CropPts2Win(pts,CurFrame);
-        [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection);
+        
+        if ~isempty(Mask)
+            [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection,'Mask',CurMask);
+        else
+            [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection);
+        end
     end
     
     LminR(n,:) = L-r;

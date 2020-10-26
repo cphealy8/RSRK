@@ -38,6 +38,21 @@ function [K,t,L,KP,LP,wAB,cnt] = Kmulti(ptsA,ptsB,win,varargin)
 
 %% Check/correct incorrect inputs
 
+p = inputParser;
+
+addRequired(p,'ptsA',@isnumeric)
+addRequired(p,'ptsB',@isnumeric)
+addRequired(p,'win',@isnumeric)
+addOptional(p,'t',[],@isnumeric)
+addOptional(p,'Mask',[],@isnumeric)
+
+parse(p,ptsA,ptsB,win,varargin{:})
+
+t = p.Results.t;
+Mask = p.Results.Mask;
+
+
+
 % Check ptsA
 [ptsrowsA,ptscolsA] = size(ptsA);
 if ptscolsA==2
@@ -78,6 +93,13 @@ end
 %% Ignore points outside the window
 [ptsA]=ignorePts(ptsA,win);
 [ptsB]=ignorePts(ptsB,win);
+
+% apply mask to pts if needed.
+if ~isempty(Mask)
+    ptsA = CropPts2Mask(ptsA,Mask);
+    ptsB = CropPTs2Mask(ptsB,Mask);
+end
+
 %% Useful info
 % Size
 [N,~]=size(ptsA);
@@ -86,15 +108,19 @@ end
 winL = diff(win(1:2));       % window length
 winW = diff(win(3:4));       % window width
 
-area = winL*winW;               % Window Area
+% Window Area
+if isempty(Mask)
+    area = winL*winW;               
+else
+    area = sum(Mask(:));
+end
 
 %% Compute recommended search radii (t)
-if isempty(varargin)
+if isempty(t)
 tmax = min([winL winW])./2;  % Recommended maximum search radius
 tN = 100;                    % Number of steps in t
 t = linspace(0,tmax,tN);     % Search radii
-elseif ~isempty(varargin)
-    t = varargin{1}; % user defined t.
+elseif ~isempty(t)
     tN = length(t);
 end
 t = reshape(t,[1 1 tN]);     % Convert into 3D vector.
