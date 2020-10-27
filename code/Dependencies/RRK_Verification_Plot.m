@@ -12,7 +12,7 @@ addRequired(p,'PPName')
 addRequired(p,'cLims')
 addRequired(p,'T')
 addOptional(p,'ptsB',[],@isnumeric)
-addOptional(p,'Signal',[],@isnumeric)
+addOptional(p,'Signal',[])
 
 parse(p,r,FPosition,L,pts,PPName,cLims,T,varargin{:})
 
@@ -22,10 +22,21 @@ Signal = p.Results.Signal;
 
 %Determine axes limits
 LSD = RRK_SD(L);
-LSDMat= cell2mat(LSD);
+if iscell(LSD)
+    LSDMat= cell2mat(LSD);
+else
+    LSDMat=LSD;
+end
+
 MaxSD = max(LSDMat(:));
 LMean = RRK_Mean(L);
-MeanMat = cell2mat(LMean);
+
+if iscell(LMean)
+    MeanMat = cell2mat(LMean);
+else
+    MeanMat = LMean;
+end
+
 MaxMean = max(MeanMat(:));
 MinMean = min(MeanMat(:));
 

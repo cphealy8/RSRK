@@ -9,7 +9,7 @@ addRequired(p,'nFrames',@isnumeric)
 addRequired(p,'fOverlap',@isnumeric)
 addRequired(p,'EdgeCorrection',@ischar)
 addOptional(p,'PtsB',[],@isnumeric);
-addOptional(p,'Mask',[],@isnumeric);
+addOptional(p,'Mask',[]);
 
 parse(p,pts,win,r,nFrames,fOverlap,EdgeCorrection,varargin{:})
 
@@ -38,12 +38,15 @@ for n=1:nFrames
     
     % Generate current mask.
     if ~isempty(Mask)
-        CurMask = Mask(CurFrame(1):CurFrame(2),CurFrame(3):CurFrame(4));
+        CurMask = Mask(1:WinHeight,floor(FStarts(n)+1):floor(FEnds(n)));
     end
     
     if ~isempty(PtsB)
         CurPtsA = CropPts2Win(pts,CurFrame);
         CurPtsB = CropPts2Win(PtsB,CurFrame);
+        
+        CurPtsA = CurPtsA(:,1)-FStarts(n); % Re-zero
+        CurPtsB = CurPtsB(:,1)-FStarts(n); % Re-zero
         
         if ~isempty(Mask)
             [K(n,:),~,L] = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r,'Mask',CurMask);
@@ -54,7 +57,7 @@ for n=1:nFrames
         
     else % Univariate
         CurPts = CropPts2Win(pts,CurFrame);
-        
+        CurPts(:,1) = CurPts(:,1)-FStarts(n); % Re-zero
         if ~isempty(Mask)
             [K(n,:),~,L] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection',EdgeCorrection,'Mask',CurMask);
         else

@@ -48,7 +48,7 @@ addRequired(p,'pts',@isnumeric);
 addRequired(p,'win',@isnumeric);
 addParameter(p,'EdgeCorrection','on',@ischar);
 addParameter(p,'t',[],@isnumeric);
-addParameter(p,'Mask',[],@isnumeric);
+addParameter(p,'Mask',[]);
 
 parse(p,pts,win,varargin{:})
 
@@ -84,11 +84,13 @@ end
 
 
 %% Ignore points outside the window
-[pts]=ignorePts(pts,win);
+
 
 % apply mask if needed
 if ~isempty(Mask)
     pts = CropPts2Mask(pts,Mask);
+else
+%     [pts]=ignorePts(pts,win);
 end
 
 %% Useful numbers

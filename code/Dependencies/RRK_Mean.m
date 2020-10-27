@@ -10,9 +10,10 @@ if iscell(L)
     LMean{k} = mean(curL,3,'omitnan');
     end
 else
+    LMean = mean(L,3,'omitnan');
     LMean(LMean==inf) = NaN;
     LMean(LMean==-inf) = NaN;
-    LMean = mean(LMean,3,'omitnan');
+    
 end
 
 end

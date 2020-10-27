@@ -8,7 +8,8 @@ if iscell(L)
     LSD{k} = std(curL,0,3,'omitnan');
     end
 else
-    LSD = std(curL,0,3,'omitnan');
+    
+    LSD = std(L,0,3,'omitnan');
 end
 
 end
