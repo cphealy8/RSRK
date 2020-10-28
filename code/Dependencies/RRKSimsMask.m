@@ -9,12 +9,10 @@ addRequired(p,'nFrames',@isnumeric)
 addRequired(p,'fOverlap',@isnumeric)
 addRequired(p,'SigLvl',@isnumeric)
 addRequired(p,'Mask');
-addOptional(p,'PtsB',[],@isnumeric);
 
 
 parse(p,pts,r,nFrames,fOverlap,SigLvl,Mask,varargin{:})
 
-PtsB = p.Results.PtsB;
 
 [MaskHeight,MaskWidth] = size(Mask);
 
@@ -38,68 +36,54 @@ msims = (2/SigLvl)-1;
 % Preallocate
 EObs = zeros(nFrames,rLen);
 ESims = zeros(nFrames,rLen,msims);
+A = zeros(nFrames,1);
+npts = zeros(nFrames,1);
+
 %% Simulation
 pbar = 0;
 pbarmax = nFrames*msims;
 tvec = nan(1,pbarmax);
 
 hbar = waitbar(0,'');
+
 for n=1:nFrames
-%     CurFrame = [win(3) win(4) FStarts(n) FEnds(n)];
     CurFrame = [FStarts(n) FEnds(n) win(3) win(4)];
     
-    % Generate current mask.
-
+    % Generate current mask
     CurMask = Mask(1:WinHeight,floor(FStarts(n)+1):floor(FEnds(n)));
-    A(n) = sum(CurMask(:));
+    A(n) = sum(CurMask(:)); % Save Area
 
-    
     % Compute current points and npts and KObs
-    if ~isempty(PtsB)
-        CurPtsA = CropPts2Win(pts,CurFrame);
-        CurPtsB = CropPts2Win(PtsB,CurFrame);
-        
-        CurPtsA = CurPtsA(:,1)-FStarts(n); % Re-zero
-        CurPtsB = CurPtsB(:,1)-FStarts(n); % Re-zero
-        
-        nptsA = length(CurPtsA);
-        nptsB = length(CurPtsB);
-        
-        [~,~,~,~,~,~,EObs(n,:)] = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r,'Mask',CurMask);    
-    else
-        CurPts = CropPts2Win(pts,CurFrame);
-        npts(n) = length(CurPts);
-        CurPts(:,1) = CurPts(:,1)-FStarts(n); % Re-zero
-        
-        [~,~,~,~,~,~,EObs(n,:)] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
-    end
-
+    CurPts = CropPts2Win(pts,CurFrame);
+    npts(n) = length(CurPts); % Save Number of Points
+    CurPts(:,1) = CurPts(:,1)-FStarts(n); % Re-zero
+    
+    % Compute observed E
+    [~,~,~,~,~,~,EObs(n,:)] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
     
     % Compute Simulated RRK
     for m = 1:msims
         tic;
-        if ~isempty(PtsB)
-            RndPtsA = RandPPMask(nptsA,CurMask);
-            RndPtsB = RandPPMask(nptsB,CurMask);
 
-            [~,~,~,~,~,~,ESims(n,:,m)] = Kmulti(RndPtsA,RndPtsB,CurFrame,'t',r,'Mask',CurMask);    
-        else % Univariate
-            RndPts = RandPPMask(npts(n),CurMask);
-            [~,~,~,~,~,~,ESims(n,:,m)] = Kest(RndPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
-        end
+        RndPts = RandPPMask(npts(n),CurMask); % Shuffle points
+        
+        % Compute simulated value
+        [~,~,~,~,~,~,ESims(n,:,m)] = Kest(RndPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
         
         
-        % Update progress bar
+        %% Update progress bar
         pbar = pbar+1;
-        
+        % Time estimation
         tvec(pbar) = toc;
         meantime = mean(tvec,'omitnan');
-        ETR = round((pbarmax-pbar).*meantime/60);
+        ETR = round((pbarmax-pbar).*meantime/60); % Estimated Time Remaining
         waitbar(pbar/pbarmax,hbar,sprintf('Simulating CSR Frame: %d/%d Sim:%d/%d \n Estimated Time Remaining: %d min',n,nFrames,m,msims,ETR))
     end
 end
+
 delete(hbar)
 
+% Conver E's to K's using point process density.
 LInv = A./(npts.*(npts-1)); % Inverse lambda (density)
 
 KObs = bsxfun(@times,EObs,LInv');
