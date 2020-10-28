@@ -1,5 +1,6 @@
 function [KObs,KSims,FPosition,EObs,ESims,A,npts] = RRKSimsMask(pts,r,nFrames,fOverlap,SigLvl,Mask,varargin)
-%RRK Rolling Ripley's K
+%RRKSimsMask Compute observed Ripley's K and Ripley's K under simulated CSR
+%using a Rolling window approach. 
 %   Detailed explanation goes here
 p = inputParser;
 addRequired(p,'pts',@isnumeric)
@@ -35,8 +36,8 @@ FPosition = FEnds./WinWidth; % Frame position as fraction of window width.
 msims = (2/SigLvl)-1;
 
 % Preallocate
-KObs = zeros(nFrames,rLen);
-KSims = zeros(nFrames,rLen,msims);
+EObs = zeros(nFrames,rLen);
+ESims = zeros(nFrames,rLen,msims);
 %% Simulation
 pbar = 0;
 pbarmax = nFrames*msims;
@@ -64,13 +65,13 @@ for n=1:nFrames
         nptsA = length(CurPtsA);
         nptsB = length(CurPtsB);
         
-        KObs(n,:) = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r,'Mask',CurMask);    
+        [~,~,~,~,~,~,EObs(n,:)] = Kmulti(CurPtsA,CurPtsB,CurFrame,'t',r,'Mask',CurMask);    
     else
         CurPts = CropPts2Win(pts,CurFrame);
         npts(n) = length(CurPts);
         CurPts(:,1) = CurPts(:,1)-FStarts(n); % Re-zero
         
-        [KObs(n,:),~,~,~,~,~,EObs(n,:)] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
+        [~,~,~,~,~,~,EObs(n,:)] = Kest(CurPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
     end
 
     
@@ -81,10 +82,10 @@ for n=1:nFrames
             RndPtsA = RandPPMask(nptsA,CurMask);
             RndPtsB = RandPPMask(nptsB,CurMask);
 
-            KSims(n,:,m) = Kmulti(RndPtsA,RndPtsB,CurFrame,'t',r,'Mask',CurMask);    
+            [~,~,~,~,~,~,ESims(n,:,m)] = Kmulti(RndPtsA,RndPtsB,CurFrame,'t',r,'Mask',CurMask);    
         else % Univariate
             RndPts = RandPPMask(npts(n),CurMask);
-            [KSims(n,:,m),~,~,~,~,~,ESims(n,:,m)] = Kest(RndPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
+            [~,~,~,~,~,~,ESims(n,:,m)] = Kest(RndPts,CurFrame,'t',r,'EdgeCorrection','off','Mask',CurMask);
         end
         
         
@@ -99,9 +100,10 @@ for n=1:nFrames
 end
 delete(hbar)
 
-% KSims = rot90(KSims);
-% KObs = KObs';
+LInv = A./(npts.*(npts-1)); % Inverse lambda (density)
 
-% ESims = rot90(ESims);
+KObs = bsxfun(@times,EObs,LInv');
+KSims = bsxfun(@times,ESims,LInv');
+
 end
 

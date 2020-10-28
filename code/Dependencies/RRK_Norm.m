@@ -27,12 +27,12 @@ if ~isempty(Mask)
 end
 
 %% Compute Observed RK stat
-[~,~,FPosition,EObs,ESims,A,npts] = RRKSimsMask(pts,r,nFrames,fOverlap,SigLvl,Mask);
+[KObs,KSims,~,FPosition] = RRKSimsMask(pts,r,nFrames,fOverlap,SigLvl,Mask);
 
-LInv = A./(npts.*(npts-1)); % Inverse lambda (density)
-
-KObs = bsxfun(@times,EObs,LInv');
-KSims = bsxfun(@times,ESims,LInv');
+% LInv = A./(npts.*(npts-1)); % Inverse lambda (density)
+% 
+% KObs = bsxfun(@times,EObs,LInv');
+% KSims = bsxfun(@times,ESims,LInv');
 %% Compute stats and normalize
 KMean = mean(KSims,3,'omitnan');
 G = log2(KObs./KMean); %Normalized, reports % excess
