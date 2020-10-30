@@ -1,4 +1,4 @@
-function [G,Sig,r,FPosition,cLims,KScaled] = RRK_Norm(pts,r,nFrames,fOverlap,SigLvl,varargin)
+function [G,Sig,r,FPosition,cLims,KScaled,PercEx,KObs,KSims] = RRK_Norm(pts,r,nFrames,fOverlap,SigLvl,varargin)
 %RRK_Norm Compute the normalized rolling Ripley's K statistic. Reports L as
 %percent excess. 
 %   Detailed explanation goes here
@@ -35,7 +35,9 @@ end
 % KSims = bsxfun(@times,ESims,LInv');
 %% Compute stats and normalize
 KMean = mean(KSims,3,'omitnan');
-G = log2(KObs./KMean); %Normalized, reports % excess
+KRatio = KObs./KMean;
+PercEx = KRatio-1; % Report percent excess
+G = log2(KRatio); %Normalized, fold excess
 
 maxSim = max(KSims,[],3);
 minSim = min(KSims,[],3);
