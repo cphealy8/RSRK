@@ -1,3 +1,10 @@
 
 data/FullPts.zip
 data/images.zip
+data/Kokliaris Dataset/3wo_femur_1/3wo femur-1.ims
+data/Kokliaris Dataset/12wo_sternum_2/12wo sternum-2.ims
+data/Kokliaris Dataset/12wo_sternum_1/12wo sternum-1.ims
+data/Kokliaris Dataset/12wo_femur_2/12wo femur-2.ims
+data/Kokliaris Dataset/ImarisViewer9_6_0w64.exe
+*.ims
+data/Kokliaris Dataset/Temp.zip
