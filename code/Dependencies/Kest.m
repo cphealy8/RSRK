@@ -93,7 +93,7 @@ else
 %     [pts]=ignorePts(pts,win);
 end
 
-%% Useful numbers
+%% Useful numbersd
 if isempty(Mask)
     A = winL*winW; % Area of the study rectangle.
 else 
