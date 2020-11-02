@@ -1,4 +1,4 @@
-function [RK] = PoolRK(type,varargin)
+function [RK] = PoolRSRK(type,varargin)
 %POOLRK Pool results from RSRK analysis
 %   This code pools results from multiple RSRK data files. Running the code
 %   will prompt you to select the files you want to pool and output the

@@ -1,4 +1,4 @@
-function [G,Sig,r,FPosition,cLims,KScaled,PercEx,KObs,KSims] = RRK_Norm(pts,r,nFrames,fOverlap,SigLvl,varargin)
+function [G,Sig,r,FPosition,cLims,KScaled,PercEx,KObs,KSims,EObs,ESims] = RRK_Norm(pts,r,nFrames,fOverlap,SigLvl,varargin)
 %RRK_Norm Compute the normalized rolling Ripley's K statistic. Reports L as
 %percent excess. 
 %   Detailed explanation goes here
@@ -27,7 +27,7 @@ if ~isempty(Mask)
 end
 
 %% Compute Observed RK stat
-[KObs,KSims,~,FPosition] = RRKSimsMask(pts,r,nFrames,fOverlap,SigLvl,Mask);
+[KObs,KSims,FPosition,EObs,ESims,A,npts] = RRKSimsMask(pts,r,nFrames,fOverlap,SigLvl,Mask);
 
 % LInv = A./(npts.*(npts-1)); % Inverse lambda (density)
 % 
@@ -62,4 +62,3 @@ Sig = Sig';
 KScaled = KScaled';
 % LPerc = log2(KObs./KMean);
 end
-
