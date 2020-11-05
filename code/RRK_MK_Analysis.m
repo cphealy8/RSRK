@@ -8,7 +8,8 @@ SigLvl = 0.01;
 
 % Analysis scales (r);
 r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
-rscaled = r*imscale; %[=] pixels   
+
+
 
 Units = 'um';
 ScaleUnits = 'um/pixel';
@@ -20,7 +21,13 @@ SaveDir = '..\results\Kokliaris Dataset\';
 [PtFile,PtPath] = uigetfile(fullfile(MaskPath,'*mat'),'Select Points File');
 Mask = ~imread(fullfile(MaskPath,MaskFile));
 load(fullfile(PtPath,PtFile));
+
+rescale = 0.9;
+rscaled = r*imscale*rescale; %[=] pixels  
+Mask = imresize(Mask,rescale);
+pts = rescale.*pts;
 pts = CropPts2Mask(pts,Mask);
+
 
 % pts = RandPPMask(length(pts),Mask);
 %% Run Simulations
@@ -30,7 +37,7 @@ win = [0 MaskWidth 0 MaskHeight];
 [G,Sig,~,FPosition,cLims,KScaled,PercEx,KObs,KSims] = RRK_Norm(pts,rscaled,nFrames,fOverlap,SigLvl,'Mask',Mask);
 
 %% Plot
-[fH1,axM,axH] = RSRK_Plot(r,FPosition,G,'SigMap',Sig,'cLims',cLims);
+[fH1,axM,axH] = RSRK_Plot(r,FPosition,PercExp,'SigMap',Sig,'cLims',cLims);
 % [fH2,axM,axH] = RSRK_Plot(r,FPosition,KScaled,'SigMap',Sig);
 %% Save the data
 

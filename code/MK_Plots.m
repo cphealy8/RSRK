@@ -56,6 +56,8 @@ for fID=1:length(foldnames)
 
         [fH,axM,axH] = RSRK_Plot(r,FPosition,G,'SigMap',IsSig,'cLims',cLims);
         SaveFile = curFile(1:end-4);
+        fH.Units = 'centimeters';
+        fH.Position = [1 1 9.5 6.0];
         
         ylabel(axH,'Scale r (µm)')
         yticklabels(axH,r)

@@ -34,15 +34,11 @@ end
 % KObs = bsxfun(@times,EObs,LInv');
 % KSims = bsxfun(@times,ESims,LInv');
 %% Compute stats and normalize
-KMean = mean(KSims,3,'omitnan');
-KRatio = KObs./KMean;
-PercEx = KRatio-1; % Report percent excess
-G = log2(KRatio); %Normalized, fold excess
+[PercEx,G,Sig] = RRKSigStandard(KObs,KSims);
 
 maxSim = max(KSims,[],3);
 minSim = min(KSims,[],3);
 
-Sig = xor(KObs>=maxSim,KObs<=minSim);
 
 % Scale to Range
 tgtRange = [-1 1]; % Target range for new min and max Sim value.
@@ -57,6 +53,7 @@ Gnan=G;
 Gnan(G==-inf|G==inf)=nan;
 cLims = [min(Gnan(:),[],'omitnan') max(Gnan(:),[],'omitnan')];
 
+PercEx = PercEx';
 G=G';
 Sig = Sig';
 KScaled = KScaled';

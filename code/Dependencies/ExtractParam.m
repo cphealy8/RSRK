@@ -4,7 +4,10 @@ function [param] = ExtractParam(RK,paramname)
 param = [];
 for k = 1:numel(RK)
     cparam = RK{k}.(paramname);
-    param = [param cparam];
+    if numel(size(cparam))==1
+        param = [param cparam];
+    elseif numel(size(cparam))==2
+        param(k,:,:) = cparam';
+    end
 end
 end
-

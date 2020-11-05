@@ -13,7 +13,7 @@ maxL = [];
 % Signal patterns run from n=59:80
 
 ct=0; 
-for n= 115:length(fnames)
+for n= 3:length(fnames)
 %  for n = 77
 
 % Test Stat
@@ -80,6 +80,7 @@ if contains(fname,'Self')||contains(fname,'Pts2Sig')
 else
     nSD = 3;
     T = RRK_SDRange(KTarget,KTest1,nSD);
+%     [~,T] = RRK_TTest2(KTarget,KTest1,1e-4);
 end
 
 if exist('ptsA','var') && exist('ptsB','var')
