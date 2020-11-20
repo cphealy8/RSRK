@@ -1,9 +1,11 @@
 clc; clear; close all;
 cnt = 0;
+
+DatPath = '../../data/*mat';
 while 1
     cnt = cnt+1;
     
-    [DatFile{cnt},DatPath]= uigetfile('../../data/*mat','Select RRK Data File');
+    [DatFile{cnt},DatPath]= uigetfile(DatPath,'Select RRK Data File');
     filepath{cnt} = fullfile(DatPath,DatFile{cnt});
     if DatFile{cnt}==0
         cnt = cnt-1;
@@ -13,6 +15,13 @@ while 1
      
     % Load and plot results of RRK analysis
     load(filepath{cnt},'PercEx','KSims');
+    [sl,sw,sd] = size(KSims);
+    [pl,pw] =size(PercEx);
+    
+    if (sl==pw)
+        PercEx = permute(PercEx,[2 1 3]);
+    end
+    
     nsims{cnt} = size(KSims,3); 
     minP(cnt)= min(PercEx(:)*100);
     maxP(cnt)= max(PercEx(:)*100);
@@ -24,9 +33,14 @@ cLims = [-lim lim];
 
 for k = 1:cnt
     load(filepath{k},'PercEx','r','Frame','Sig')
+    
 if ~exist('Frame')
     [nFrames,nr] = size(PercEx);
-    Frame = round(linspace(0,1,nFrames));
+    if length(r)~=nr
+        PercEx = PercEx';
+        [nFrames,nr] = size(PercEx);
+    end
+    Frame = round(linspace(0,100,nFrames));
 end
 alpha = 2/(nsims{k}+1);
 

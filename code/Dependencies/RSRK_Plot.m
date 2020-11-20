@@ -38,6 +38,7 @@ sy = yy(:);
 
 
 % apply significance test results
+
 if isempty(SigMap)
     SigMap = zeros(size(K));
 end

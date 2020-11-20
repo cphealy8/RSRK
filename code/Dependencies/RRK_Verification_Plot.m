@@ -40,7 +40,7 @@ end
 MaxMean = max(MeanMat(:));
 MinMean = min(MeanMat(:));
 
-fH = figure('Position',[50 50 500 100*length(L)]);
+fH = figure('Position',[50 50 300 100*length(L)]);
 [ha,pos] = tight_subplot(length(L)+1, 1, 0, 0.1, 0.15);
 
 axes(ha(1))
@@ -49,6 +49,7 @@ if ~isempty(ptsB)
 elseif ~isempty(Signal)
     imagesc(Signal)
 end
+axis equal
 hold on
 plot(pts(:,1),pts(:,2),'.r','MarkerSize',5);
 hold off

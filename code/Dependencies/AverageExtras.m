@@ -1,5 +1,7 @@
 clc; clear; close all;
 cnt = 0;
+
+% Read data
 while 1
     cnt = cnt+1;
     
@@ -9,41 +11,20 @@ while 1
         cnt = cnt-1;
         break
     end
-    
-     
-    % Load and plot results of RRK analysis
-    load(filepath{cnt},'PercEx','KSims');
-    nsims{cnt} = size(KSims,3); 
-    minP(cnt)= min(PercEx(:)*100);
-    maxP(cnt)= max(PercEx(:)*100);
+    % Read and store results of RRK analysis
+    load(filepath{cnt})
+    kCortFrac(cnt,:) = CortFrac;
+    kMarrowFrac(cnt,:) = MarrowFrac;
+    kTrabFrac(cnt,:) = TrabFrac;
+    kCellDensity(cnt,:) = CellDensity;
 end
+clear CortFrac MarrowFrac TrabFrac CellDensity
 
+% Compute stats
+CortFrac = MainStats(kCortFrac);
+MarrowFrac = MainStats(kMarrowFrac);
+TrabFrac = MainStats(kTrabFrac);
+CellDensity = MainStats(kCellDensity);
 
-for k = 1:cnt
-    load(filepath{k},'PercEx','r','Frame','Sig')
-if ~exist('Frame')
-    [nFrames,nr] = size(PercEx);
-    Frame = round(linspace(0,1,nFrames));
-end
-alpha = 2/(nsims{k}+1);
-
-if size(PercEx,1)~=size(Sig,1)
-    Sig = Sig';
-end
-
-[fH,axM,axH] = RSRK_Plot(r,Frame,100*PercEx','SigMap',Sig','cLims',cLims);
-cbar = colorbar(axH,'North');
-xlabel(cbar,sprintf('%% Excess versus CSR\nx=NS vs. CSR \\alpha=%0.2f',alpha))
-fH.Units = 'Centimeters';
-fH.Position = [1 1 9.5 6.0];
-
-xlabel(axH,'Frame(%)')
-ylabel(axH,'Scale (µm)')
-SaveDir = '..\..\results\RRK';
-SaveFile = DatFile{k}(1:end-4);
-SaveName = fullfile(SaveDir, SaveFile);
-saveas(fH,SaveName,'pdf')
-print(fH,SaveName,'-dpng');
-
-close all
-end
+%% Save
+uisave({'Frame','CortFrac','MarrowFrac','TrabFrac','CellDensity'},'Extras_Averaged')
