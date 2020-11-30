@@ -61,7 +61,7 @@ smallRem = bwpropfilt(imShed,'EquivDiameter',[minDiam 200]);
 
 
 
-cprops = regionprops('table',smallRem,'Centroid');
+cprops = regionprops('table',smallRem,'Centroid','EquivDiameter');
 pts = cprops.Centroid;
 
 % Visualize for testing
@@ -73,7 +73,9 @@ plot(pts(:,1),pts(:,2),'.r','MarkerSize',5)
 %% Save
 ppname = strcat(ImFile(1:end-5),'MKPP.mat');
 save(fullfile(ImPath,ppname),'pts');
-% imwrite(mask,fullfile(ImPath,ppname));
+
+maskname = strcat(ImFile(1:end-5),'CellMask.bmp');
+imwrite(smallRem,fullfile(ImPath,maskname));
 
 
 

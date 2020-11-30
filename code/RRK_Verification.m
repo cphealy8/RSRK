@@ -18,7 +18,7 @@ fnames = dir(dirname);
 % Univariate patterns run from k=1:40;
 % Bivariate patterns run from k=41:56;
 
-for k = (1:40)+15
+for k = (1:7)+15
 % for k = [18]
     
     fname = fnames(k).name;

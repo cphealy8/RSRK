@@ -23,7 +23,7 @@ CartMaskFile = strcat(MaskRoot,'_cartilagemask.bmp');
 try
     CartMask = ~imread(fullfile(MaskPath,CartMaskFile));
 catch
-    CartMask = ones(size(OMask));
+    CartMask = zeros(size(OMask));
 end
 
 TrabBone = ~Mask.*OMask.*CMask.*~CartMask;

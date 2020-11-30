@@ -12,18 +12,23 @@ maxL = [];
 % Bivariate patterns run from n=43:58
 % Signal patterns run from n=59:80
 
-ct=0; 
-for n= 3:length(fnames)
-%  for n = 77
+ct=0;
+ctr = 0;
+for n= 8:9
+% for n = [6 7 18 25 19 26 47 55]+2 % Verification fig 1 
+% for n = [57 59 61 66 71 76 102 104 106 120]+2 % Verification fig 2
 
+ctr = ctr+1;
 % Test Stat
 fname = fnames(n).name;
 % Load the appropriate baseline statistic for each group of tests
 if n<=42
-    cLims = [-0.0313 0.1210];
+%     cLims = [-0.0313 0.1210]; % all
+    cLims = [-0.06 0.06]; % verification fig 1 univariate;
     load('..\data\Verification Tests\PP001_RandomHomogenous.mat')
 elseif n>42 && n<=58
-    cLims = [-0.04 0.04];
+%     cLims = [-0.04 0.04]; % all
+    cLims = [-0.06 0.06]; % verification fig 1 bivariate;
     if contains(fname,'1090')
         load('..\data\Verification Tests\PP041_RandomRandom1090Homogenous.mat')
     elseif contains(fname,'5050')
@@ -32,12 +37,15 @@ elseif n>42 && n<=58
 elseif n>=59
     if contains(fname,'Pts2Sig')
         cLims = [-1.5 1.5];
+        cLims = [-2 2];
         if contains(fname,'Exclusive')
             cLims = [-3 3];
+            cLims = [-2 2];
         end
         load('..\data\Verification Tests\PP060_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
     elseif contains(fname,'Self')
         cLims = [-2.5 2.5];
+        cLims = [-2 2];
         load('..\data\Verification Tests\PP081_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
 
     end
@@ -64,12 +72,12 @@ end
 
 %% LminR
 means = cell2mat(RRK_Mean(L));
-minL(n-2) = min(means(:));
-maxL(n-2) = max(means(:));
+minL(ctr) = min(means(:));
+maxL(ctr) = max(means(:));
 
 means = cell2mat(RRK_Mean(KTarget));
-minK(n-2) = min(means(:));
-maxK(n-2) = max(means(:));
+minK(ctr) = min(means(:));
+maxK(ctr) = max(means(:));
 
 
 % T = RRK_TTest2(KTarget,KTest1);
@@ -84,7 +92,7 @@ else
 end
 
 if exist('ptsA','var') && exist('ptsB','var')
-    [fH,~,~,maxM(n),minM(n)] = RRK_Verification_Plot(r,FPosition,L,ptsA,PPName,cLims,T,'ptsB',ptsB);
+    [fH,~,~,maxM(ctr),minM(ctr)] = RRK_Verification_Plot(r,FPosition,L,ptsA,PPName,cLims,T,'ptsB',ptsB);
 elseif exist('Signal','var')
     for m = 1:length(FPosition)
         maxF = max(FPosition{m});
@@ -95,9 +103,9 @@ elseif exist('Signal','var')
         end
     end
     
-    [fH,~,~,maxM(n),minM(n)] = RRK_Verification_Plot(r,FPosition,KTarget,pts,PPName,cLims,T,'Signal',Signal);
+    [fH,~,~,maxM(ctr),minM(ctr)] = RRK_Verification_Plot(r,FPosition,KTarget,pts,PPName,cLims,T,'Signal',Signal);
 else
-    [fH,~,~,maxM(n),minM(n)] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T);
+    [fH,~,~,maxM(ctr),minM(ctr)] = RRK_Verification_Plot(r,FPosition,L,pts,PPName,cLims,T);
 end
 % colorbar('southoutside')
 % xlabel('Window Position');
@@ -110,6 +118,19 @@ print(fH,SaveName,'-dpng')
 
 close all;
 
+% Save for replotting
+% KObs = permute(KTarget{4},[2 1 3]);
+% KSims = permute(KTest1{4},[2 1 3]);
+KObs = KTarget{4};
+KSims = KTest1{4};
+[PercEx,G,Sig,alpha] = RRKSigStandard(KObs,KSims,'alpha',1e-4);
+PercEx = PercEx';
+G = G';
+Sig = Sig';
+newdir = '..\data\Verification Tests Replots';
+newname = fullfile(newdir,strcat(filename(1:end-4),'.mat'));
+save(newname,'PercEx','G','Sig','alpha','KObs','KSims','r');
+klims(ctr,:)=cLims;
 %% G (normalized)
 % G = RRK_Log2Norm(KTarget,KTest);
 % Glims = [-1.3168 4.2511];

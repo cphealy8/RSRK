@@ -6,7 +6,7 @@ npts = 1000;
 nreps = 199;
 win = [0 5 0 1];
 % kFrames = [1:(win(2)*2-1)];
-kFrames = [1 5 10 25];
+kFrames = [1 5 10 25 50 100 200];
 fOverlap = 0.5;
 r = logspace(log10(0.01),log10(0.5),11);
 
@@ -20,7 +20,6 @@ fnames = dir(dirname);
 % Signal patterns run from 57:80
 
 for k = [(61+15) (112+15)]
-
 % for k = (57+13):72
     fname = fnames(k).name;
     

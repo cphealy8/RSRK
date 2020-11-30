@@ -37,7 +37,7 @@ win = [0 MaskWidth 0 MaskHeight];
 [G,Sig,~,FPosition,cLims,KScaled,PercEx,KObs,KSims] = RRK_Norm(pts,rscaled,nFrames,fOverlap,SigLvl,'Mask',Mask);
 
 %% Plot
-[fH1,axM,axH] = RSRK_Plot(r,FPosition,PercExp,'SigMap',Sig,'cLims',cLims);
+[fH1,axM,axH] = RSRK_Plot(r,FPosition,PercEx,'SigMap',Sig,'cLims',cLims);
 % [fH2,axM,axH] = RSRK_Plot(r,FPosition,KScaled,'SigMap',Sig);
 %% Save the data
 

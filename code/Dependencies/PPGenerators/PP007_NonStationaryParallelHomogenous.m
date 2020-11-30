@@ -2,10 +2,10 @@ PPName = 'NonStationary - Parallel - Homogenous'; % metadata
 
 IntensityMap_TriWave_parallel
 
-PP02_AggregatedSmallClustersHomogenous
+PP002_AggregatedSmallClustersHomogenous
 ptsU = ThinByIntensity(IMap,win,pts);
 
-PP05_RegularLargeSpacingHomogenous
+PP005_RegularLargeSpacingHomogenous
 ptsV = ThinByIntensity(1-IMap,win,pts);
 
 clear pts

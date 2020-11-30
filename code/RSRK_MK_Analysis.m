@@ -16,7 +16,8 @@ FrameWidth = 2000; %[=]um
 
 fOverlap = 0.5;
 
-imscale = 1.50; % pix/µm
+
+% imscale = 1.50; % pix/µm
 SigLvls = [0.05];
 
 % Analysis scales (r);
@@ -24,7 +25,7 @@ SigLvls = [0.05];
 r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
 % r = 10:10:100; %[=] µm
 
-rescale = 1/(r(1)*imscale); % [=] pixDRez/pix (if min r = 5)
+
 
 Units = 'um';
 ScaleUnits = 'um/pixel';
@@ -41,17 +42,17 @@ SaveDir = '..\data\Kokliaris Dataset\';
 
 foldnames(contains(foldnames,'pool'))=[];
 %% Analyze
-for fID=1:length(foldnames)
-
+% for fID=1:length(foldnames)
+for fID = [10 11]
 % load data
     curFold = fullfile(dirname,foldnames{fID});
     curDirDat = dir(curFold);
     curFiles = {curDirDat(3:end).name}';
-    isSigData = (contains(curFiles,'_R')|contains(curFiles,'_B'))&contains(curFiles,'png');
+    isSigData = (contains(curFiles,'_R')|contains(curFiles,'_G')|contains(curFiles,'_B'))&contains(curFiles,'png');
     
     SigFiles = curFiles(isSigData);
     
-    PtsName = curFiles(contains(curFiles,'MKPP'));
+    PtsName = curFiles(contains(curFiles,'PP'));
     PtsName = PtsName{1};
     load(fullfile(curFold,PtsName));
     
@@ -59,6 +60,10 @@ for fID=1:length(foldnames)
     MaskName = MaskName{1};
     mask = ~imread(fullfile(curFold,MaskName));
     
+    fID = fopen(fullfile(curFold,'imscale.txt'));
+    imscale = cell2mat(textscan(fID,'%f'));
+    fclose(fID);
+    rescale = 1/(r(1)*imscale); % [=] pixDRez/pix (if min r = 5)
 
 %% Scaling and Frames
     % Rescale the image and points (Downsample for computational time);
@@ -113,6 +118,6 @@ save(savedir,'RK','Signal','KObs','KCSR','K','npts','r','FPosition',...
 end
 end
     
-    
+%%    
 S(1) = load('gong');
 sound(S(1).y,S(1).Fs)
