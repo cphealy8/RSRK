@@ -14,7 +14,7 @@ maxL = [];
 
 ct=0;
 ctr = 0;
-for n= 8:9
+for n= [60 65 78 80 84 89 101 107 109 112]+2
 % for n = [6 7 18 25 19 26 47 55]+2 % Verification fig 1 
 % for n = [57 59 61 66 71 76 102 104 106 120]+2 % Verification fig 2
 

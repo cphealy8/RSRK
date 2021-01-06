@@ -42,8 +42,9 @@ SaveDir = '..\data\Kokliaris Dataset\';
 
 foldnames(contains(foldnames,'pool'))=[];
 %% Analyze
-% for fID=1:length(foldnames)
-for fID = [10 11]
+t1 = tic;
+for fID=1:length(foldnames)
+% for fID = [10 11]
 % load data
     curFold = fullfile(dirname,foldnames{fID});
     curDirDat = dir(curFold);
@@ -109,6 +110,7 @@ endtime = clock;
 TimeElapsed = etime(endtime,starttime)/60;
         
 %% Save the data
+tottime = toc(t1); 
 close(hm)
 FileName = strcat(SigName(1:end-4),'_MKRK_',SaveTag,'.mat');
 savedir = fullfile(curFold,FileName);
