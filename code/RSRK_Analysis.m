@@ -8,7 +8,7 @@ starttime = clock;
 %% Analysis Params
 nFrames = 15;
 fOverlap = 0.5;
-SigLvls = 0.5;
+SigLvl = 0.5;
 
 % Analysis scales (r);
 r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
@@ -91,7 +91,7 @@ for sID =1:length(SigFiles)
 %% Analysis
 npts = length(pts);
 
-[RK,FPosition] = MovingRKSig(SignalA,ptsA,rA,maskA,'Pts2Sig',nFrames,fOverlap,SigLvls,'X');
+[RK,FPosition] = MovingRKSig(SignalA,ptsA,rA,maskA,'Pts2Sig',nFrames,fOverlap,SigLvl,'X');
 
 tempStruct = cell2mat(RK);
 KObs = vertcat(tempStruct.Obs)';
@@ -120,7 +120,8 @@ SigPPIdentifier = strcat(PPIdentifier,'-to-',SigIdentifier);
 FileName = strcat(SigName(1:end-4),'_RSRKDat_',SigPPIdentifier,'_',TimeID,'.mat');
 savedir = fullfile(curFold,FileName);
 save(savedir,'RK','Signal','KObs','KCSR','K','npts','r','FPosition',...
-     'pts','nFrames','mask','imscale','rescale','TimeElapsed','FrameWidth','nFrames','fOverlap');
+     'pts','nFrames','mask','imscale','rescale','TimeElapsed',...
+     'FrameWidth','nFrames','fOverlap','SigLvl');
 end
 end
 %%    
