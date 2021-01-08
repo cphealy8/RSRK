@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath('Dependencies');
+addpath('..\Dependencies');
 dirname = '..\..\data\Kokliaris Dataset\';
 DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
@@ -55,7 +55,7 @@ for fID=1:length(foldnames)
         fH.Units = 'centimeters';
         fH.Position = [1 1 9.5 6.0];
         
-        ylabel(axH,'Scale r (µm)')
+        ylabel(axH,'Scale r (Âµm)')
         yticklabels(axH,r)
         yticklabels(axM,[]);
         xlabel(axM,'Window Position')
