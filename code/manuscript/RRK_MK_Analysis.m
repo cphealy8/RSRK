@@ -1,13 +1,13 @@
 clc; clear; close all;
-addpath('Dependencies')
+addpath('../Dependencies')
 %% Analysis Params
 nFrames = 15;
 fOverlap = 0.5;
-imscale = 1.50; % pix/µm
+imscale = 1.50; % pix/Âµm
 SigLvl = 0.01;
 
 % Analysis scales (r);
-r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
+r = [5 10 15 20 30 50 100 150 200 300]; %[=] Âµm
 
 
 
