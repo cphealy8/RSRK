@@ -5,11 +5,7 @@ DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
 SaveDir = '..\results\Kokliaris Dataset\';
 
-% selpath = uigetdir('../data');
-% [datFile,datPath] = uigetfile('../data/*mat','Load Data File');
-% load(fullfile(datPath,datFile));
-
-%%
+%% Specs
 sigLvl = 0.05;
 cLims = [-0.3 0.3];
 cntr =0;
