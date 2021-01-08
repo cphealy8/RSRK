@@ -2,7 +2,7 @@ clc; clear; close all;
 addpath('Dependencies');
 
 
-[FileName,LoadPath] = uigetfile('../data/Phantoms/*.mat','Select Moving RK Data File');
+[FileName,LoadPath] = uigetfile('../data/*.mat','Select RSRK Data File');
 load(strcat(LoadPath,FileName))
 % scale = 0.69; % µm/pixel
 if exist('Scale','var')
