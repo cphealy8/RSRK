@@ -1,9 +1,9 @@
 clc; clear; close all;
 addpath('Dependencies');
-dirname = '..\data\Kokliaris Dataset\';
+dirname = '..\..\data\Kokliaris Dataset\';
 DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
-SaveDir = '..\results\Kokliaris Dataset\';
+SaveDir = '..\..\results\Kokliaris Dataset\';
 
 %% Specs
 sigLvl = 0.05;

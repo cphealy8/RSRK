@@ -14,10 +14,10 @@ r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
 Units = 'um';
 ScaleUnits = 'um/pixel';
 
-SaveDir = '..\results\Kokliaris Dataset\';
+SaveDir = '..\..\results\Kokliaris Dataset\';
 
 %% Loading Mask and Point Data
-[MaskFile,MaskPath]  = uigetfile('../data/*bmp','Select Mask File');
+[MaskFile,MaskPath]  = uigetfile('../../data/*bmp','Select Mask File');
 [PtFile,PtPath] = uigetfile(fullfile(MaskPath,'*mat'),'Select Points File');
 Mask = ~imread(fullfile(MaskPath,MaskFile));
 load(fullfile(PtPath,PtFile));
