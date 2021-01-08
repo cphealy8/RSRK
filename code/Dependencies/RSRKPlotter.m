@@ -1,8 +1,12 @@
 %% Select, Plot, and Save RSRK results.
 % RSRKPLOTTER will prompt the user to select RSRK results in series. When
 % you have finished click cancel in the prompt. RSRKPLOTTER will then read
-% and plot the results you selected using the same scale
-
+% and plot the results you selected using the same scale. Results are saved
+% under '..\..\results\RSRK'.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah. 
+%%
 clc; clear; close all;
 cnt = 0;
 DatPath = '../../data/*mat';

@@ -1,5 +1,5 @@
 function [fH,axL,axM,MaxMean,MinMean] = RSRK_Plot(r,x,K,varargin)
-%RRK_VERIFICATION_PLOT Plot RRK Verification Results
+%RSRK_Plot Plot RRK and RSRK Results
 %   Detailed explanation goes here
 %% parse inputs
 

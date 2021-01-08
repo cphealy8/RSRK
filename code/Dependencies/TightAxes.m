@@ -1,5 +1,11 @@
 function [ax] = TightAxes(ax)
-%TIGHTAXES Minimizes white space in a figure. 
+%TIGHTAXES Minimizes white space in a figure. Call this after generating a
+%   
+%   [ax] = TIGHTAXES(ax). Minimize the white space in the axis with handle
+%   ax. 
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah. 
 
 if nargin==0
     ax = gca;

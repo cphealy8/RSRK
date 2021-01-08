@@ -1,4 +1,10 @@
-% Load File
+%%
+% This code analyses mask images to estimate trabecular bone area, count
+% pores, etc... on a frame by frame basis.
+
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah. 
+%% Load File
 [MaskFile,MaskPath] = uigetfile(fullfile('..\..\data','*bmp'),'Select Mask File');
 [PtFile,PtPath] = uigetfile(fullfile('..\..\data','*mat'),'Select pt File');
 

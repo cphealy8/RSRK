@@ -12,7 +12,6 @@ while 1
         break
     end
     
-     
     % Load and plot results of RRK analysis
     load(filepath{cnt},'PercEx','KSims');
     [sl,sw,sd] = size(KSims);

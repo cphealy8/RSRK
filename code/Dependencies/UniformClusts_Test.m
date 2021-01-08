@@ -1,3 +1,9 @@
+% This is test code for generating uniform clusters of points using the
+% InhibitionPP and PoissonClusts functions. 
+
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah. 
+%%
 clc; clear; close all;
 Win = [0 1 0 1];
 

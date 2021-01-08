@@ -1,9 +1,17 @@
 function [pts] = ThinByIntensity(IntensityMap,Win,pts,varargin)
-%Thin a point process using an intensity map
-%   [pts] = ThinByIntensity(IntensityMap,Win,pts) thins the point process
+%THINBYINTENSITY Thin a point process using an intensity map
+%   [pts] = THINBYINTENSITY(IntensityMap,Win,pts) thins the point process
 %   pts defined in the window Win = [xmin xmax ymin ymax] by the
-%   IntensityMap. IntensityMap is a matrix that defines the probability 
-%%parse inputs
+%   IntensityMap. IntensityMap is a matrix that defines the probability.
+%
+%   [pts] = THINBYINTENSITY(IntensityMap,Win,pts,reps) performs the
+%   thinning process as in the previous example. Optional 4th argument
+%   (reps) a positive integer, specifies how many times the thinning 
+%   process is repeated.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+%% parse inputs
 p = inputParser;
 addRequired(p,'IntensityMap')
 addRequired(p,'Win')
