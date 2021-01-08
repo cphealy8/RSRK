@@ -19,7 +19,7 @@ im = imread(strcat(ImPath,ImFile));
 % mask = imresize(mask,rescale);
 % im = imresize(im,rescale);
 % 
-% Scale = 0.69/rescale; % µm/pixel
+% Scale = 0.69/rescale; % Âµm/pixel
 % Units = 'Pixels';
 % ScaleUnits = 'um/pixel';
 % % Moving Window Settings
@@ -35,7 +35,7 @@ pts = pts*rescale;
 mask = imresize(mask,rescale);
 im = imresize(im,rescale);
 
-Scale = 1/rescale; % µm/pixel
+Scale = 1/rescale; % Âµm/pixel
 Units = 'Pixels';
 ScaleUnits = 'pixels/pixel';
 % Moving Window Settings
