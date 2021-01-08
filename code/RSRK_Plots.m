@@ -1,20 +1,21 @@
 clc; clear; close all;
 addpath('Dependencies');
-dirname = '..\data\Kokliaris Dataset\';
+dirname = '..\data\RSRK Data\';
 DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
-SaveDir = '..\results\Kokliaris Dataset\';
+SaveDir = '..\results\RSRK\';
 
-%% Specs
-sigLvl = 0.05;
-cLims = [-0.3 0.3];
-cntr =0;
+%% Plotting Specs
+% sigLvl = 0.05;
+cLims = [-0.3 0.3]; 
+
 %%
+cntr =0; %counter
 for fID=1:length(foldnames)
     curFold = fullfile(dirname,foldnames{fID});
     curDirDat = dir(curFold);
     curFiles = {curDirDat(3:end).name}';
-    isRKdata = contains(curFiles,'MKRK');
+    isRKdata = contains(curFiles,'RSRKDat');
     
     RKdatafiles = curFiles(isRKdata);
     
@@ -40,8 +41,8 @@ for fID=1:length(foldnames)
         for k=1:length(RK)
             cRK = RK{k};
             curK = cRK.Obs';
-            minEnv = quantile(cRK.CSRSims,sigLvl/2)';
-            maxEnv = quantile(cRK.CSRSims,1-sigLvl/2)';
+            minEnv = quantile(cRK.CSRSims,SigLvl/2)';
+            maxEnv = quantile(cRK.CSRSims,1-SigLvl/2)';
             G(:,k) = log2(cRK.Obs./cRK.CSR)';
             IsSig(:,k) = (curK<=minEnv | curK>=maxEnv);
         end
