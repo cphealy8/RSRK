@@ -21,10 +21,10 @@ mask = imresize(mask,rescale);
 mask2 = imresize(mask2,rescale);
 im = imresize(im,rescale);
 
-% Scale = 1/rescale; % µm/pixel % Base Phantoms
-Scale = 4.53/rescale; % µm/pixel % Bone Phantoms
+% Scale = 1/rescale; % Âµm/pixel % Base Phantoms
+Scale = 4.53/rescale; % Âµm/pixel % Bone Phantoms
 Units = 'Pixels';
-ScaleUnits = 'µm/pixel';
+ScaleUnits = 'Âµm/pixel';
 % Moving Window Settings
 FrameOverlap = 0.5;
 nFrames = 20;
@@ -41,7 +41,7 @@ r = r/Scale; % Scale [=] pixels;
 % mask = imresize(mask,rescale);
 % im = imresize(im,rescale);
 % 
-% Scale = 1/rescale; % µm/pixel
+% Scale = 1/rescale; % Âµm/pixel
 % Units = 'Pixels';
 % ScaleUnits = 'um/pixel';
 % % Moving Window Settings
