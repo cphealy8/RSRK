@@ -4,7 +4,7 @@ addpath('Dependencies');
 
 [FileName,LoadPath] = uigetfile('../data/MovingRK/*.mat','Select Moving RK Data File');
 load(strcat(LoadPath,FileName))
-% scale = 0.69; % µm/pixel
+% scale = 0.69; % Âµm/pixel
 scale = Scale;
 ncats = length(RK{1}.SigLvls)+1;
 nr = length(RK{1}.r);
@@ -52,7 +52,7 @@ colorbar
 % shading interp
 
 xlabel('Window Position (% of Total Length)','FontSize',fntsz)
-ylabel('Scale r (µm)','FontSize',fntsz)
+ylabel('Scale r (Âµm)','FontSize',fntsz)
 
 ax = gca;
 ax = TightAxes(ax);
@@ -78,7 +78,7 @@ RKObs= [RKObs,zeros(size(RKObs,1),1); zeros(1,size(RKObs,2)+1)];
 
 p1 = pcolor(x,r,RKObs');
 xlabel('Window Position (% of Total Length)','FontSize',fntsz)
-ylabel('Scale r (µm)','FontSize',fntsz)
+ylabel('Scale r (Âµm)','FontSize',fntsz)
 zlabel('(RK_{observed}/RK_{CSR}) - 1')
 
 
