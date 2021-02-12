@@ -1,18 +1,24 @@
 clc; clear; close all;
 addpath('Dependencies');
-dirname = '..\data\RSRK Data\';
-DirDat = dir(dirname);
-foldnames = {DirDat(3:end).name}';
+
+%% USER INPUT 
+% Directory where data is located (same as analysis directory in
+% RSRK_Analysis.m
+LoadDir = '..\data\RSRK Data\';
+
+% Directory where the graph pdfs are stored and saved. 
 SaveDir = '..\results\RSRK\';
 
-%% Plotting Specs
-% sigLvl = 0.05;
-cLims = [-0.3 0.3]; 
+% Plotting Specs
+cLims = [-0.3 0.3]; % Colorbar Limits
 
-%%
+%% DON'T EDIT BELOW HERE
+DirDat = dir(LoadDir);
+foldnames = {DirDat(3:end).name}';
+
 cntr =0; %counter
 for fID=1:length(foldnames)
-    curFold = fullfile(dirname,foldnames{fID});
+    curFold = fullfile(LoadDir,foldnames{fID});
     curDirDat = dir(curFold);
     curFiles = {curDirDat(3:end).name}';
     isRKdata = contains(curFiles,'RSRKDat');
@@ -34,8 +40,6 @@ for fID=1:length(foldnames)
         G = zeros(nr,nframes);
         IsSig = zeros(nr,nframes);
         
-        
-
         FPosition= FPosition./(max(FPosition));
 
         for k=1:length(RK)
