@@ -1,22 +1,37 @@
 clc; clear; close all;
 addpath('Dependencies')
+%% INSTRUCTIONS
+% This code runs the RSRK analysis. RSRK requires several input files in
+% order to calculated. It requires a point process file (PP.mat), mask file
+% (ppmask.bmp), Signal file(s) (signal.png), and a txt file that provides
+% the image scale (imscale.txt). These should be contained in a folder in
+% the directory listed below (dirname).
+%
+% This script will import the input files noted above and perform RSRK 
+% comparing the input point process to each of the signal files provided
+% then output the results as separate .mat files in the same directory.
+%% USER INPUT
+
+%%% Analysis Directory specification
+% Specify the directory where the input files needed for RSRK analysis are
+% stored. Output files are also stored here.
 dirname = '..\data\RSRK Data\';
-SaveDir = '..\results\RSRK Data\';
 
-starttime = clock;
+%%% Analysis Parameters
+nFrames = 15; % Number of Frames to use in RSRK analysis. 
+fOverlap = 0.5; % Overlap between neighboring frames. 
+SigLvl = 0.5; % Desired significance level of results. 
 
-%% Analysis Params
-nFrames = 15;
-fOverlap = 0.5;
-SigLvl = 0.5;
-
-% Analysis scales (r);
+% Analysis scales (r). The spatial scales at which RSRK assesses
+% patterning.
 r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
 
+% Analysis units
 Units = 'um';
 ScaleUnits = 'um/pixel';
 
 %% Loading params data
+starttime = clock;
 DirDat = dir(dirname);
 if isempty(DirDat)
     mkdir(dirname)
@@ -45,13 +60,11 @@ for fID=1:length(foldnames)
     end
     
     % PP file extraction
-    PtsName = curFiles(contains(curFiles,'PP'));
-    if isempty(PtsName)
+    PtFiles = curFiles(contains(curFiles,'PP'));
+    if isempty(PtFiles)
         error(strcat(curFold,' does not contain a point process file.',...
             ' This must be a .mat file with "PP" in the filename'))
     end
-    PtsName = PtsName{1};
-    load(fullfile(curFold,PtsName));
     
     % Mask file extraciton
     MaskName = curFiles(contains(curFiles,'ppmask'));
@@ -71,7 +84,7 @@ for fID=1:length(foldnames)
     % Set window width
     FrameWidth = WWidth(mask,nFrames,fOverlap);
     % Rescale the image and points (Downsample for computational time);
-    ptsA = pts*rescale;
+%     ptsA = pts*rescale;
     maskA = imresize(mask,rescale);
     
     framewidthA = FrameWidth*imscale;
@@ -82,7 +95,13 @@ for fID=1:length(foldnames)
     rA = r*Scale;
     
 for sID =1:length(SigFiles)
+for pID = 1:length(PtFiles)
+    PtsName = PtFiles{pID};
+    load(fullfile(curFold,PtsName));
+    ptsA = pts*rescale;
+    
     SigName = SigFiles{sID};
+    
     hm = msgbox(sprintf('Now analyzing %s',SigName));
     Signal = imread(fullfile(curFold,SigName));
     
@@ -122,6 +141,8 @@ savedir = fullfile(curFold,FileName);
 save(savedir,'RK','Signal','KObs','KCSR','K','npts','r','FPosition',...
      'pts','nFrames','mask','imscale','rescale','TimeElapsed',...
      'FrameWidth','nFrames','fOverlap','SigLvl');
+
+end
 end
 end
 %%    
