@@ -37,7 +37,7 @@ pts = pts*DownsamplingPerc;
 mask = imresize(mask,DownsamplingPerc);
 im = imresize(im,DownsamplingPerc);
 
-Scale = ImScale/DownsamplingPerc; % Image Resolution µm/pixel
+Scale = ImScale/DownsamplingPerc; % Image Resolution Âµm/pixel
          
 r = r/Scale; % Scale [=] pixels;
 
@@ -48,7 +48,7 @@ r = r/Scale; % Scale [=] pixels;
 % mask = imresize(mask,rescale);
 % im = imresize(im,rescale);
 % 
-% Scale = 1/rescale; % µm/pixel
+% Scale = 1/rescale; % Âµm/pixel
 % Units = 'Pixels';
 % ScaleUnits = 'um/pixel';
 % % Moving Window Settings
