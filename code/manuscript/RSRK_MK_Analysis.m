@@ -1,6 +1,5 @@
    clc; clear; close all;
-addpath('Dependencies')
-addpath('Dependencies');
+addpath('..\Dependencies');
 dirname = '..\..\data\Kokliaris Dataset\';
 DirDat = dir(dirname);
 foldnames = {DirDat(3:end).name}';
@@ -17,13 +16,13 @@ FrameWidth = 2000; %[=]um
 fOverlap = 0.5;
 
 
-% imscale = 1.50; % pix/µm
+% imscale = 1.50; % pix/Âµm
 SigLvls = [0.05];
 
 % Analysis scales (r);
-% r = [10 20 30 50 90 160 290 500]; %[=] µm
-r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
-% r = 10:10:100; %[=] µm
+% r = [10 20 30 50 90 160 290 500]; %[=] Âµm
+r = [5 10 15 20 30 50 100 150 200 300]; %[=] Âµm
+% r = 10:10:100; %[=] Âµm
 
 
 
@@ -81,7 +80,7 @@ for fID=1:length(foldnames)
 %     [nFrames,fOverlap] = compFrames(SWidth,fOverlap,framewidthA); 
 
     
-    Scale = imscale*rescale; % pixDRez/µm
+    Scale = imscale*rescale; % pixDRez/Âµm
     rA = r*Scale;
 for sID =1:length(SigFiles)
     SigName = SigFiles{sID};
