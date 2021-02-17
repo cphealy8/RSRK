@@ -1,9 +1,9 @@
 clc; clear; close all;
-addpath('Dependencies')
+addpath('..\Dependencies')
 
-dirname = '..\data\Verification Tests\';
+dirname = '..\..\data\Verification Tests\';
 fnames = dir(dirname);
-SaveDir = '..\results\Verification Tests';
+SaveDir = '..\..\results\Verification Tests';
 minL = [];
 maxL = [];
 % cLims = [-0.0313 0.1210];
@@ -25,14 +25,14 @@ fname = fnames(n).name;
 if n<=42
 %     cLims = [-0.0313 0.1210]; % all
     cLims = [-0.06 0.06]; % verification fig 1 univariate;
-    load('..\data\Verification Tests\PP001_RandomHomogenous.mat')
+    load('..\..\data\Verification Tests\PP001_RandomHomogenous.mat')
 elseif n>42 && n<=58
 %     cLims = [-0.04 0.04]; % all
     cLims = [-0.06 0.06]; % verification fig 1 bivariate;
     if contains(fname,'1090')
-        load('..\data\Verification Tests\PP041_RandomRandom1090Homogenous.mat')
+        load('..\..\data\Verification Tests\PP041_RandomRandom1090Homogenous.mat')
     elseif contains(fname,'5050')
-        load('..\data\Verification Tests\PP042_RandomRandom5050Homogenous.mat')
+        load('..\..\data\Verification Tests\PP042_RandomRandom5050Homogenous.mat')
     end
 elseif n>=59
     if contains(fname,'Pts2Sig')
@@ -42,18 +42,18 @@ elseif n>=59
             cLims = [-3 3];
             cLims = [-2 2];
         end
-        load('..\data\Verification Tests\PP060_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
+        load('..\..\data\Verification Tests\PP060_Pts2Sig_RandomHomogenous.mat'); % Control for Sig2Pts tests
     elseif contains(fname,'Self')
         cLims = [-2.5 2.5];
         cLims = [-2 2];
-        load('..\data\Verification Tests\PP081_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
+        load('..\..\data\Verification Tests\PP081_Self_PtsRandomSigRandom.mat'); % Control for Self Tests
 
     end
 end
 
 KTest1 = inf2nan(K);
 
-load('..\data\Verification Tests\PP034_RandomNonhomogenousPerpendicularS.mat')
+load('..\..\data\Verification Tests\PP034_RandomNonhomogenousPerpendicularS.mat')
 KTest2= inf2nan(K);
 
 % Target Stat
