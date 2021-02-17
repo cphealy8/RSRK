@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath('Dependencies')
+addpath('../Dependencies')
 %
 %% RSRK Input Parameters
 % Image Settings
