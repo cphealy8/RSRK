@@ -1,5 +1,5 @@
 clc; clear; close all;
-addpath('Dependencies');
+addpath('../Dependencies');
 
 
 [FileName,LoadPath] = uigetfile('../data/*.mat','Select RSRK Data File');
@@ -71,7 +71,7 @@ CatColormap(cats,colors,ax);
 % colorbar
 set(ax,'YScale','log')
 set(ax,'FontSize',fntsz)
-SavePath = '../results/MovingRKPlots/';
+SavePath = '../../results/MovingRKPlots/';
 saveas(f1,strcat(SavePath,FileName(1:end-4),'_SigLvls'),'epsc')
 
 %% Surface plot
