@@ -1,6 +1,6 @@
 clc; clear; close all;
-addpath('Dependencies')
-addpath('Dependencies\PPGenerators')
+addpath('..\Dependencies')
+addpath('..\Dependencies\PPGenerators')
 
 npts = 1000;
 nreps = 199;
@@ -12,7 +12,7 @@ r = logspace(log10(0.01),log10(0.5),11);
 
 %%
 
-dirname = 'Dependencies\PPGenerators';
+dirname = '..\Dependencies\PPGenerators';
 fnames = dir(dirname);
 
 % Univariate patterns run from k=1:40;
