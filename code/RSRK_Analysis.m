@@ -1,5 +1,49 @@
+%RSRK_Analysis Perform RSRK Analysis on a SignalPoint Pattern
+%   RSRK_Analysis performs RSRK Analysis given the following inputs:
+%       SIGNAL IMAGE(S): A signal image or images. These images should be
+%       grayscale and saved as .png files. These images should have
+%       'signal' in their name followed by a unique identifier to be
+%       recognized by this script e.g. signal_CD31.png
+%
+%   	POINT PROCESS FILE(S) - Target point proceess(es)(usually obtained
+%   	via image segmentation) containing the coordinates of the point
+%   	process in the same units as the signal image(s) (usually pixels).
+%   	These coordinates should be specified as a 2-column matrix
+%   	(x-coordinates in one column, y coordinates in the other) named
+%   	'pts' and saved as a .mat file. Each unique point process should be
+%   	saved as a separate file and these files should include 'PP' in
+%   	their filename followed by a unique identifier to be recognized by
+%       this script e.g. PP_MK.mat.
+%
+%       MASK: A binary mask to specify the analysis region. Masks should be
+%       be specified as black and white images and saved as .bmp files. The
+%       resolution of the mask should exactly match the resolution of the
+%       input signal images. The mask file should include 'ppmask' in the
+%       it's name to be recognized by this script e.g. ppmask.bmp. 
+%
+%       IMAGE SCALE: A txt file that specifies the scale and units of the
+%       image e.g. '1.5 px/um' named imscale.txt
+%
+%   Each of these inputs should be saved together in a folder within
+%   the analysis directory specified in the USER INPUT section of this
+%   script. This folder defines a single analytical set. 
+%   The user can also adjust the parameters of the analysis in
+%   the USER INPUT section of the script e.g. number of windows, frame
+%   overlap, etc...
+%
+%   When run RSRK_Analysis will compute RSRK for every point process and
+%   signal pair contained in the analysis folder. The results of this
+%   analysis will be saved to the same folder and will tonatin the suffice
+%   'RSRKDat' in their filename followed by the unique IDs for the signal
+%   and point process that went into the analysis and the time at which the
+%   analysis was completed (YYYYMMDD-HHMM) e.g.
+%   RSRKDat_CD31-to-MK_20210211-0139.mat.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+
 clc; clear; close all;
-addpath('Dependencies')
+
 %% INSTRUCTIONS
 % This code runs the RSRK analysis. RSRK requires several input files in
 % order to calculated. It requires a point process file (PP.mat), mask file
@@ -11,7 +55,6 @@ addpath('Dependencies')
 % comparing the input point process to each of the signal files provided
 % then output the results as separate .mat files in the same directory.
 %% USER INPUT
-
 %%% Analysis Directory specification
 % Specify the directory where the input files needed for RSRK analysis are
 % stored. Output files are also stored here.
@@ -31,6 +74,7 @@ Units = 'um';
 ScaleUnits = 'um/pixel';
 
 %% Loading params data
+addpath('Dependencies')
 starttime = clock;
 DirDat = dir(dirname);
 if isempty(DirDat)

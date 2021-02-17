@@ -1,34 +1,58 @@
+%RRK_AnalysisAndPlot Perform RRK Analysis and plot the Results
+%   RRK_ANALYSISANDPLOT performs RRK Analysis given the following inputs:
+%
+%   	POINT PROCESS FILE(S) - Target point proceess(es)(usually obtained
+%   	via image segmentation) containing the coordinates of the point
+%   	process in the same units as the mask image(s) (usually pixels).
+%   	These coordinates should be specified as a 2-column matrix
+%   	(x-coordinates in one column, y coordinates in the other) named
+%   	'pts' and saved as a .mat file. Each unique point process should be
+%   	saved as a separate file and these files should include 'PP' in
+%   	their filename followed by a unique identifier to be recognized by
+%       this script e.g. PP_MK.mat.
+%
+%       MASK: A binary mask to specify the analysis region. Masks should be
+%       be specified as black and white images and saved as .bmp files.
+%       The mask file should include 'ppmask' in it's name to be 
+%       recognized by this script e.g. ppmask.bmp. 
+%
+%       IMAGE SCALE: A txt file that specifies the scale and units of the
+%       image e.g. '1.5 px/um' named imscale.txt
+%
+%   Each of these inputs should be saved together in a folder within
+%   the analysis directory specified in the USER INPUT section of this
+%   script. This folder defines a single analytical set. 
+%   The user can also adjust the parameters of the analysis in
+%   the USER INPUT section of the script e.g. number of windows, frame
+%   overlap, etc...
+%
+%   When run RRK_ANALYSISANDPLOT will compute RRK for every point
+%   process contained in the analytical set, generate graphs of the
+%   results, and save both the raw results and the graphs to a
+%   subfolder named results within the analytical sets folder. This
+%   script will then move on to analyze any additional analytical sets
+%   contained in the directory listed in USER INPUT. 
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+
 clc; clear; close all;
-addpath('Dependencies')
-%% Analysis Params
-dirname = '..\data\RSRK Data\';
 
-nFrames = 15;
-fOverlap = 0.5;
-imscale = 1.50; % pix/µm
-SigLvl = 0.01;
+%% USER INPUT
+dirname = '..\data\RSRK Data\'; % Where the input files are located.
 
-% Analysis scales (r);
-r = [5 10 15 20 30 50 100 150 200 300]; %[=] µm
+% Analysis Parameters
+nFrames = 15; % Number of Frames
+fOverlap = 0.5; % Overlap between frames
+SigLvl = 0.01; % Desired Significance Level
+r = [5 10 15 20 30 50 100 150 200 300]; % Analysis scales (r);
 
 Units = 'um';
 ScaleUnits = 'um/pixel';
-%%
-% SaveDir = '..\..\results\Kokliaris Dataset\';
-% 
-% %% Loading Mask and Point Data
-% [MaskFile,MaskPath]  = uigetfile('../../data/*bmp','Select Mask File');
-% [PtFile,PtPath] = uigetfile(fullfile(MaskPath,'*mat'),'Select Points File');
-% Mask = ~imread(fullfile(MaskPath,MaskFile));
-% load(fullfile(PtPath,PtFile));
-% 
-% rescale = 1/(r(1)*imscale); % [=] pixDRez/pix (if min r = 5)
-% rscaled = r*imscale*rescale; %[=] pixels  
-% Mask = imresize(Mask,rescale);
-% pts = rescale.*pts;
-% pts = CropPts2Mask(pts,Mask);
 
-%% Loading Params data
+%% Loading Params data (DONT EDIT BELOW HERE)
+addpath('Dependencies')
+
 DirDat = dir(dirname);
 if isempty(DirDat)
     mkdir(dirname)

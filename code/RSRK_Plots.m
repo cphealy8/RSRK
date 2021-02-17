@@ -1,6 +1,22 @@
-clc; clear; close all;
-addpath('Dependencies');
+%RSRK_PLOT Plot and save RSRK Results
+%   RSRK_PLOT generates plots from RSRK results then saves those plots.
+%
+%   RSRK_PLOT reads RSRKDat files saved within analysis folders within the
+%   LoadDir directory specified within the USER INPUT Section of this
+%   script (Note, if you used RSRK_Analysis.m to generate these data files
+%   by default the RSRKDat files are already in the correct location).
+%
+%   Running this script will read the data files, generate RSRK Plots, then
+%   save those plots as .pdf and .eps files to the Save Directory indicated
+%   within the USER INPUT Section of this script. 
+%   
+%   Users can adjust the limits of the colorbars used in RSRK analysis by
+%   changing the variable cLims in the USER INPUT section of this script.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
 
+clc; clear; close all;
 %% USER INPUT 
 % Directory where data is located (same as analysis directory in
 % RSRK_Analysis.m
@@ -13,6 +29,7 @@ SaveDir = '..\results\RSRK\';
 cLims = [-0.3 0.3]; % Colorbar Limits
 
 %% DON'T EDIT BELOW HERE
+addpath('Dependencies');
 DirDat = dir(LoadDir);
 foldnames = {DirDat(3:end).name}';
 
