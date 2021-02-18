@@ -1,12 +1,34 @@
+%ANALYZEEXTRAS quantify cell density and bone type densities.
+%   ANALYZEEXTRAS estimates cell density and the density of trabecular
+%   bone, cortical bone, and bone marrow as a function of frame position.
+%   When run, ANALYZEEXTRAS will prompt the user to select a point process
+%   file, and binary mask (ppmask). A Binary mask that marks the bone (including both
+%   cortical bone, trabecular bone, and bone marrow)that contains
+%   'outermask' in it's filename must be contained within the same folder
+%   as the point process and ppmask. Additionally, a binary mask that marks
+%   just the cortical bone that contains 'corticalmask' in its name, and
+%   a mask that marks cartilage that contains 'cartilagemask' in its name
+%   must also be saved to the same folder as the point process and ppmask. 
+%
+%   If all the correct files are present then ANALYZEEXTRAS will compute
+%   the cell density, cortical bone density, trabecular bone density, and
+%   bone marrow density as a function of the frame position. Users can
+%   adjust the parameters for how this analysis is performed in the USER
+%   INPUT section of this script. 
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+
 clc; clear; close all;
-addpath('Dependencies')
-%% Analysis Params
-nFrames = 15;
-fOverlap = 0.5;
-imscale = 1.50; % pix/µm
-SigLvl = 0.01;
-Frame = linspace(0,1,nFrames)*100;
+
+%% USER INPUT
+nFrames = 15; % Number of Frames
+fOverlap = 0.5; % Frame Overlap
+imscale = 1.50; % Image scale [=] pix/µm
+
 %% Bone Analysis
+Frame = linspace(0,1,nFrames)*100;
+addpath('Dependencies')
 [MaskFile,MaskPath]  = uigetfile('../data/*bmp','Select Mask File');
 Mask = ~imread(fullfile(MaskPath,MaskFile));
 
