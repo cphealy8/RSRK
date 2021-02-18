@@ -4,12 +4,12 @@ addpath('../Dependencies');
 
 [FileName,LoadPath] = uigetfile('../data/*.mat','Select RSRK Data File');
 load(strcat(LoadPath,FileName))
-% scale = 0.69; % µm/pixel
+% scale = 0.69; % Âµm/pixel
 if exist('Scale','var')
     scale = Scale;
 else
     scale = 6.9;
-    warning('The scale was manually set to %0.2f µm/pixel',scale);
+    warning('The scale was manually set to %0.2f Âµm/pixel',scale);
 end
 
 ncats = length(RK{1}.SigLvls)+1;
