@@ -1,24 +1,31 @@
-clc; clear; close all;
-addpath('..\Dependencies')
-addpath('..\Dependencies\PPGenerators')
+%RRK_VERIFICATION Load Point Patterns and verify RRK. 
+%   This code reads in the verification point patterns defined in
+%   Dependencies\PPGenerators and calculates RRK. It repeats this process
+%   for a number of times equal to nreps, calculates and outputs the
+%   results of each repetition.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
 
-npts = 1000;
-nreps = 199;
-win = [0 5 0 1];
-% kFrames = [1:(win(2)*2-1)];
-kFrames = [1 5 10 25];
-fOverlap = 0.5;
-r = logspace(log10(0.01),log10(0.5),11);
+clc; clear; close all;
+%% USER INPUT
+npts = 1000; % Number of points in simulated Point Process
+nreps = 199; % Number of repetitions
+win = [0 5 0 1]; % Simulated pattern dimensions [xmin xmax ymin ymax]
+kFrames = [1 5 10 25]; % No. of Frames to test
+fOverlap = 0.5; % Frame Overlap
+r = logspace(log10(0.01),log10(0.5),11); % Scale (r)
 
 %%
-
+addpath('..\Dependencies')
+addpath('..\Dependencies\PPGenerators')
 dirname = '..\Dependencies\PPGenerators';
 fnames = dir(dirname);
 
 % Univariate patterns run from k=1:40;
 % Bivariate patterns run from k=41:56;
 
-for k = (1:7)+15
+for k = (1:56)+15
 % for k = [18]
     
     fname = fnames(k).name;

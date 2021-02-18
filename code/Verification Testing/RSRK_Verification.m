@@ -1,17 +1,24 @@
+%RSRK_VERIFICATION Load Point Patterns and verify RSRK. 
+%   This code reads in the verification point patterns defined in
+%   Dependencies\PPGenerators and calculates RSRK. It repeats this process
+%   for a number of times equal to nreps, calculates and outputs the
+%   results of each repetition.
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+
 clc; clear; close all;
+%% USER INPUT
+npts = 1000; % Number of points in simulated Point Process
+nreps = 199; % Number of repetitions
+win = [0 5 0 1]; % Simulated pattern dimensions [xmin xmax ymin ymax]
+kFrames = [1 5 10 25]; % No. of Frames to test
+fOverlap = 0.5; % Frame Overlap
+r = logspace(log10(0.01),log10(0.5),11); % Scale (r)
+
+%% DONT EDIT BELOW HERE
 addpath('..\Dependencies')
 addpath('..\Dependencies\PPGenerators')
-
-npts = 1000;
-nreps = 199;
-win = [0 5 0 1];
-% kFrames = [1:(win(2)*2-1)];
-kFrames = [1 5 10 25 50 100 200];
-fOverlap = 0.5;
-r = logspace(log10(0.01),log10(0.5),11);
-
-
-%%
 dirname = '..\Dependencies\PPGenerators';
 fnames = dir(dirname);
 
