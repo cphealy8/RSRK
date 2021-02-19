@@ -10,7 +10,7 @@ imshow(cellmask)
 hold on
 plot(pts(:,1),pts(:,2),'.r')
 
-imscale = 1.5; % [px/µm]
+imscale = 1.5; % [px/Âµm]
 
 %% Cell Morphology analysis
 props = regionprops(cellmask,'EquivDiameter');
