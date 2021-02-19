@@ -8,6 +8,9 @@ function [cmap] = CatColormap(Categories,Colors,varargin)
 %   colormap to the axis specified by the axis handle AX. 
 %
 %   SEE ALSO CONT2CAT.
+%
+%   Author: Connor P. Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah
 nCategories = length(Categories);
 [ColorRows, ColorCols]= size(Colors);
 if ColorCols~=3 && ColorRows==3

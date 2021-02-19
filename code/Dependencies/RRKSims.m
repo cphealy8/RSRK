@@ -1,6 +1,23 @@
 function [K,LminR,FPosition] = RRKSims(pts,win,r,nFrames,fOverlap,SigLvl,EdgeCorrection,varargin)
-%RRK Rolling Ripley's K
-%   Detailed explanation goes here
+%RRK Rolling Ripley's K with simulations for significance levels. 
+%   [K,LminR,FPosition] = RRKSims(pts,win,r,nFrames,fOverlap,SigLvl,EdgeCorrection,varargin)
+%   REQUIRED INPUTS
+%   pts - 2-column matrix of point coordinates.
+%   win - overall window dimensions [xmin xmax ymin ymax]
+%   r - vector specifying search scaled e.g. [2 4 6 8 10]
+%   nFrames - number of frames to use when computing RRK e.g. 15
+%   fOverlap - overlap between frames e.g. 0.5 results in 50% overlap
+%   SigLvl - target significance level e.g. 0.01
+%   EdgeCorrection - Whether or not to apply edge correction 'on' or 'off'
+%   
+%   OPTIONAL INPUTS
+%   PtsB - a second 2-column matrix of point coordinates for bivariate RRK.
+%   Mask - A binary mask to define the analysis region. Should be a black
+%   and white .bmp image with the same dimensions as specified in win.
+%
+%   Author: Connor P. Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah
+%% parse inputs
 p = inputParser;
 addRequired(p,'pts',@isnumeric)
 addRequired(p,'win',@isnumeric)

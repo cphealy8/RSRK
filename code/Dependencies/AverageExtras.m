@@ -1,3 +1,12 @@
+%AVERAGEEXTRAS compute average bone density and cell densities output from
+%ANALYZEEXTRAS
+%
+%   SEE ALSO ANALYZEEXTRAS.
+%
+%   Author: Connor P. Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah
+
+%%
 clc; clear; close all;
 cnt = 0;
 
