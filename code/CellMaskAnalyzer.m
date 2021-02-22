@@ -1,3 +1,17 @@
+%CELLMASKANALYZER estimate cell diameters and nearest neighbor distances.
+%   CELLMASKANALYZER prompts the user to select a .bmp mask file that marks
+%   cells (or other roughly circular features) in an image and a point
+%   process file that marks the coordinates of these features. With these
+%   inputs it estimates the diameter of the cells based upon the binary
+%   mask. Additionally, using the point process it computes the nearest
+%   neighbor distribution. 
+%
+%   These results are saved to the same directory as the mask file with the
+%   prefix NNDist. 
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+%%
 clc;clear;close all;
 
 [ImFile,ImPath] = uigetfile('../../data/*bmp','Select Cell Mask File');

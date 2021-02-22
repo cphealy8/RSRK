@@ -14,7 +14,9 @@
 %   the cell density, cortical bone density, trabecular bone density, and
 %   bone marrow density as a function of the frame position. Users can
 %   adjust the parameters for how this analysis is performed in the USER
-%   INPUT section of this script. 
+%   INPUT section of this script.
+%
+%   See also ExtrasPlotter
 %
 %   AUTHOR: Connor Healy (connor.healy@utah.edu)
 %   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
