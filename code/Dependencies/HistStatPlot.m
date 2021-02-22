@@ -21,7 +21,9 @@ function [aH] = HistStatPlot(data,varargin)
 %
 %   See also HISTOGRAM.
 %
-%   Author: Connor P. Healy, University of Utah. (connor.healy@utah.edu)
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%
 %   Last Updated: 11-30-2020
 %   Version: 1.00
 

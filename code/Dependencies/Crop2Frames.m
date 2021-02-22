@@ -3,7 +3,11 @@ function [Frames] = Crop2Frames(im,nFrames,fOverlap,varargin)
 %   Frame = CROP2FRAMES crops the image im into a number of Frames
 %   (nFrames) equally spaced across the image that overlap by a fraction
 %   (fOverlap). fOverlap = 0 produces frames with no overlap. fOverlap=0.5
-%   produces frames that overlap by 50% of the framewidth. 
+%   produces frames that overlap by 50% of the framewidth.
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%%
 type = 'im';
 if ~isempty(varargin)
     type = 'pts';

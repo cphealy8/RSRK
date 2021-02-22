@@ -1,3 +1,11 @@
+%HOMOGENOUSNONSTATIONARYPOINTPATTERNS_TEST generates a homogenous point
+%pattern that is nonstationary. 
+%   This was a test script used to develop
+%   other scripts. 
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%%
 clc; clear; close all;
 
 % Overlap two processes with different parameters with inversely related

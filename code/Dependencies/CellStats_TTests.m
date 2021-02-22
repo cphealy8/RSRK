@@ -1,3 +1,13 @@
+%CELLSTATS_TTESTS perform student T-Test to assess statistically
+%   significant differences between cell diameters and nearest neighbor
+%   distances.
+%
+%   SEE ALSO CellMaskAnalyzer
+%
+%   AUTHOR: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
+
+
 clc;clear;close all;
 %% load data
 DatPath = '../../data/*mat';

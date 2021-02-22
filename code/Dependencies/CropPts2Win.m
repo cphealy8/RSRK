@@ -1,6 +1,12 @@
 function [pts] = CropPts2Win(pts,win)
 %CROPPTS2WIN Deletes points that fall outside a user defined window. 
-%   Detailed explanation goes here
+%   INPUTS
+%   pts - a 2 column matrix of x and y coordinates. 
+%   win - dimensions of the crop window win = [xmin xmax ymin ymax];
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%%
 [h,w] = size(pts);
 
 if h==2 && w>2

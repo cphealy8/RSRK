@@ -1,13 +1,20 @@
-function [counts] = countEntries(A)
+function [counts,entries] = countEntries(A)
 %COUNTENTRIES Count number of times each entry in A appears in A
-%   Detailed explanation goes here
+%   [counts] = countEntries(A) finds the unique numerical entries in A and
+%   outputs a vector that counts the number of times each unique entry
+%   appears in A.
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
     A = A(:);
-   x = unique(A);
-   N = numel(x);
+   entries = unique(A);
+   N = numel(entries);
    counts = zeros(N,1);
    for k = 1:N
-      counts(k) = sum(A==x(k));
+      counts(k) = sum(A==entries(k));
    end
 %    disp([ x(:) count ]);
+
+
 end
 

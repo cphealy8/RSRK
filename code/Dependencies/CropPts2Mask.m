@@ -1,6 +1,16 @@
 function [pts] = CropPts2Mask(pts,mask)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%CROPPTS2MASK Crop points to an irregular region (mask)
+%   [croppedpts] = CropPts2Mask(pts,mask) removes points that fall within
+%   the black region of the input mask and outputs the results. The mask
+%   should be a binary matrix of zeros and ones that define the regions to
+%   keep (1) and the regions to omit (0). The point coordinates should be
+%   in the same units as the mask (usually pixels). 
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%
+%   SEE ALSO Crop2Frames
+%%
 [MaskHeight, MaskWidth] = size(mask);
 % make sure all points are within the full area of the mask
 

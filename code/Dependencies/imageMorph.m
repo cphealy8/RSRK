@@ -5,6 +5,9 @@ function varargout = imageMorph(varargin)
 %      specify a range of pixel intensity that they wish to remain in the
 %      image, pixels outside this range are set to zero.
 %
+%      Author: Connor Healy (connor.healy@utah.edu)
+%      Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
 % Last Modified by GUIDE v2.5 04-Jun-2018 16:03:50

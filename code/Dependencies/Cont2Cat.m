@@ -7,7 +7,10 @@ function [CatVar] = Cont2Cat(ContVar,Bounds)
 %   (ContVar) into 1 of 3 categories. Less than 1, between 1 and 3, and
 %   greater than 3. 
 %
-%   SEE ALSO CATCOLORMAP. 
+%   SEE ALSO CATCOLORMAP.
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
 
 Bounds = sort(Bounds);
 

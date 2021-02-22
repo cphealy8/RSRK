@@ -10,6 +10,9 @@ function [CombinedRK,CombinedX] = CombineRKSamples(varargin)
 %
 %
 %   SEE ALSO POOLRK.
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   AFFILIATION: Dept. of Biomedical Engineering, University of Utah.
 
 if nargin==1
     tgtDir = fullfile(varargin{1},'*mat');

@@ -1,4 +1,16 @@
-clc; clear; close all;
+%EXTRASPLOTTER generate plots of bone and cell density as a function of
+%location.
+%   This script prompts the user to select the data file where the bone and
+%   cell densities are stored then plots the results as bar graphs. These
+%   plots are then saved under ('..\..\Results\Extras') as .pdf and .eps
+%   files. 
+%
+%   See also AnalyzeExtras
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%%
+clc; clear; close all; 
 cnt = 0;
 while 1
     cnt = cnt+1;

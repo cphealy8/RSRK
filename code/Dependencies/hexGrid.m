@@ -5,6 +5,10 @@ function [im] = hexGrid(apothem,imwidth,imheight)
 %   is determined by the apothem argument. 
 %
 %   SEE ALSO POLY2MASK and PATCH.
+%
+%   Author: Connor Healy (connor.healy@utah.edu)
+%   Affiliation: Dept. of Biomedical Engineering, University of Utah.
+%%
 
 buff = 10;
 tempwidth = imwidth+2*buff;
